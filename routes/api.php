@@ -16,3 +16,20 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('/TheLoaiKhoaHoc','TheLoaiKhoaHocController');
+Route::apiResource('/MangKhoaHoc','MangKhoaHocController');
+Route::apiResource('/KhoaHoc','KhoaHocController');
+Route::apiResource('/User','UserController');
+Route::apiResource('/HoaDon','HoaDonController');
+Route::apiResource('/DanhGia','DanhGiaController');
+Route::apiResource('/Comment','CommentController');
+Route::apiResource('/Level','LevelController');
+Route::apiResource('/ThoiHanGV','ThoiHanGVController');
+Route::apiResource('/BaiGiang','BaiGiangController');
+Route::apiResource('/GiangVien','GiangVienController');
+Route::apiResource('/CodeKhoaHoc','CodeKhoaHocController');
+Route::apiResource('/ThanhToan','ThanhToanController');
+Route::apiResource('/CauHoi','CauHoiController');
+Route::apiResource('/Login','LoginController');
+Route::apiResource('/Register','RegisterController');
