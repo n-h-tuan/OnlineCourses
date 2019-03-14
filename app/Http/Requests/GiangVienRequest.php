@@ -13,7 +13,7 @@ class GiangVienRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class GiangVienRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            // 'user_id' => "required",
+            'TenGiangVien' => "required|min:5|max:100",
+            'TomTat' => "required|min:10",
+            // 'ThoiHanGV_id' => "required",
         ];
     }
 }

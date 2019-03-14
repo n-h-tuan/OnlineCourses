@@ -13,7 +13,7 @@ class KhoaHocRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class KhoaHocRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'MangKH_id' => "required",
+            'GiangVien_id' => "required",
+            'HinhAnh' => "required",
+            'TenKH' => "required|min:10|max:100",
+            'TomTat' => "required|min:10|max:200",
+            'GiaTien' => "required|numeric",
+            
         ];
     }
 }

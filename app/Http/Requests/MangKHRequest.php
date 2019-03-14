@@ -13,7 +13,7 @@ class MangKHRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class MangKHRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'TheLoaiKH_id' =>"required",
+            'TenMangKH' => "required|min:10|max:100"
         ];
     }
 }

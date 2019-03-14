@@ -19,11 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('level_id')->unsigned();
+            $table->integer('level_id')->unsigned()->index();
             $table->foreign('level_id')->references('id')->on('level')->onDelete('cascade');
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
-            $table->string('hinhanh');
+            $table->string('HinhAnh');
+            $table->longText('api_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

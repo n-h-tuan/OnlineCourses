@@ -15,11 +15,11 @@ class CreateDanhGiasTable extends Migration
     {
         Schema::create('danh_gia', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('hoadon_id')->unsigned();
-            $table->foreign('hoadon_id')->references('id')->on('hoa_don')->onDelete('cascade');
-            $table->string('tieude');
-            $table->text('noidung');
-            $table->integer('diem');
+            $table->integer('HoaDon_id')->unsigned()->index();
+            $table->foreign('HoaDon_id')->references('id')->on('hoa_don')->onDelete('cascade');
+            $table->string('TieuDe');
+            $table->text('NoiDung');
+            $table->integer('Diem');
             $table->timestamps();
         });
     }

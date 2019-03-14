@@ -8,4 +8,5 @@ class ThanhToan extends Model
 {
     //
     protected $table = "thanh_toan";
+    protected $fillable = ['HinhThucThanhToan'];
 }

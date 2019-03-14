@@ -13,7 +13,7 @@ class BaiGiangRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class BaiGiangRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'KhoaHoc_id' => "required",
+            'TenBaiGiang' => "required|min:10|max:1000",
+            'EmbededURL' => "required",
         ];
     }
 }

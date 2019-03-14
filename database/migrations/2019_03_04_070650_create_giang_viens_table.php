@@ -15,15 +15,16 @@ class CreateGiangViensTable extends Migration
     {
         Schema::create('giang_vien', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('TenGiangVien');
-            $table->longText('tomtat');
+            $table->longText('TomTat');
             $table->integer('SoLuongHocVien');
             $table->integer('SoLuongKhoaHoc');
-            $table->integer('thoihanGV_id')->unsigned();
-            $table->foreign('thoihanGV_id')->references('id')->on('thoi_han_gv')->onDelete('cascade');
-            $table->dateTime('NgayHetHan');
+            $table->integer('ThoiHanGV_id')->unsigned()->index();
+            $table->foreign('ThoiHanGV_id')->references('id')->on('thoi_han_gv')->onDelete('cascade');
+            $table->string('NgayHetHan')->nullable();
+            $table->integer('TrangThai'); //0:Hết thời hạn ---- 1:Còn thời hạn
             $table->timestamps();
         });
     }

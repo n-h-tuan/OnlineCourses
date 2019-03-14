@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Level;
 use Illuminate\Http\Request;
+use App\Http\Resources\Level\LevelResource;
 
 class LevelController extends Controller
 {
@@ -14,7 +15,7 @@ class LevelController extends Controller
      */
     public function index()
     {
-        //
+        return LevelResource::collection(Level::all());
     }
 
     /**

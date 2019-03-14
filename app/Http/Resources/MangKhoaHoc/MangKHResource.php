@@ -14,6 +14,10 @@ class MangKHResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'TheLoaiKH' => $this->the_loai_khoa_hoc->TenTheLoai,
+            'TenMangKH' => $this->TenMangKH,
+        ];
     }
 }

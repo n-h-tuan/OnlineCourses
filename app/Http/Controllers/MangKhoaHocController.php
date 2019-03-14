@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\MangKhoaHoc;
 use Illuminate\Http\Request;
+use App\Http\Resources\MangKhoaHoc\MangKHResource;
+use App\TheLoaiKhoaHoc;
+use App\Exceptions\MangKhoaHocKhongDung;
+use App\Http\Requests\MangKHRequest;
 
 class MangKhoaHocController extends Controller
 {
@@ -12,9 +16,10 @@ class MangKhoaHocController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(TheLoaiKhoaHoc $TheLoaiKhoaHoc)
     {
-        //
+        // $theLoaiKhoaHoc = TheLoaiKhoaHoc::find($TheLoaiKhoaHoc);
+        return MangKHResource::collection($TheLoaiKhoaHoc->mang_khoa_hoc);
     }
 
     /**
@@ -33,9 +38,12 @@ class MangKhoaHocController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MangKHRequest $request)
     {
-        //
+        $MangKhoaHoc = MangKhoaHoc::create($request->all());
+        return response([
+            'data' => new MangKHResource($MangKhoaHoc),
+        ],200);
     }
 
     /**
@@ -44,9 +52,10 @@ class MangKhoaHocController extends Controller
      * @param  \App\MangKhoaHoc  $mangKhoaHoc
      * @return \Illuminate\Http\Response
      */
-    public function show(MangKhoaHoc $mangKhoaHoc)
+    public function show(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc)
     {
-        //
+        $this->KiemTraMangKhoaHoc($TheLoaiKhoaHoc, $MangKhoaHoc);
+        return new MangKHResource($MangKhoaHoc);
     }
 
     /**
@@ -67,9 +76,12 @@ class MangKhoaHocController extends Controller
      * @param  \App\MangKhoaHoc  $mangKhoaHoc
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MangKhoaHoc $mangKhoaHoc)
+    public function update(MangKHRequest $request, TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc)
     {
-        //
+        $MangKhoaHoc->update($request->all());
+        return response()->json([
+            'data' => "Cập nhật thành công ".$MangKhoaHoc->TenMangKH,
+        ],200);
     }
 
     /**
@@ -78,8 +90,17 @@ class MangKhoaHocController extends Controller
      * @param  \App\MangKhoaHoc  $mangKhoaHoc
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MangKhoaHoc $mangKhoaHoc)
+    public function destroy(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc)
     {
-        //
+        $MangKhoaHoc->delete();
+        return response()->json([
+            'data' => "Xóa thành công ".$MangKhoaHoc->TenMangKH,
+        ],200);
+    }
+
+    public function KiemTraMangKhoaHoc(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc)
+    {
+        if($MangKhoaHoc->TheLoaiKH_id != $TheLoaiKhoaHoc->id)
+        throw new MangKhoaHocKhongDung;
     }
 }

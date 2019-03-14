@@ -16,16 +16,16 @@ class KhoaHocResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            // 'mangKH' => $this->mang_khoa_hoc->tenmangKH,
-            // 'giangvien' =>$this->giang_vien->TenGiangVien,
-            'mangKH_id' => $this->mangKH_id,
-            'giangvien_id' => $this->giangvien_id,
-            'hinhanh' => $this->hinhanh,
-            'tenKH' => $this->tenKH,
-            'tomtat' => $this->tomtat,
-            'giatien' => $this->giatien,
-            'danhgia' =>$this->danhgia,
-            'soluotxem' => $this->soluotxem,
+            'MangKH' => $this->mang_khoa_hoc->TenMangKH,
+            'GiangVien' =>$this->giang_vien->TenGiangVien,
+            // 'MangKH_id' => $this->MangKH_id,
+            // 'GiangVien_id' => $this->GiangVien_id,
+            'HinhAnh' => $this->HinhAnh,
+            'TenKH' => $this->TenKH,
+            'TomTat' => $this->TomTat,
+            'GiaTien' => $this->GiaTien,
+            'DanhGia' =>$this->DanhGia,
+            'SoLuotXem' => $this->SoLuotXem,
         ];
         // return parent::toArray($request);
     }

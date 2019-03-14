@@ -13,7 +13,7 @@ class TheLoaiKHRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class TheLoaiKHRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'TenTheLoai' => "required|min:3|max:100",
         ];
     }
 }

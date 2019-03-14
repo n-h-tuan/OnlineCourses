@@ -8,10 +8,10 @@ class HoaDon extends Model
 {
     //
     protected$table = "hoa_don";
-
+    protected $fillable = ['KhoaHoc_id','user_id','ThanhToan_id'];
     public function khoa_hoc()
     {
-        return $this->belongsTo('App\KhoaHoc','khoahoc_id','id');
+        return $this->belongsTo('App\KhoaHoc','KhoaHoc_id','id');
     }
 
     public function user()

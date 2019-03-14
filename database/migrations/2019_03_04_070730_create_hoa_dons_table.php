@@ -15,12 +15,12 @@ class CreateHoaDonsTable extends Migration
     {
         Schema::create('hoa_don', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('khoahoc_id')->unsigned();
-            $table->integer('user_id')->unsigned();
-            $table->foreign('khoahoc_id')->references('id')->on('khoa_hoc')->onDelete('cascade');
+            $table->integer('KhoaHoc_id')->unsigned()->index();
+            $table->integer('user_id')->unsigned()->index();
+            $table->foreign('KhoaHoc_id')->references('id')->on('khoa_hoc')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('thanhtoan_id')->unsigned();
-            $table->foreign('thanhtoan_id')->references('id')->on('thanh_toan')->onDelete('cascade');
+            $table->integer('ThanhToan_id')->unsigned()->index();
+            $table->foreign('ThanhToan_id')->references('id')->on('thanh_toan')->onDelete('cascade');
             $table->timestamps();
         });
     }

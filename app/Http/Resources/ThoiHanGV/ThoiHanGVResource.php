@@ -14,6 +14,11 @@ class ThoiHanGVResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'TenThoiHan' => $this->TenThoiHan,
+            'SoNgay' => $this->SoNgay,
+            'GiaTien' => $this->GiaTien
+        ];
     }
 }

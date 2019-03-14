@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ThoiHanGV;
 use Illuminate\Http\Request;
+use App\Http\Resources\ThoiHanGV\ThoiHanGVResource;
 
 class ThoiHanGVController extends Controller
 {
@@ -14,7 +15,7 @@ class ThoiHanGVController extends Controller
      */
     public function index()
     {
-        //
+        return ThoiHanGVResource::collection(ThoiHanGV::all());
     }
 
     /**

@@ -15,9 +15,9 @@ class CreateMangKhoaHocsTable extends Migration
     {
         Schema::create('mang_khoa_hoc', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('theloaiKH_id')->unsigned();
-            $table->foreign('theloaiKH_id')->references('id')->on('the_loai_khoa_hoc')->onDelete('cascade');
-            $table->string('tenmangKH');
+            $table->integer('TheLoaiKH_id')->unsigned()->index();
+            $table->foreign('TheLoaiKH_id')->references('id')->on('the_loai_khoa_hoc')->onDelete('cascade');
+            $table->string('TenMangKH');
             $table->timestamps();
         });
     }

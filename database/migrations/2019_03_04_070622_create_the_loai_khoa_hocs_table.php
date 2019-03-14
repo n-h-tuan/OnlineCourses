@@ -15,7 +15,7 @@ class CreateTheLoaiKhoaHocsTable extends Migration
     {
         Schema::create('the_loai_khoa_hoc', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tentheloai');
+            $table->string('TenTheLoai');
             $table->timestamps();
         });
     }

@@ -13,7 +13,7 @@ class DanhGiaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class DanhGiaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'HoaDon_id' => "required",
+            'TieuDe' => "required|min:10|max:100",
+            'NoiDung' => "required|min:10|max:255",
+            'Diem' => "required|numeric",
         ];
     }
 }

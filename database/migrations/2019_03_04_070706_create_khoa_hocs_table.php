@@ -15,16 +15,16 @@ class CreateKhoaHocsTable extends Migration
     {
         Schema::create('khoa_hoc', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('mangKH_id')->unsigned();
-            $table->foreign('mangKH_id')->references('id')->on('mang_khoa_hoc')->onDelete('cascade');
-            $table->integer('giangvien_id')->unsigned();
-            $table->foreign('giangvien_id')->references('id')->on('giang_vien')->onDelete('cascade');
-            $table->string('hinhanh');
-            $table->string('tenKH');
-            $table->longText('tomtat');
-            $table->float('giatien',9,2);
-            $table->integer('danhgia');
-            $table->integer('soluotxem');
+            $table->integer('MangKH_id')->unsigned()->index();
+            $table->foreign('MangKH_id')->references('id')->on('mang_khoa_hoc')->onDelete('cascade');
+            $table->integer('GiangVien_id')->unsigned()->index();
+            $table->foreign('GiangVien_id')->references('id')->on('giang_vien')->onDelete('cascade');
+            $table->string('HinhAnh')->nullable();
+            $table->string('TenKH');
+            $table->longText('TomTat');
+            $table->float('GiaTien',9,2);
+            $table->integer('DanhGia');
+            $table->integer('SoLuotXem');
             $table->timestamps();
         });
     }

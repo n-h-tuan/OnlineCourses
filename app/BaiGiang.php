@@ -8,12 +8,13 @@ class BaiGiang extends Model
 {
     //
     protected $table = "bai_giang";
+    protected $fillable = ['KhoaHoc_id','TenBaiGiang','EmbededURL'];
     public function khoa_hoc()
     {
-        return $this->belongsTo('App\KhoaHoc','khoahoc_id','id');
+        return $this->belongsTo('App\KhoaHoc','KhoaHoc_id','id');
     }
     public function cau_hoi()
     {
-        return $this->hasMany('App\CauHoi','baigiang_id','id');
+        return $this->hasMany('App\CauHoi','BaiGiang_id','id');
     }
 }

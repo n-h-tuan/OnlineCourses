@@ -15,10 +15,10 @@ class CreateBaiGiangsTable extends Migration
     {
         Schema::create('bai_giang', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('khoahoc_id')->unsigned();
-            $table->foreign('khoahoc_id')->references('id')->on('khoa_hoc')->onDelete('cascade');
+            $table->integer('KhoaHoc_id')->unsigned()->index();
+            $table->foreign('KhoaHoc_id')->references('id')->on('khoa_hoc')->onDelete('cascade');
             $table->string('TenBaiGiang');
-            $table->string('embededURL');
+            $table->string('EmbededURL');
             $table->timestamps();
         });
     }

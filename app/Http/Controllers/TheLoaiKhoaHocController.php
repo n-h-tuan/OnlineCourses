@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\TheLoaiKhoaHoc;
 use Illuminate\Http\Request;
+use App\Http\Resources\TheLoaiKhoaHoc\TheLoaiKHResource;
+use App\Http\Requests\TheLoaiKHRequest;
 
 class TheLoaiKhoaHocController extends Controller
 {
@@ -14,7 +16,7 @@ class TheLoaiKhoaHocController extends Controller
      */
     public function index()
     {
-        //
+        return TheLoaiKHResource::collection(TheLoaiKhoaHoc::all());
     }
 
     /**
@@ -33,9 +35,12 @@ class TheLoaiKhoaHocController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TheLoaiKHRequest $request)
     {
-        //
+        $TheLoaiKH = TheLoaiKhoaHoc::create($request->all());
+        return response([
+            'data' => new TheLoaiKHResource($TheLoaiKH),
+        ]);
     }
 
     /**
@@ -44,9 +49,10 @@ class TheLoaiKhoaHocController extends Controller
      * @param  \App\TheLoaiKhoaHoc  $theLoaiKhoaHoc
      * @return \Illuminate\Http\Response
      */
-    public function show(TheLoaiKhoaHoc $theLoaiKhoaHoc)
+    public function show(TheLoaiKhoaHoc $TheLoaiKhoaHoc)
     {
-        //
+        // $theLoaiKhoaHoc = TheLoaiKhoaHoc::find($id);
+        return new TheLoaiKHResource($TheLoaiKhoaHoc);
     }
 
     /**
@@ -67,9 +73,12 @@ class TheLoaiKhoaHocController extends Controller
      * @param  \App\TheLoaiKhoaHoc  $theLoaiKhoaHoc
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TheLoaiKhoaHoc $theLoaiKhoaHoc)
+    public function update(TheLoaiKHRequest $request, TheLoaiKhoaHoc $TheLoaiKhoaHoc)
     {
-        //
+        $TheLoaiKhoaHoc->update($request->all());
+        return response()->json([
+            'data' => 'Cập nhật thành công',
+        ],200);
     }
 
     /**
@@ -78,8 +87,11 @@ class TheLoaiKhoaHocController extends Controller
      * @param  \App\TheLoaiKhoaHoc  $theLoaiKhoaHoc
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TheLoaiKhoaHoc $theLoaiKhoaHoc)
+    public function destroy(TheLoaiKhoaHoc $TheLoaiKhoaHoc)
     {
-        //
+        $TheLoaiKhoaHoc->delete();
+        return response()->json([
+            'data' => "Xóa thành công",
+        ],200);
     }
 }

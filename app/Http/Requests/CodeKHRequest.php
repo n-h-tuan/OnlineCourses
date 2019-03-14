@@ -13,7 +13,7 @@ class CodeKHRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class CodeKHRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => "required|unique:code_khoa_hoc",
+            'KhoaHoc_id' => "required",
+            'TrangThai' => "required",
         ];
     }
 }

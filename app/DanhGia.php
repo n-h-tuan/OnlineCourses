@@ -8,6 +8,7 @@ class DanhGia extends Model
 {
     //
     protected $table = "danh_gia";
+    protected $fillable = ['HoaDon_id','TieuDe','NoiDung','Diem'];
 
     public function user()
     {
@@ -16,6 +17,6 @@ class DanhGia extends Model
 
     public function khoa_hoc()
     {
-        return $this->belongsTo('App\HoaDon','khoahoc_id','khoahoc_id');
+        return $this->belongsTo('App\HoaDon','KhoaHoc_id','KhoaHoc_id');
     }
 }

@@ -16,8 +16,8 @@ class CreateThoiHanGVSTable extends Migration
         Schema::create('thoi_han_gv', function (Blueprint $table) {
             $table->increments('id');
             $table->string('TenThoiHan');
-            $table->integer('songay');
-            $table->float('giatien');
+            $table->integer('SoNgay');
+            $table->float('GiaTien');
             $table->timestamps();
         });
     }

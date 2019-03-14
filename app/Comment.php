@@ -8,6 +8,7 @@ class Comment extends Model
 {
     //
     protected $table = "comment";
+    protected $fillable = ['user_id','KhoaHoc_id','NoiDung'];
 
     public function user()
     {
@@ -16,6 +17,6 @@ class Comment extends Model
 
     public function khoa_hoc()
     {
-        return $this->belongsTo('App\KhoaHoc','khoahoc_id','id');
+        return $this->belongsTo('App\KhoaHoc','KhoaHoc_id','id');
     }
 }

@@ -16,13 +16,10 @@ class KhoaHocCollection extends JsonResource
     {
         return [
             'id' => $this->id,
-            'tenKH' => $this->tenKH,
-            'giatien' => $this->giatien,
-            'link' => 
-            [
-                'href' => route('KhoaHoc.show',$this->id),
-        
-            ],
+            'TenKH' => $this->TenKH,
+            'GiaTien' => $this->GiaTien,
+            'HinhAnh' =>$this->HinhAnh,
+            'GiangVien' => $this->giang_vien->TenGiangVien,
         ];
     }
 }

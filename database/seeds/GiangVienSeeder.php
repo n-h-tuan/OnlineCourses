@@ -15,11 +15,12 @@ class GiangVienSeeder extends Seeder
         for ($i=0; $i < 5; $i++) { 
             DB::table('giang_vien')->insert([
                 'user_id' => rand(1,10),
-                'TenGiangVien' => "GV_".$i+1,
-                'tomtat' => "Tôi là giảng viên ".$i+1,
+                'TenGiangVien' => "GV_".$i,
+                'tomtat' => "Tôi là giảng viên ".$i,
                 'SoLuongHocVien' => rand(10,50),
                 'SoLuongKhoaHoc' => rand(1,10),
                 'thoihanGV_id' => rand(1,4),
+                'TrangThai' => 1,
                 'created_at' => new DateTime(),
             ]);
         }

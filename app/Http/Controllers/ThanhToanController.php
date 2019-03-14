@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ThanhToan;
 use Illuminate\Http\Request;
+use App\Http\Resources\ThanhToan\ThanhToanResource;
 
 class ThanhToanController extends Controller
 {
@@ -14,7 +15,7 @@ class ThanhToanController extends Controller
      */
     public function index()
     {
-        //
+        return ThanhToanResource::collection(ThanhToan::all());
     }
 
     /**
