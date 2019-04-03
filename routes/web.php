@@ -34,9 +34,25 @@ Route::get('test01',function(){
     $newFormat = date('d-m-Y H:i:s',$day);
     return $newFormat;
 });
+
+Route::get('import',function(){
+    return view('import');
+});
+
 Route::get('mylogin',function(){
     return view('mylogin');
 });
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('test2', function(){
+    $str = "https://res.cloudinary.com/tuannguyen/image/upload/c_fit,h_150,w_340/v1/user/jkixat0bmbc5drv6syuu.jpg";
+    $viTriC_fit = strpos($str, "c_fit" );
+    $str1 = substr($str,0,$viTriC_fit); // Cắt tới chữ upload/
+    $viTriv1 = strpos($str,"v1/user");
+    $str2 = substr($str,$viTriv1);
+
+    $finalString = $str1.$str2;
+    return $finalString;
+});

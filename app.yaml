@@ -1,0 +1,5 @@
+runtime: php72
+env_variables:
+  FILESYSTEM_DRIVER: gcs
+  GOOGLE_CLOUD_PROJECT_ID: onlinecourses-235404
+  GOOGLE_CLOUD_STORAGE_BUCKET: onlinecourses-235404.appspot.com

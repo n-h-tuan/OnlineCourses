@@ -26,7 +26,6 @@ class CodeKHRequest extends FormRequest
         return [
             'code' => "required|unique:code_khoa_hoc",
             'KhoaHoc_id' => "required",
-            'TrangThai' => "required",
         ];
     }
 }

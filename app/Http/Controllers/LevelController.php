@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\Level;
 use Illuminate\Http\Request;
 use App\Http\Resources\Level\LevelResource;
+use App\Http\Requests\LevelRequest;
 
 class LevelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except('index');
+        $this->middleware('isAdmin')->except('index');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -34,9 +40,13 @@ class LevelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LevelRequest $request)
     {
-        //
+        $level = Level::create($request->all());
+
+        return response([
+            'data' => new LevelResource($level),
+        ]); 
     }
 
     /**
@@ -45,7 +55,7 @@ class LevelController extends Controller
      * @param  \App\Level  $level
      * @return \Illuminate\Http\Response
      */
-    public function show(Level $level)
+    public function show(Level $Level)
     {
         //
     }
@@ -68,9 +78,19 @@ class LevelController extends Controller
      * @param  \App\Level  $level
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Level $level)
+    public function update(Request $request, Level $Level)
     {
-        //
+        $request->validate(
+            [
+                'TenLevel' => "required|unique:level,TenLevel,".$Level->id,
+            ],
+            []
+        );
+        $Level->update($request->all());
+
+        return response()->json([
+            'data' => "Cập nhật thành công level $Level->TenLevel",
+        ]);
     }
 
     /**
@@ -79,8 +99,12 @@ class LevelController extends Controller
      * @param  \App\Level  $level
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Level $level)
+    public function destroy(Level $Level)
     {
-        //
+        $Level->delete();
+
+        return response()->json([
+            'data' => "Xóa thành công level $Level->TenLevel",
+        ]);
     }
 }

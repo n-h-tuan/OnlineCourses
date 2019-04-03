@@ -12,4 +12,9 @@ class CodeKhoaHoc extends Model
     {
         return $this->belongsTo('App\KhoaHoc','KhoaHoc_id','id');
     }
+
+    public function hoa_don()
+    {
+        return $this->hasOne('App\HoaDon','MaCode_id','id');
+    }
 }

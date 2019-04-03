@@ -24,7 +24,7 @@ class ThoiHanGVRequest extends FormRequest
     public function rules()
     {
         return [
-            'TenThoiHan' => "required",
+            'TenThoiHan' => 'required|unique:thoi_han_gv',
             'SoNgay' => "required",
             'GiaTien' => "required",    
         ];

@@ -4,17 +4,36 @@ namespace App\Http\Controllers;
 
 use App\BaiGiang;
 use Illuminate\Http\Request;
-
+use Excel;
+use App\TheLoaiKhoaHoc;
+use App\MangKhoaHoc;
+use App\KhoaHoc;
+use App\Imports\BaiGiangImport;
+use App\Http\Resources\BaiGiang\BaiGiangCollection;
+use App\Http\Resources\BaiGiang\BaiGiangResource;
+use App\Http\Requests\BaiGiangRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Exceptions\KhoaHocKhongThuocGiangVien;
+use App\HoaDon;
+use App\Exceptions\NguoiDungChuaMuaKhoaHoc;
+use App\Exceptions\BaiGiangKhongThuocKhoaHoc;
 class BaiGiangController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except('index');
+        $this->middleware('isGiangVien')->except('index','show');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc)
     {
-        //
+        // $collect = new BaiGiangCollection($TheLoaiKhoaHoc->id, $MangKhoaHoc->id);
+        // new BaiGiangCollection($TheLoaiKhoaHoc->id, $MangKhoaHoc->id);
+        return BaiGiangCollection::collection($KhoaHoc->bai_giang)->sortBy('KhoaHoc_id');
     }
 
     /**
@@ -28,25 +47,86 @@ class BaiGiangController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Để giảng viên thêm Bài giảng, đầu tiên giảng viên tạo Khóa học, sau đó giảng viên mới được phép thêm Bài giảng.
+     * Vì phải dùng id của Khóa Học vừa tạo thì mới thêm Bai Giang đưuọc
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    //Bắt buộc người dùng tạo khóa học trước rồi mới được thêm bài giảng
 
+    public function store(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc, BaiGiangRequest $request)
+    {   
+        $this->KhoaHocThuocGiangVien($KhoaHoc);
+        try
+        {
+            foreach($request->data as $rq)
+            {
+                
+                BaiGiang::create([
+                    'KhoaHoc_id'=> $rq['KhoaHoc_id'],
+                    'TenBaiGiang' => $rq['TenBaiGiang'],
+                    'MoTa' => $rq['MoTa'],
+                    'EmbededURL' => $rq['EmbededURL'],
+                ]);
+            }
+            return response()->json([
+                'data'=>"Thêm bài giảng thành công",
+            ],200);
+        }
+        catch(\Exception $e)
+        {
+            
+            if($e->getCode() == 23000)
+                return response()->json([
+                    'data' => "EmbededURL đã tồn tại.",
+                ]);
+            else
+            return response()->json([
+                'data' => $e->getMessage(),
+            ]);
+            
+        }
+    }
+    public function validateRq($request)
+    {
+        $request->validate(
+            [
+                'KhoaHoc_id' => "required",
+                'TenBaiGiang' => "required|min:10|max:1000",
+                'MoTa' => "required|min:10|max:1000",
+                'EmbededURL' => "required|unique:bai_giang,EmbededURL",
+            ],
+            []
+        );
+    }
     /**
      * Display the specified resource.
      *
      * @param  \App\BaiGiang  $baiGiang
      * @return \Illuminate\Http\Response
      */
-    public function show(BaiGiang $baiGiang)
+    public function show(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc, BaiGiang $BaiGiang)
     {
-        //
+        // Nếu người dùng là giảng viên hoặc admin
+        if(Auth::user()->level_id != 3)
+        {
+            if(!$this->KhoaHocThuocGiangVien($KhoaHoc))
+            {
+                $this->BaiGiangThuocKhoaHoc($KhoaHoc, $BaiGiang);
+                return new BaiGiangResource($BaiGiang);
+            }
+                
+        }
+        // Nếu người dùng mua khóa học
+        else
+        {
+            if(!$this->NguoiDungMuaKhoaHoc($KhoaHoc))
+            {
+                $this->BaiGiangThuocKhoaHoc($KhoaHoc, $BaiGiang);
+                return new BaiGiangResource($BaiGiang);
+            }
+        }
     }
 
     /**
@@ -67,9 +147,15 @@ class BaiGiangController extends Controller
      * @param  \App\BaiGiang  $baiGiang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BaiGiang $baiGiang)
+    public function update(Request $request,TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc, BaiGiang $BaiGiang)
     {
-        //
+        $this->KhoaHocThuocGiangVien($KhoaHoc);
+        $BaiGiang->TenBaiGiang = $request->TenBaiGiang;
+        $BaiGiang->MoTa = $request->MoTa;
+        $BaiGiang->EmbededURL = $request->EmbededURL;
+        $BaiGiang->save();
+
+        return \response()->json(['data'=> "Cập nhất bài giảng $BaiGiang->TenBaiGiang thành công"]);
     }
 
     /**
@@ -78,8 +164,75 @@ class BaiGiangController extends Controller
      * @param  \App\BaiGiang  $baiGiang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BaiGiang $baiGiang)
+    public function destroy(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc, BaiGiang $BaiGiang)
     {
-        //
+        $this->KhoaHocThuocGiangVien($KhoaHoc);
+        $BaiGiang->delete();
+        return response()->json([
+            'data'=>"Xóa thành công bài giảng $BaiGiang->TenBaiGiang",
+        ],200);
+    }
+    public function importBaiGiang(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc)
+    {
+        $this->KhoaHocThuocGiangVien($KhoaHoc);
+        request()->validate(
+            [
+                'file' => 'required|mimes:xlsx',
+            ],
+            [
+                'file.required' => 'Bạn chưa chọn file',
+                'file.mimes' => 'File bạn chọn không đúng định dạng'
+            ]
+        );
+        if(!request()->file('file'))
+        {    
+            return response()->json([
+                'data' => "Bạn chưa chọn file",
+            ],204); 
+        }
+        $khoahoc_id = $KhoaHoc->id;
+        $import = Excel::import(new BaiGiangImport($khoahoc_id), request()->file('file'));
+         
+        return response()->json([
+            'data' => 'Thêm danh sách bài giảng cho khóa học '.$KhoaHoc->TenKH.' thành công',
+        ],200);
+        // return response()->json([
+        //         'data' => "This is khoahoc_id $khoahoc_id",
+        //     ],200);
+    }
+
+    public function KhoaHocThuocGiangVien(KhoaHoc $KhoaHoc)
+    {
+        $user = Auth::user();
+        $giangvien = $user->giang_vien;
+        foreach($giangvien as $gv)
+        {
+            if($KhoaHoc->GiangVien_id != $gv->id)
+                throw new KhoaHocKhongThuocGiangVien;
+        }
+        
+    }
+
+    public function NguoiDungMuaKhoaHoc(KhoaHoc $KhoaHoc)
+    {
+        $user = Auth::user();
+        //Lấy hóa đơn theo khóa học hiện hành, Nếu người dùng không có id trong hóa đơn này => Người dùng chưa mua khóa học
+        $hoadon = HoaDon::where('KhoaHoc_id',$KhoaHoc->id)->where('user_id',$user->id)->where('TrangThai',1)->first();
+        if($hoadon == "")
+            throw new NguoiDungChuaMuaKhoaHoc;
+    }
+    // public function NguoiDungChuaMuaKhoaHoc()
+    // {
+    //     $user = Auth::user();
+    //     $hoadon = HoaDon::where('KhoaHoc_id',28)->where('user_id',$user->id)->first(); 
+    //     if($hoadon=="")
+    //         throw new NguoiDungChuaMuaKhoaHoc;
+    //     return $hoadon;
+    // }
+
+    public function BaiGiangThuocKhoaHoc(KhoaHoc $KhoaHoc, BaiGiang $BaiGiang)
+    {
+        if($BaiGiang->KhoaHoc_id != $KhoaHoc->id)
+            throw new BaiGiangKhongThuocKhoaHoc();
     }
 }

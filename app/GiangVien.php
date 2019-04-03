@@ -8,7 +8,7 @@ class GiangVien extends Model
 {
     //
     protected $table = "giang_vien";
-    protected $fillable = ['user_id','TenGiangVien','TomTat','SoLuongHocVien','SoLuongKhoaHoc','ThoiHanGV_id'];
+    protected $fillable = ['user_id','TenGiangVien','TomTat','SoLuongHocVien','SoLuongKhoaHoc','ThoiHanGV_id','NgayHetHan'];
 
     public function user()
     {

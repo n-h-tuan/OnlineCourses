@@ -18,10 +18,11 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'level' => $this->level->TenLevel,
+            'level_id' => $this->level_id,
             'provider' => $this->provider,
             'provider_id' => $this->provider_id,
             'HinhAnh' => $this->HinhAnh,
+            'api_token' => $this->api_token,
         ];
     }
 }

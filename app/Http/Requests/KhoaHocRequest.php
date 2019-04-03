@@ -24,9 +24,9 @@ class KhoaHocRequest extends FormRequest
     public function rules()
     {
         return [
-            'MangKH_id' => "required",
-            'GiangVien_id' => "required",
-            'HinhAnh' => "required",
+            // 'MangKH_id' => "required",
+            // 'GiangVien_id' => "required",
+            'HinhAnh' => "required|mimes:jpeg,bmp,jpg,png",
             'TenKH' => "required|min:10|max:100",
             'TomTat' => "required|min:10|max:200",
             'GiaTien' => "required|numeric",

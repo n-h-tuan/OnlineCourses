@@ -18,7 +18,8 @@ class CreateBaiGiangsTable extends Migration
             $table->integer('KhoaHoc_id')->unsigned()->index();
             $table->foreign('KhoaHoc_id')->references('id')->on('khoa_hoc')->onDelete('cascade');
             $table->string('TenBaiGiang');
-            $table->string('EmbededURL');
+            $table->longText('MoTa')->nullable();
+            $table->string('EmbededURL')->unique();
             $table->timestamps();
         });
     }

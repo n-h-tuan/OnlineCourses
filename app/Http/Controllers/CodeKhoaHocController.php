@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use App\CodeKhoaHoc;
 use Illuminate\Http\Request;
+use App\Http\Resources\CodeKhoaHoc\CodeKHResource;
+use App\Http\Requests\CodeKHRequest;
+use Excel;
+use App\Imports\CodeKHImport;
 
 class CodeKhoaHocController extends Controller
 {
+    //Chỉ admin mới có quyền trong trang này
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+        $this->middleware('isAdmin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,7 @@ class CodeKhoaHocController extends Controller
      */
     public function index()
     {
-        //
+        return CodeKHResource::collection(CodeKhoaHoc::all()->sortBy('KhoaHoc_id'));
     }
 
     /**
@@ -33,9 +43,17 @@ class CodeKhoaHocController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CodeKHRequest $request)
     {
-        //
+        $code = new CodeKhoaHoc;
+        $code->code = $request->code;
+        $code->KhoaHoc_id = $request->KhoaHoc_id;
+        $code->TrangThai = 1;
+        $code->save();
+
+        return response([
+            'data' => new CodeKHResource($code),
+        ]);
     }
 
     /**
@@ -44,7 +62,7 @@ class CodeKhoaHocController extends Controller
      * @param  \App\CodeKhoaHoc  $codeKhoaHoc
      * @return \Illuminate\Http\Response
      */
-    public function show(CodeKhoaHoc $codeKhoaHoc)
+    public function show(CodeKhoaHoc $CodeKhoaHoc)
     {
         //
     }
@@ -55,7 +73,7 @@ class CodeKhoaHocController extends Controller
      * @param  \App\CodeKhoaHoc  $codeKhoaHoc
      * @return \Illuminate\Http\Response
      */
-    public function edit(CodeKhoaHoc $codeKhoaHoc)
+    public function edit(CodeKhoaHoc $CodeKhoaHoc)
     {
         //
     }
@@ -67,7 +85,7 @@ class CodeKhoaHocController extends Controller
      * @param  \App\CodeKhoaHoc  $codeKhoaHoc
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CodeKhoaHoc $codeKhoaHoc)
+    public function update(Request $request, CodeKhoaHoc $CodeKhoaHoc)
     {
         //
     }
@@ -78,8 +96,36 @@ class CodeKhoaHocController extends Controller
      * @param  \App\CodeKhoaHoc  $codeKhoaHoc
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CodeKhoaHoc $codeKhoaHoc)
+    public function destroy(CodeKhoaHoc $CodeKhoaHoc)
     {
-        //
+        $CodeKhoaHoc->delete();
+
+        $tenKh = $CodeKhoaHoc->khoa_hoc->TenKH;
+        return response([
+            'data' => "Xóa thành công $CodeKhoaHoc->code của khóa học $tenKh ",
+        ]);
+    }
+
+    public function import(Request $request)
+    {
+        request()->validate(
+            [
+                'file' => 'required|mimes:xlsx',
+            ],
+            [
+                'file.required' => 'Bạn chưa chọn file',
+                'file.mimes' => 'File bạn chọn không đúng định dạng. Chỉ được chọn file .xlsx (excel)'
+            ]
+        );
+        if(!request()->file('file'))
+        {    
+            return response()->json([
+                'data' => "Bạn chưa chọn file",
+            ],204); 
+        }
+        Excel::import(new CodeKHImport, request()->file('file'));
+        return response()->json([
+            'data' => "Import code khóa học thành công"
+        ],200);
     }
 }

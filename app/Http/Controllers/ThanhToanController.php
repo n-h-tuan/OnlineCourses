@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use App\ThanhToan;
 use Illuminate\Http\Request;
 use App\Http\Resources\ThanhToan\ThanhToanResource;
+use App\Http\Requests\ThanhToanRequest;
 
 class ThanhToanController extends Controller
 {
+    // Chỉ admin có quyền
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except('index');
+        $this->middleware('isAdmin')->except('index');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -34,9 +41,13 @@ class ThanhToanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ThanhToanRequest $request)
     {
-        //
+        $thanhToan = ThanhToan::create($request->all());
+
+        return response([
+            'data' => new ThanhToanResource($thanhToan),
+        ]);
     }
 
     /**
@@ -68,9 +79,13 @@ class ThanhToanController extends Controller
      * @param  \App\ThanhToan  $thanhToan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ThanhToan $thanhToan)
+    public function update(ThanhToanRequest $request, ThanhToan $ThanhToan)
     {
-        //
+        $ThanhToan->update($request->all());
+
+        return response()->json([
+            'data' => "Cập nhật thành công thanh toán $ThanhToan->HinhThucThanhToan",
+        ]);
     }
 
     /**
@@ -79,8 +94,12 @@ class ThanhToanController extends Controller
      * @param  \App\ThanhToan  $thanhToan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ThanhToan $thanhToan)
+    public function destroy(ThanhToan $ThanhToan)
     {
-        //
+        $ThanhToan->delete();
+
+        return response()->json([
+            'data'=>"Xóa thành công thanh toán $ThanhToan->HinhThucThanhToan",
+        ]);
     }
 }

@@ -14,6 +14,11 @@ class CodeKHResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'code' => $this->code,
+            'KhoaHoc_id' =>$this->KhoaHoc_id,
+            'TrangThai' => $this->TrangThai,
+        ];
     }
 }

@@ -19,12 +19,12 @@ class CreateGiangViensTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('TenGiangVien');
             $table->longText('TomTat');
-            $table->integer('SoLuongHocVien');
-            $table->integer('SoLuongKhoaHoc');
+            $table->integer('SoLuongHocVien')->nullable()->default(0);
+            $table->integer('SoLuongKhoaHoc')->nullable()->default(0);
             $table->integer('ThoiHanGV_id')->unsigned()->index();
             $table->foreign('ThoiHanGV_id')->references('id')->on('thoi_han_gv')->onDelete('cascade');
             $table->string('NgayHetHan')->nullable();
-            $table->integer('TrangThai'); //0:Hết thời hạn ---- 1:Còn thời hạn
+            $table->integer('TrangThai')->nullable()->default(1); //0:Hết thời hạn ---- 1:Còn thời hạn
             $table->timestamps();
         });
     }

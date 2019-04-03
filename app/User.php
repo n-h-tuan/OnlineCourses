@@ -57,5 +57,8 @@ class User extends Authenticatable
     public function giang_vien()
     {
         return $this->hasMany('App\GiangVien','user_id','id');
+        // Quan hệ giữa User và GiangVien là 1-1 : 1 User chỉ là 1 Gv và ngược lại.
+        // Tuy nhiên phải có User thì mới có GiangVien nên User là cha.
     }
+    
 }

@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\ThoiHanGV;
 use Illuminate\Http\Request;
 use App\Http\Resources\ThoiHanGV\ThoiHanGVResource;
+use App\Http\Requests\ThoiHanGVRequest;
 
 class ThoiHanGVController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except('index');
+        $this->middleware('isAdmin')->except('index');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -34,9 +40,13 @@ class ThoiHanGVController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ThoiHanGVRequest $request)
     {
-        //
+        $thoiHanGV = ThoiHanGV::create($request->all());
+
+        return response([
+            'data'=>new ThoiHanGVResource($thoiHanGV),
+        ]);
     }
 
     /**
@@ -68,9 +78,23 @@ class ThoiHanGVController extends Controller
      * @param  \App\ThoiHanGV  $thoiHanGV
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ThoiHanGV $thoiHanGV)
+    public function update(Request $request, ThoiHanGV $ThoiHanGV)
     {
-        //
+        $request->validate(
+            [
+                'TenThoiHan' => 'required|unique:thoi_han_gv,TenThoiHan,'.$ThoiHanGV->id,
+                'SoNgay' => "required",
+                'GiaTien' => "required",    
+            ],
+            [
+
+            ]
+        );
+        $ThoiHanGV->update($request->all());
+
+        return response()->json([
+            'data'=>"Cập nhật thành công thời hạn giảng viên $ThoiHanGV->TenThoiHan",
+        ],200);
     }
 
     /**
@@ -79,8 +103,12 @@ class ThoiHanGVController extends Controller
      * @param  \App\ThoiHanGV  $thoiHanGV
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ThoiHanGV $thoiHanGV)
+    public function destroy(ThoiHanGV $ThoiHanGV)
     {
-        //
+        $ThoiHanGV->delete();
+
+        return response()->json([
+            'data' => "Xóa thành công thời hạn giảng viên $ThoiHanGV->TenThoiHan",
+        ],200);
     }
 }

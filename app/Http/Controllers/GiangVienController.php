@@ -9,6 +9,11 @@ use App\Http\Resources\GiangVien\GiangVienResource;
 use App\Http\Requests\GiangVienRequest;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use App\KhoaHoc;
+use App\Http\Resources\User\KhoaHocCuaToiCollection;
+use App\Exceptions\GiangVienKhongDung;
+use App\HoaDon;
+use App\Http\Resources\GiangVien\LichSuBanKhoaHocResource;
 
 
 class GiangVienController extends Controller
@@ -16,8 +21,10 @@ class GiangVienController extends Controller
 
     public function __construct()
     {
-        // $this->middleware('auth:api');
+        $this->middleware('auth:api');
         $this->middleware('isGiangVien');
+        $this->middleware('checkThoiHanGV');
+        // $this->KiemTraThoiHanGV(Request $request, GiangVien $GiangVien, \Closure $next);
     }
     /**
      * Display a listing of the resource.
@@ -102,26 +109,48 @@ class GiangVienController extends Controller
         ]);
     }
 
-    public function KiemTraThoiHanGV(Request $request, GiangVien $GiangVien, \Closure $next)
+    public function GiaHanThoiHanGV(Request $request, User $User, GiangVien $GiangVien)
     {
-        $currentDT = date('d-m-Y H:i:s');
-        $NgayHetHan = Auth::user()->giang_vien->NgayHetHan;  
-        if(strtotime($NgayHetHan) > strtotime($currentDT))
+        $ThoiHanGVMoi = \App\ThoiHanGV::select('SoNgay')->where('id',$request->ThoiHanGV_id)->first()->value('SoNgay');
+        $NgayHetHanCu = $GiangVien->NgayHetHan;
+        $NgayHetHanMoi = date('d-m-Y H:i:s',strtotime($NgayHetHanCu.' + '.$ThoiHanGVMoi.' days'));
+        $GiangVien->NgayHetHan = $NgayHetHanMoi;
+        $GiangVien->ThoiHanGV_id = $request->ThoiHanGV_id;
+        $GiangVien->save();  
+        
+        return response([
+            'data' => new GiangVienResource($GiangVien),
+        ]);
+    }
+
+    public function KhoaHocDaDay(User $User, GiangVien $GiangVien)
+    {
+        $khoahoc = KhoaHoc::where('GiangVien_id',$GiangVien->id)->get();
+        return KhoaHocCuaToiCollection::collection($khoahoc);
+    }
+
+    public function LichSuBanKhoaHoc(User $User, GiangVien $GiangVien)
+    {
+        $this->KiemTraGiangVien($GiangVien);
+        $khoahoc = KhoaHoc::where('GiangVien_id',$GiangVien->id)->get();
+        $collection = collect();
+        foreach($khoahoc as $kh)
         {
-            // return response()->json([
-            //     'data' => "Thời gian là giảng viên vẫn còn",
-            // ],200);
-            return $next($request);
+            $hoadon = HoaDon::where('KhoaHoc_id',$kh->id)->get();
+            foreach($hoadon as $hd)
+            {
+                $collection->add($hd);
+            }
         }
-        else {
-            $user = User::find(Auth::id());
-            $user->level_id=3;
-            $GiangVien->TrangThai = 0;
-            $user->save();
-            $GiangVien->save();
-            return response()->json([
-                'data' => "Bạn đã hết thời hạn là giảng viên",
-            ]);
+        return LichSuBanKhoaHocResource::collection($collection);
+    }
+    public function KiemTraGiangVien(GiangVien $GiangVien)
+    {
+        $giangvien = Auth::user()->giang_vien;
+        foreach($giangvien as $gv)
+        {
+            if($gv->id != $GiangVien->id)
+                throw new GiangVienKhongDung;
         }
     }
 }

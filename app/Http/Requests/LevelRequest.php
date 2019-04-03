@@ -24,7 +24,7 @@ class LevelRequest extends FormRequest
     public function rules()
     {
         return [
-            'TenLevel' => "required|unique:thanh_toan",
+            'TenLevel' => "required|unique:level",
         ];
     }
 }

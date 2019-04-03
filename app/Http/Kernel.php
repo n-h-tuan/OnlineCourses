@@ -40,6 +40,8 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             'bindings',
+            // \App\Http\Middleware\HeaderMiddleware::class,
+            'header',
         ],
     ];
 
@@ -62,6 +64,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'isAdmin' => \App\Http\Middleware\isAdmin::class,
         'isGiangVien' => \App\Http\Middleware\isGiangVien::class,
+        'checkThoiHanGV' => \App\Http\Middleware\ThoiHanGVMiddleware::class,
+        'header' => \App\Http\Middleware\HeaderMiddleware::class,
     ];
 
     /**

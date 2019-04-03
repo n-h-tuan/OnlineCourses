@@ -22,9 +22,11 @@ class CreateKhoaHocsTable extends Migration
             $table->string('HinhAnh')->nullable();
             $table->string('TenKH');
             $table->longText('TomTat');
-            $table->float('GiaTien',9,2);
-            $table->integer('DanhGia');
-            $table->integer('SoLuotXem');
+            $table->float('GiaTien',9,0);
+            $table->integer('GiamGia')->default(0)->nullable();
+            $table->float('ThanhTien',9,0)->nullable();
+            $table->integer('DanhGia')->default(0);
+            $table->integer('SoLuotXem')->default(0);
             $table->timestamps();
         });
     }

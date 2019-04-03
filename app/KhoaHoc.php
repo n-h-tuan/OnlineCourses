@@ -3,12 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use CyrildeWit\EloquentViewable\Viewable;
+use CyrildeWit\EloquentViewable\Contracts\Viewable as ViewableContract;
 
-class KhoaHoc extends Model
+class KhoaHoc extends Model implements ViewableContract
 {
+    use Viewable;
     //
     protected $table = "khoa_hoc";
-    protected $fillable = ['MangKH_id','GiangVien_id','HinhAnh','TenKH','TomTat','GiaTien','DanhGia','SoLuotXem'];
+    protected $fillable = ['MangKH_id','GiangVien_id','HinhAnh','TenKH','TomTat','GiaTien','GiamGia','ThanhTien','DanhGia','SoLuotXem'];
     public function giang_vien()
     {
         return $this->belongsTo('App\GiangVien','GiangVien_id','id');

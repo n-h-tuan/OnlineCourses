@@ -15,10 +15,10 @@ class CreateCodeKhoaHocsTable extends Migration
     {
         Schema::create('code_khoa_hoc', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code')->unique();
+            $table->string('code',10)->unique();
             $table->integer('KhoaHoc_id')->unsigned()->index();
             $table->foreign('KhoaHoc_id')->references('id')->on('khoa_hoc')->onDelete('cascade');
-            $table->integer('TrangThai'); //0: used ------ 1: not used
+            $table->integer('TrangThai')->default(1)->nullable(); //0: used ------ 1: not used
             $table->timestamps();
         });
     }

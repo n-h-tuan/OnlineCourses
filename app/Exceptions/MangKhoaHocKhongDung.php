@@ -8,8 +8,8 @@ class MangKhoaHocKhongDung extends Exception
 {
     public function render()
     {
-        return \response()->json([
+        return response()->json([
             'error' => 'Mảng Khóa Học không thuộc Thể Loại Khóa Học này',
-        ]);
+        ],401);
     }
 }

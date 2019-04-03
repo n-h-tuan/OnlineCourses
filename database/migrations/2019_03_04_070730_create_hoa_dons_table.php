@@ -21,6 +21,10 @@ class CreateHoaDonsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('ThanhToan_id')->unsigned()->index();
             $table->foreign('ThanhToan_id')->references('id')->on('thanh_toan')->onDelete('cascade');
+            $table->integer('TongTien');
+            $table->integer('MaCode_id')->unsigned()->nullable();
+            $table->foreign('MaCode_id')->references('id')->on('code_khoa_hoc')->onDelete('cascade');
+            $table->integer('TrangThai')->default(0);
             $table->timestamps();
         });
     }
