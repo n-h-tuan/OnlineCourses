@@ -12,8 +12,8 @@ class TheLoaiKhoaHocController extends Controller
     // Nhớ phân quyền
     public function __construct()
     {
-        // $this->middleware('auth:api')->except('index');
-        // $this->middleware('isAdmin')->except('index');
+        $this->middleware('auth:api')->except('index');
+        $this->middleware('isAdmin')->except('index');
     }
     /**
      * Display a listing of the resource.
