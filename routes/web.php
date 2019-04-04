@@ -56,3 +56,5 @@ Route::get('test2', function(){
     $finalString = $str1.$str2;
     return $finalString;
 });
+
+Route::get('send/email','MailController@Code');

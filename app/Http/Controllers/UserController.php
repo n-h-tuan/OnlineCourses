@@ -288,7 +288,7 @@ class UserController extends Controller
         $str1 = substr($str,0,$viTriC_fit); // Cắt tới chữ upload/
         $viTriv1 = strpos($str,"v1/");
         $str2 = substr($str,$viTriv1); // Lấy chuỗi từ v1 trở đi
-
+        
         $finalString = $str1.$str2;
         return $finalString;
     }

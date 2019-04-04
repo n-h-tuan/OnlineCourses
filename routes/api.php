@@ -59,7 +59,8 @@ Route::apiResource('/HoaDon','HoaDonController');
 Route::post('/NhapCode','HoaDonController@NhapCode');
 
 Route::group(['prefix' => 'NganLuong'], function () {
-    Route::get('ThanhToan','NganLuongController@ThanhToan');
+    Route::get('/ThanhToan','NganLuongController@ThanhToan');
+    Route::get('/KetQuaTraVe/KhoaHoc/{KhoaHoc}/User/{User}','NganLuongController@KetQuaTraVe');
 });
 
 Route::apiResource('/DanhGia','DanhGiaController');
@@ -78,6 +79,7 @@ Route::apiResource('/ThanhToan','ThanhToanController');
 Route::apiResource('/CauHoi','CauHoiController');
 Route::post('/Login','LoginController@login');
 Route::post('/Register','RegisterController@register');
+Route::get('/Logout','LogoutController@logout');
 
 // ========================================================================================
 
