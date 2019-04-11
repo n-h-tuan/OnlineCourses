@@ -19,6 +19,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
+        \App\Http\Middleware\HeaderMiddleware::class,
     ];
 
     /**
@@ -41,7 +42,7 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
             // \App\Http\Middleware\HeaderMiddleware::class,
-            'header',
+            // 'header',
         ],
     ];
 
@@ -65,7 +66,7 @@ class Kernel extends HttpKernel
         'isAdmin' => \App\Http\Middleware\isAdmin::class,
         'isGiangVien' => \App\Http\Middleware\isGiangVien::class,
         'checkThoiHanGV' => \App\Http\Middleware\ThoiHanGVMiddleware::class,
-        'header' => \App\Http\Middleware\HeaderMiddleware::class,
+        // 'header' => \App\Http\Middleware\HeaderMiddleware::class,
     ];
 
     /**

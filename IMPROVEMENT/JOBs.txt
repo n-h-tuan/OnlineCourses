@@ -1,0 +1,2 @@
+﻿KhoaHoc.Put
+Khi giảng viên thêm khóa học, kiểm tra giảng viên đã có tài khoản ngân hàng chưa, nếu chưa sẽ phải thêm thông tin này.
