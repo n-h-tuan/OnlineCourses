@@ -99,7 +99,7 @@ class UserController extends Controller
     public function update(Request $request, User $User)
     {
         $this->KiemTraUserHienTai($User);
-        $request->validate(
+        request()->validate(
             [
                 'name' => "required|min:3|max:50",
             ],

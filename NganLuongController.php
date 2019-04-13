@@ -18,7 +18,7 @@ class NganLuongController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api')->only('ThanhToan');
+        // $this->middleware('auth:api')->only('ThanhToan');
     }
     /**
      * Người dùng gửi thông tin Khóa Học gồm:
@@ -41,16 +41,18 @@ class NganLuongController extends Controller
             []
         );
         $KhoaHoc = \App\KhoaHoc::find($request->KhoaHoc_id);
-        $user_id = Auth::id();
+        // $this->KhoaHoc_id = $KhoaHoc->id;
+        // $this->TenKH = $KhoaHoc->TenKH;
+        // $this->TongTien = $KhoaHoc->ThanhTien;
+        // $this->user_id = Auth::id();
+        $user_id = 14;//Auth::id();
         $KhoaHoc_id = $KhoaHoc->id;
 
-        // $merchant_site_code="47460";
-        // $secure_pass = '4be98d7f90be6e3573cc90cf4ea05d9e';
-        $merchant_site_code="47464";
-        $secure_pass = '7d18f818e8f155837aceb862bd9d8fbd';
+        $merchant_site_code="47431";
+        $secure_pass = '6159e732cac6207104dbed5bf8f8e2a5';
         $return_url="http://localhost:8000/api/NganLuong/KetQuaTraVe/KhoaHoc/$KhoaHoc_id/User/$user_id";
         $receiver_email = "dtonlinecourse@gmail.com";
-        $transaction_info = "Thanh toán khóa học $KhoaHoc->TenKH";
+        $transaction_info = "test thanh toan";
         $order_code = $KhoaHoc->TenKH;
         $price = $KhoaHoc->ThanhTien;
         // $price = 2000;
@@ -60,7 +62,7 @@ class NganLuongController extends Controller
         $discount = 0;
         $fee_cal = 0;
         $fee_shipping = 0;
-        $order_description = "Thanh toán khóa học $KhoaHoc->TenKH";
+        $order_description = "test thanh toan";
         $buyer_info = "$request->HoTenBuyer*|*$request->EmailBuyer*|*$request->DienThoaiBuyer*|*$request->DiaChiBuyer";
         $affiliate_code ="";
         $lang = "vi";
@@ -72,7 +74,7 @@ class NganLuongController extends Controller
         // $client->request('GET',"$request_string");
 
         return redirect($request_string);
-        // return $request_string;
+        // return $this->TenKH;
     }
 
     public function KetQuaTraVe(Request $request, KhoaHoc $KhoaHoc, User $User)
@@ -84,10 +86,8 @@ class NganLuongController extends Controller
             'payment_id' => $request->payment_id,
             'payment_type' => $request->payment_type,
             'error_text' => $request->error_text,
-            // 'merchant_site_code' => '47460',
-            // 'secure_pass' => '4be98d7f90be6e3573cc90cf4ea05d9e',
-            'merchant_site_code' => '47464',
-            'secure_pass' => '7d18f818e8f155837aceb862bd9d8fbd',
+            'merchant_site_code' => '47431',
+            'secure_pass' => '6159e732cac6207104dbed5bf8f8e2a5',
         );
 
         $secure_code = $request->secure_code;
@@ -106,7 +106,7 @@ class NganLuongController extends Controller
             $code_object = $this->GetCode($KhoaHoc->id);
             $code_khoa_hoc = $code_object->code; 
             $email = $User->email;
-            $this->SendCode($code_object,$email);
+            $this->SendCode($code_khoa_hoc,$email);
 
             return response()->json([
                 'data'=>"Bạn đã thực hiện giao dịch cho khóa học <b>$TenKhoaHoc</b>, một mã code đã được gửi về email $email. Sử dụng mã code đó để kích hoạt khóa học. Xin cám ơn.",

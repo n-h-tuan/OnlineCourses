@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Auth::routes(['verify' => true]);
+
 Route::middleware('auth:api')->get('test3',function(){
     // $ngayhethan = \Illuminate\Support\Facades\Auth::user()->giang_vien->api_token;
     $user = \App\User::where('id',16)->first();
@@ -78,8 +80,13 @@ Route::post('/CodeKhoaHoc/Import','CodeKhoaHocController@import')->name('import'
 Route::apiResource('/ThanhToan','ThanhToanController');
 Route::apiResource('/CauHoi','CauHoiController');
 Route::post('/Login','LoginController@login');
-Route::post('/Register','RegisterController@register');
+Route::post('/Register',['verify' => true, 'uses'=>'RegisterController@register']);
 Route::get('/Logout','LogoutController@logout');
+
+Route::group(['prefix' => 'Mail'], function () {
+    Route::get('Verify/{User}','MailController@VerifyEmail');
+    Route::get('ResetPassword','MailController@ResetPasswordEmail');
+});
 
 // ========================================================================================
 

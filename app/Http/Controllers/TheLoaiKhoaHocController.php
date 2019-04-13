@@ -13,6 +13,7 @@ class TheLoaiKhoaHocController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api')->except('index');
+        $this->middleware('verified')->except('index');
         $this->middleware('isAdmin')->except('index');
     }
     /**

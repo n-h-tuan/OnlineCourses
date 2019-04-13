@@ -8,9 +8,11 @@ use App\User;
 use App\Http\Resources\User\UserResource;
 use Carbon\Carbon;
 use JD\Cloudder\Facades\Cloudder;
+use App\Http\Traits\MailTrait;
 
 class RegisterController extends Controller
 {
+    use MailTrait;
     public function register(RegisterRequest $request)
     {
         $user = new User;
@@ -40,10 +42,15 @@ class RegisterController extends Controller
 
         $this->createAPI($request, $user);
 
-        return response([
-            'data' => new UserResource($user),
+        //Gửi mail xác thực
+        $this->Verify($user, $user->email);
+
+        // return response([
+        //     'data' => new UserResource($user),
+        // ],200);
+        return response()->json([
+            'data' => 'Verified Email Was Sent.',
         ],200);
-            // return $path;
     }
 
     public function createAPI(RegisterRequest $request, User $user)

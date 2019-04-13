@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Mail;
 // use App\Mail\MailSendCode;
 use App\Http\Traits\MailTrait;
+use App\User;
 
 class MailController extends Controller
 {
@@ -25,5 +26,46 @@ class MailController extends Controller
         $email = "nguyenledly1997@gmail.com";
         $this->SendCode($code,$email);
         return "Mail Sent!";
+    }
+    public function VerifyEmail(User $User)
+    {
+        if($User->email_verified_at != "")
+            return response()->json([
+                'data' => "Email bạn đã được xác thực."
+            ],200); 
+        else
+        {
+            $User->email_verified_at = new \DateTime();
+            $User->save();
+            return response()->json([
+                'data' => "Xác thực email $User->email thành công."
+            ],200);
+        }
+    }
+    public function ResetPasswordEmail(Request $request)
+    {
+        request()->validate(
+            [
+                'email' => 'required|email',
+            ],
+            []
+        );
+        $user = User::where('email',$request->email)->first();
+        if($user == "")
+            return response()->json([
+                'data' => "Người dùng không tồn tại"
+            ],401); 
+        else 
+        {
+            $newPassword = \str_random(6);
+            $user->password = bcrypt($newPassword);
+            $user->save();
+
+            $this->ResetPassword($newPassword, $request->email);
+
+            return response()->json([
+                'data' => "Email Reset Password Was Sent."
+            ],200);
+        }
     }
 }
