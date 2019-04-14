@@ -17,8 +17,11 @@ use App\Exceptions\KhoaHocKhongThuocGiangVien;
 use App\Http\Requests\KhoaHocUpdateRequest;
 use JD\Cloudder\Facades\Cloudder;
 use App\GiangVien;
+use App\TaiKhoanNganHang;
+use App\Http\Traits\MailTrait;
 class KhoaHocController extends Controller
 {
+    use MailTrait;
     public function __construct()
     {
         $this->middleware('auth:api')->except('index','show');
@@ -86,6 +89,14 @@ class KhoaHocController extends Controller
         }
 
         $KhoaHoc->save();
+        
+        //Kiểm tra xem người dùng này đã khai báo tài khoản ngân hàng hay chưa? Nếu chưa sẽ gửi mail
+        $bankAccount = TaiKhoanNganHang::where('user_id',Auth::id())->first();
+        if($bankAccount == "")
+        {
+            $this->BankAccount($giangvien,$KhoaHoc,Auth::user()->email);
+        }
+
         return response([
             'data' => new KhoaHocResource($KhoaHoc),
         ],200);

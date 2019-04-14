@@ -130,9 +130,7 @@ class HoaDonController extends Controller
             if($hoadon=="")
             {
                 // Trả về người dùng chưa mua khóa học
-                return response()->json([
-                    'data'=>'Bạn chưa mua khóa học',
-                ],401);
+                return response()->json('Bạn chưa mua khóa học');
             }
             else
             {
@@ -144,7 +142,7 @@ class HoaDonController extends Controller
                 $hoadon->save();
                 $code->save();
                 return response()->json([
-                    'data' => 'Bạn đã mở khóa học <b>"'.$code->khoa_hoc->TenKH.'"</b>',
+                    'data' => 'Bạn đã mở khóa học "'.$code->khoa_hoc->TenKH.'"',
                 ],200);
             }
             // return $hoaDon;

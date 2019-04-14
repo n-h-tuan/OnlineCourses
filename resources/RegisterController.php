@@ -42,15 +42,12 @@ class RegisterController extends Controller
 
         $this->createAPI($request, $user);
 
-        //Gửi mail xác thực
+        // Gửi mail xác thực
         $this->Verify($user, $user->email);
-
-        // return response([
-        //     'data' => new UserResource($user),
-        // ],200);
+        
         return response()->json([
             'data' => 'Verified Email Was Sent.',
-        ],200);
+
     }
 
     public function createAPI(RegisterRequest $request, User $user)
@@ -71,7 +68,9 @@ class RegisterController extends Controller
         $extensionFile = $file->getClientOriginalExtension();
 
         if($extensionFile != "jpg" && $extensionFile != "png" && $extensionFile != "jpeg")
-            return response()->json("Hình ảnh không đúng định dạng, chỉ được chọn hình ảnh có đuôi .jpg, .png, .jpeg");
+            return response()->json([
+                'data'=>"Hình ảnh không đúng định dạng, chỉ được chọn hình ảnh có đuôi .jpg, .png, .jpeg",
+            ]);
         
         $savedName = str_random(6)."_".$originalName; // Tạo ra tên để lưu trên cloud
         Cloudder::upload($file,$savedName,["crop"=>"scale", "width"=>170,"folder" => "user"]);

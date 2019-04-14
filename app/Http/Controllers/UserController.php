@@ -230,15 +230,11 @@ class UserController extends Controller
             }
             else
             {
-                return response()->json([
-                    'data' => 'Bạn đã là giảng viên',
-                ],402);
+                return response()->json('Bạn đã là giảng viên');
             }
         }
         else
-            return response()->json([
-                'data' => "Bạn chưa đăng nhập",
-            ],401);
+            return response()->json("Bạn chưa đăng nhập");
     }
 
     public function tinhNgayHetHan($dt, $soNgay)
@@ -260,9 +256,7 @@ class UserController extends Controller
         $extensionFile = $file->getClientOriginalExtension();
 
         if($extensionFile != "jpg" && $extensionFile != "png" && $extensionFile != "jpeg")
-            return response()->json([
-                'data'=>"Hình ảnh không đúng định dạng, chỉ được chọn hình ảnh có đuôi .jpg, .png, .jpeg",
-            ]);
+            return response()->json("Hình ảnh không đúng định dạng, chỉ được chọn hình ảnh có đuôi .jpg, .png, .jpeg");
 
         //Lưu ảnh lên Cloudinary
         $savedName = str_random(6)."_".$originalName;

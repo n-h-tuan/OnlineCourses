@@ -119,9 +119,7 @@ class CodeKhoaHocController extends Controller
         );
         if(!request()->file('file'))
         {    
-            return response()->json([
-                'data' => "Bạn chưa chọn file",
-            ],204); 
+            return response()->json("Bạn chưa chọn file"); 
         }
         Excel::import(new CodeKHImport, request()->file('file'));
         return response()->json([

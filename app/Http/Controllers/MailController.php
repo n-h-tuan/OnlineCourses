@@ -30,9 +30,7 @@ class MailController extends Controller
     public function VerifyEmail(User $User)
     {
         if($User->email_verified_at != "")
-            return response()->json([
-                'data' => "Email bạn đã được xác thực."
-            ],200); 
+            return response()->json("Email bạn đã được xác thực."); 
         else
         {
             $User->email_verified_at = new \DateTime();
@@ -52,9 +50,7 @@ class MailController extends Controller
         );
         $user = User::where('email',$request->email)->first();
         if($user == "")
-            return response()->json([
-                'data' => "Người dùng không tồn tại"
-            ],401); 
+            return response()->json("Người dùng không tồn tại"); 
         else 
         {
             $newPassword = \str_random(6);

@@ -78,13 +78,9 @@ class BaiGiangController extends Controller
         {
             
             if($e->getCode() == 23000)
-                return response()->json([
-                    'data' => "EmbededURL đã tồn tại.",
-                ]);
+                return response()->json("EmbededURL đã tồn tại.");
             else
-            return response()->json([
-                'data' => $e->getMessage(),
-            ]);
+            return response()->json($e->getMessage());
             
         }
     }
@@ -186,9 +182,7 @@ class BaiGiangController extends Controller
         );
         if(!request()->file('file'))
         {    
-            return response()->json([
-                'data' => "Bạn chưa chọn file",
-            ],204); 
+            return response()->json("Bạn chưa chọn file"); 
         }
         $khoahoc_id = $KhoaHoc->id;
         $import = Excel::import(new BaiGiangImport($khoahoc_id), request()->file('file'));

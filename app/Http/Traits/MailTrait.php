@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\MailSendCode;
 use App\Mail\MailVerify;
 use App\Mail\MailResetPassword;
+use App\Mail\MailBankAccount;
 
 
 trait MailTrait{
@@ -22,5 +23,9 @@ trait MailTrait{
     public function ResetPassword($newPassword, $email)
     {
         Mail::to($email)->send(new MailResetPassword($newPassword));
+    }
+    public function BankAccount($GiangVien, $KhoaHoc, $email)
+    {
+        Mail::to($email)->send(new MailBankAccount($GiangVien, $KhoaHoc));
     }
 }

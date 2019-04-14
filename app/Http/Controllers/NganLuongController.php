@@ -113,9 +113,7 @@ class NganLuongController extends Controller
             ],200);
         }
         else
-            return response()->json([
-                'data'=>"Giao dịch thất bại!"
-            ],200); 
+            return response()->json("Giao dịch thất bại!"); 
     }
 
     public function ThemHoaDon(KhoaHoc $KhoaHoc, User $User)

@@ -8,8 +8,6 @@ class BaiGiangKhongThuocKhoaHoc extends Exception
 {
     public function render()
     {
-        return response()->json([
-            'data'=>"Bài giảng không thuộc khóa học này",
-        ],401);
+        return response()->json("Bài giảng không thuộc khóa học này");
     }
 }

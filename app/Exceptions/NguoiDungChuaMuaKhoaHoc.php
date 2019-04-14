@@ -8,8 +8,6 @@ class NguoiDungChuaMuaKhoaHoc extends Exception
 {
     public function render()
     {
-        return \response()->json([
-            'data' => "Bạn chưa mua khóa học này",
-        ],401);
+        return \response()->json("Bạn chưa mua khóa học này");
     }
 }

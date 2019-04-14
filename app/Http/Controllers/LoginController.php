@@ -18,8 +18,6 @@ class LoginController extends Controller
             ]);
             // return redirect('http://localhost:8000/api/User/1/GiangVien');
         }
-        return response()->json([
-            'data' => "Email hoặc mật khẩu không đúng",
-        ]);
+        return response()->json("Email hoặc mật khẩu không đúng");
     }
 }

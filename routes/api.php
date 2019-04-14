@@ -88,6 +88,9 @@ Route::group(['prefix' => 'Mail'], function () {
     Route::get('ResetPassword','MailController@ResetPasswordEmail');
 });
 
+Route::group(['prefix' => 'Report'], function () {
+    Route::get('HoaDon','ReportController@HoaDonReport');
+});
 // ========================================================================================
 
 Route::apiResource('/TheLoaiKhoaHoc','TheLoaiKhoaHocController');
