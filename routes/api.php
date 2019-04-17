@@ -37,6 +37,7 @@ Route::get('test4',function(Request $request){
 Route::post('gcs','UserController@testgcs');
 Route::post('cloudiary','UserController@testCloudiary');
 Route::get('test5','BaiGiangController@NguoiDungChuaMuaKhoaHoc');
+Route::get('test6/{KhoaHoc}','DanhGiaController@CapNhatDiemDanhGiaKhoaHoc');
 
 // ====================================================================================================
 
@@ -46,14 +47,19 @@ Route::get('test5','BaiGiangController@NguoiDungChuaMuaKhoaHoc');
 Route::get('/User/KhoaHocCuaToi','UserController@KhoaHocCuaToi');
 Route::apiResource('/User','UserController');
 Route::post('/User/TroThanhGiangVien','UserController@TroThanhGiangVien');
-Route::group(['prefix' => 'User'], function () {
-    Route::get('/{User}/GiangVien/{GiangVien}/KhoaHocDaDay','GiangVienController@KhoaHocDaDay');
-    Route::get('/{User}/GiangVien/{GiangVien}/LichSuBanKhoaHoc','GiangVienController@LichSuBanKhoaHoc');
-    Route::apiResource('/{User}/GiangVien','GiangVienController');  
-    Route::post('{User}/GiangVien/{GiangVien}/GiaHanThoiHan','GiangVienController@GiaHanThoiHanGV');  
-});
+// Route::group(['prefix' => 'User'], function () {
+//     Route::get('/{User}/GiangVien/{GiangVien}/KhoaHocDaDay','GiangVienController@KhoaHocDaDay');
+//     Route::get('/{User}/GiangVien/{GiangVien}/LichSuBanKhoaHoc','GiangVienController@LichSuBanKhoaHoc');
+//     Route::apiResource('/{User}/GiangVien','GiangVienController');  
+//     Route::post('{User}/GiangVien/{GiangVien}/GiaHanThoiHan','GiangVienController@GiaHanThoiHanGV');  
+// });
+Route::get('GiangVien/{GiangVien}/KhoaHocDaDay','GiangVienController@KhoaHocDaDay');
+Route::get('GiangVien/{GiangVien}/LichSuBanKhoaHoc','GiangVienController@LichSuBanKhoaHoc');
+Route::get('GiangVien/Current','GiangVienController@getGiangVien');
+Route::apiResource('GiangVien','GiangVienController');
 
 Route::apiResource('/NganHang','NganHangController');
+Route::get('/TaiKhoanNganHang/Current','TaiKhoanNganHangController@TaiKhoanCuaCurrentUser');
 Route::apiResource('/TaiKhoanNganHang','TaiKhoanNganHangController');
 
 Route::get('/HoaDon/Admin','HoaDonController@adminIndex');
@@ -65,20 +71,24 @@ Route::group(['prefix' => 'NganLuong'], function () {
     Route::get('/KetQuaTraVe/KhoaHoc/{KhoaHoc}/User/{User}','NganLuongController@KetQuaTraVe');
 });
 
-Route::apiResource('/DanhGia','DanhGiaController');
-
 Route::group(['prefix' => 'KhoaHoc'], function () {
     Route::apiResource('/{KhoaHoc}/Comment','CommentController');    
+    Route::apiResource('/{KhoaHoc}/DanhGia','DanhGiaController');
 });
 
 Route::apiResource('/Level','LevelController');
 Route::apiResource('/ThoiHanGV','ThoiHanGVController');
-// Route::apiResource('/BaiGiang','BaiGiangController');
-// Route::apiResource('/GiangVien','GiangVienController');
+
 Route::apiResource('/CodeKhoaHoc','CodeKhoaHocController');
 Route::post('/CodeKhoaHoc/Import','CodeKhoaHocController@import')->name('import');
 Route::apiResource('/ThanhToan','ThanhToanController');
-Route::apiResource('/CauHoi','CauHoiController');
+
+Route::group(['prefix' => 'BaiGiang'], function () {
+    Route::apiResource('/{BaiGiang}/CauHoi','CauHoiController');    
+});
+
+
+
 Route::post('/Login','LoginController@login');
 Route::post('/Register',['verify' => true, 'uses'=>'RegisterController@register']);
 Route::get('/Logout','LogoutController@logout');

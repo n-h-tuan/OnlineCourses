@@ -24,10 +24,9 @@ class DanhGiaRequest extends FormRequest
     public function rules()
     {
         return [
-            'HoaDon_id' => "required",
-            'TieuDe' => "required|min:10|max:100",
-            'NoiDung' => "required|min:10|max:255",
-            'Diem' => "required|numeric",
+            'TieuDe' => "min:5|max:100",
+            'NoiDung' => "min:5|max:255",
+            'Diem' => "required|numeric|min:0|max:5",
         ];
     }
 }

@@ -41,4 +41,8 @@ class KhoaHoc extends Model implements ViewableContract
     {
         return $this->hasMany('App\CodeKhoaHoc','KhoaHoc_id','id');
     }
+    public function danh_gia()
+    {
+        return $this->hasManyThrough('App\DanhGia','App\HoaDon','KhoaHoc_id','HoaDon_id','id');
+    }
 }

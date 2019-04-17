@@ -64,7 +64,7 @@ class BaiGiangController extends Controller
             {
                 
                 BaiGiang::create([
-                    'KhoaHoc_id'=> $rq['KhoaHoc_id'],
+                    'KhoaHoc_id'=> $KhoaHoc->id,
                     'TenBaiGiang' => $rq['TenBaiGiang'],
                     'MoTa' => $rq['MoTa'],
                     'EmbededURL' => $rq['EmbededURL'],
@@ -146,6 +146,7 @@ class BaiGiangController extends Controller
     public function update(Request $request,TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc, BaiGiang $BaiGiang)
     {
         $this->KhoaHocThuocGiangVien($KhoaHoc);
+        $this->BaiGiangThuocKhoaHoc($KhoaHoc, $BaiGiang);
         $BaiGiang->TenBaiGiang = $request->TenBaiGiang;
         $BaiGiang->MoTa = $request->MoTa;
         $BaiGiang->EmbededURL = $request->EmbededURL;
@@ -163,6 +164,7 @@ class BaiGiangController extends Controller
     public function destroy(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc, BaiGiang $BaiGiang)
     {
         $this->KhoaHocThuocGiangVien($KhoaHoc);
+        $this->BaiGiangThuocKhoaHoc($KhoaHoc, $BaiGiang);
         $BaiGiang->delete();
         return response()->json([
             'data'=>"Xóa thành công bài giảng $BaiGiang->TenBaiGiang",

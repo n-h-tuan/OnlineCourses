@@ -22,8 +22,8 @@ class GiangVienResource extends JsonResource
             'HinhAnh' => $this->user->HinhAnh,
             'SoLuongHocVien' => $this->SoLuongHocVien,
             'SoLuongKhoaHoc' => $this->SoLuongKhoaHoc,
-            'ThoiHanGV' => $this->thoi_han_gv->TenThoiHan,
-            'NgayHetHan' => $this->NgayHetHan,
+            // 'ThoiHanGV' => $this->thoi_han_gv->TenThoiHan,
+            // 'NgayHetHan' => $this->NgayHetHan,
             
             // 'NgayHetHan' =>date('d-m-Y H:i:s',strtotime(date('d-m-Y H:i:s',strtotime($this->created_at)).' + '.$this->thoi_han_gv->songay.' days')),
             // 'created_at' => date('d-m-Y H:i:s',strtotime($this->created_at)),

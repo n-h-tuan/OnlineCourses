@@ -192,7 +192,7 @@ class UserController extends Controller
                         $giangVien->TenGiangVien = Auth::user()->name;
                     
                     $giangVien->TomTat = $request->TomTat;
-                    $giangVien->ThoiHanGV_id = $request->ThoiHanGV_id;
+                    $giangVien->ThoiHanGV_id = 4;
                     $giangVien->SoLuongHocVien = 0;
                     $giangVien->SoLuongKhoaHoc = 0;
                     $user->level_id = 2;

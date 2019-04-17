@@ -19,4 +19,8 @@ class DanhGia extends Model
     {
         return $this->belongsTo('App\HoaDon','KhoaHoc_id','KhoaHoc_id');
     }
+    public function hoa_don()
+    {
+        return $this->belongsTo('App\HoaDon','HoaDon_id','id');
+    }
 }

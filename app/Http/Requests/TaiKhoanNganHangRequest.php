@@ -24,7 +24,7 @@ class TaiKhoanNganHangRequest extends FormRequest
     public function rules()
     {
         return [
-            'SoTaiKhoan'=>'required|string|min:12|max:19',
+            'SoTaiKhoan'=>'required|unique:tai_khoan_ngan_hang,SoTaiKhoan|string|min:12|max:19',
             'ChuTaiKhoan' => 'required|min:5',
             'NganHang_id' =>'required',
             'ChiNhanhNganHang' => 'required|min:5',

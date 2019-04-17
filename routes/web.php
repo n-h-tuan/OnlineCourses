@@ -42,6 +42,7 @@ Route::get('import',function(){
 
 Route::get('mylogin',function(){
     return view('mylogin');
+    
 });
 Auth::routes();
 

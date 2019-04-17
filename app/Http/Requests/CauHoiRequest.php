@@ -24,10 +24,8 @@ class CauHoiRequest extends FormRequest
     public function rules()
     {
         return [
-            'BaiGiang_id' => "required",
-            'user_id' => "required",
-            'TieuDe' => "required|min:10",
-            'NoiDung' => "required|min:10|max:500",
+            'TieuDe' => "required|min:5",
+            'NoiDung' => "required|min:5|max:500",
             'HinhAnh' => "mimes:jpeg,png",
         ];
     }

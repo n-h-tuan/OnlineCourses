@@ -21,9 +21,9 @@ class GiangVienController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api');
-        $this->middleware('isGiangVien');
-        $this->middleware('checkThoiHanGV');
+        $this->middleware('auth:api')->except('index','show','KhoaHocDaDay');
+        $this->middleware('isGiangVien')->except('index','show','KhoaHocDaDay');
+        // $this->middleware('checkThoiHanGV');
         // $this->KiemTraThoiHanGV(Request $request, GiangVien $GiangVien, \Closure $next);
     }
     /**
@@ -31,11 +31,16 @@ class GiangVienController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $User)
+    public function index()
     {
-        return GiangVienResource::collection($User->giang_vien);
+        return GiangVienResource::collection(GiangVien::all());
     }
-
+    public function getGiangVien()
+    {
+        $user = Auth::user();
+        $giangvien = GiangVien::where('user_id',$user->id)->first();
+        return new GiangVienResource($giangvien);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -63,7 +68,7 @@ class GiangVienController extends Controller
      * @param  \App\GiangVien  $giangVien
      * @return \Illuminate\Http\Response
      */
-    public function show(User $User, GiangVien $GiangVien)
+    public function show( GiangVien $GiangVien)
     {
         // $giangVien = GiangVien::find($id);
         return new GiangVienResource($GiangVien);
@@ -87,7 +92,7 @@ class GiangVienController extends Controller
      * @param  \App\GiangVien  $giangVien
      * @return \Illuminate\Http\Response
      */
-    public function update(GiangVienRequest $request, User $User, GiangVien $GiangVien)
+    public function update(GiangVienRequest $request,  GiangVien $GiangVien)
     {
         $GiangVien->update($request->all());
         return response()->json([
@@ -101,7 +106,7 @@ class GiangVienController extends Controller
      * @param  \App\GiangVien  $giangVien
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $User, GiangVien $GiangVien)
+    public function destroy( GiangVien $GiangVien)
     {
         $GiangVien->delete();
         return response()->json([
@@ -109,7 +114,7 @@ class GiangVienController extends Controller
         ]);
     }
 
-    public function GiaHanThoiHanGV(Request $request, User $User, GiangVien $GiangVien)
+    public function GiaHanThoiHanGV(Request $request,  GiangVien $GiangVien)
     {
         $ThoiHanGVMoi = \App\ThoiHanGV::select('SoNgay')->where('id',$request->ThoiHanGV_id)->first()->value('SoNgay');
         $NgayHetHanCu = $GiangVien->NgayHetHan;
@@ -123,13 +128,13 @@ class GiangVienController extends Controller
         ]);
     }
 
-    public function KhoaHocDaDay(User $User, GiangVien $GiangVien)
+    public function KhoaHocDaDay( GiangVien $GiangVien)
     {
         $khoahoc = KhoaHoc::where('GiangVien_id',$GiangVien->id)->get();
         return KhoaHocCuaToiCollection::collection($khoahoc);
     }
 
-    public function LichSuBanKhoaHoc(User $User, GiangVien $GiangVien)
+    public function LichSuBanKhoaHoc( GiangVien $GiangVien)
     {
         $this->KiemTraGiangVien($GiangVien);
         $khoahoc = KhoaHoc::where('GiangVien_id',$GiangVien->id)->get();

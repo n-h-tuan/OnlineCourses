@@ -1,5 +1,5 @@
 <form role="form" action="http://localhost:8000/api/Login" method="POST">
-    <input type="hidden" name="_token" value="{{csrf_token()}}" />
+    {{-- <input type="hidden" name="_token" value="{{csrf_token()}}" /> --}}
     <div>
         <label>Email</label>
         <input type="email" class="form-control" placeholder="Email" name="email">

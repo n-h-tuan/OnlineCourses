@@ -25,7 +25,11 @@ class TaiKhoanNganHangController extends Controller
     {
         return TaiKhoanNganHangResource::collection(TaiKhoanNganHang::all());
     }
-
+    public function TaiKhoanCuaCurrentUser()
+    {
+        $taiKhoan = TaiKhoanNganHang::where('user_id', Auth::id())->get();
+        return TaiKhoanNganHangResource::collection($taiKhoan);
+    }
     /**
      * Show the form for creating a new resource.
      *

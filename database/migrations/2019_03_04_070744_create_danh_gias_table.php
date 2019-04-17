@@ -17,8 +17,8 @@ class CreateDanhGiasTable extends Migration
             $table->increments('id');
             $table->integer('HoaDon_id')->unsigned()->index();
             $table->foreign('HoaDon_id')->references('id')->on('hoa_don')->onDelete('cascade');
-            $table->string('TieuDe');
-            $table->text('NoiDung');
+            $table->string('TieuDe')->nullable();
+            $table->text('NoiDung')->nullable();
             $table->integer('Diem');
             $table->timestamps();
         });
