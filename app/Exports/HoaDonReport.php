@@ -29,15 +29,16 @@ class HoaDonReport implements FromCollection, WithHeadings, ShouldAutoSize, With
             'THANH TOÁN',
             'THÀNH TIỀN',
             'CODE',
-            'TRANG THÁI'
+            'TRANG THÁI',
+            'THỜI GIAN'
         ];
     }
     public function registerEvents(): array
     {
         return [
             AfterSheet::class    => function(AfterSheet $event) {
-                $headerRange = 'A1:G1'; // All headers
-                $contentRange = 'A2:G300'; //All Content
+                $headerRange = 'A1:H1'; // All headers
+                $contentRange = 'A2:H300'; //All Content
                 $id_buyer_Range = 'A2:B300'; // Id to Buyer Column
                 $thanhtoan_trangthai_Range = 'D2:G300'; //ThanhToan to TrangThai Column
                 $thanhtienRange = 'E2:E300'; //ThanhTien Column
@@ -75,11 +76,11 @@ class HoaDonReport implements FromCollection, WithHeadings, ShouldAutoSize, With
                 $event->sheet->getDelegate()->getStyle($thanhtienRange)->getFont()->setBold(true)->setSize(13);
                 $event->sheet->getDelegate()->getStyle($thanhtienRange)->getNumberFormat()->setFormatCode('#,##0');
                 // Tạo cột tính tổng tiền
-                $event->sheet->getDelegate()->getColumnDimension('I')->setAutoSize('I'); //Set width
-                $event->sheet->getDelegate()->setCellValue('I13','TỔNG TIỀN:')->getStyle('I13')->getFont()->setBold(true)->setSize(13);
-                $event->sheet->getStyle('I13')->applyFromArray($headerStyleArray);
-                $event->sheet->getDelegate()->setCellValue('I14','=SUM(E2:E300)')->getStyle('I14')->getFont()->setBold(true)->setSize(13);
-                $event->sheet->getDelegate()->getStyle('I14')->getNumberFormat()->setFormatCode('#,##0');
+                $event->sheet->getDelegate()->getColumnDimension('J')->setAutoSize('J'); //Set width
+                $event->sheet->getDelegate()->setCellValue('J13','TỔNG TIỀN:')->getStyle('J13')->getFont()->setBold(true)->setSize(13);
+                $event->sheet->getStyle('J13')->applyFromArray($headerStyleArray);
+                $event->sheet->getDelegate()->setCellValue('J14','=SUM(E2:E300)')->getStyle('J14')->getFont()->setBold(true)->setSize(13);
+                $event->sheet->getDelegate()->getStyle('J14')->getNumberFormat()->setFormatCode('#,##0');
             }
         ];
     }

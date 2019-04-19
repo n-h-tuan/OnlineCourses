@@ -94,7 +94,8 @@ Route::post('/Register',['verify' => true, 'uses'=>'RegisterController@register'
 Route::get('/Logout','LogoutController@logout');
 
 Route::group(['prefix' => 'Mail'], function () {
-    Route::get('Verify/{User}','MailController@VerifyEmail');
+    Route::get('Verify/{User}','MailController@VerifyEmail')->name('mail.verify');
+    Route::get('Resend/{User}','MailController@ResendVerifyEmail')->name('resend.verify');
     Route::get('ResetPassword','MailController@ResetPasswordEmail');
     Route::get('ResendCode/{Code}/{Email}','MailController@ResendCode')->name('resend.code');
 });

@@ -46,6 +46,10 @@ class MailController extends Controller
             ],200);
         }
     }
+    public function ResendVerifyEmail(User $User)
+    {
+        $this->Verify($User, $User->email);
+    }
     public function ResetPasswordEmail(Request $request)
     {
         request()->validate(

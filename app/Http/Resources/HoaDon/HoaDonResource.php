@@ -14,6 +14,7 @@ class HoaDonResource extends JsonResource
      */
     public function toArray($request)
     {
+        $i = 0;
         return [
             'id' => $this->id,
             'user' =>$this->user->name,
@@ -22,6 +23,7 @@ class HoaDonResource extends JsonResource
             'TongTien' =>$this->TongTien,
             'MaCode' =>($this->MaCode_id)=="" ? null : $this->code_khoa_hoc->code,
             'TrangThai' => ($this->TrangThai)==0 ? "Chưa kích hoạt" : "Đã kích hoạt",
+            'ThoiGian' => date('d-m-Y H:i:s',strtotime($this->created_at)),
         ];
     }
 }

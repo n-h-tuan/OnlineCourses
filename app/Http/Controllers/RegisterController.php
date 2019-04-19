@@ -49,7 +49,11 @@ class RegisterController extends Controller
         //     'data' => new UserResource($user),
         // ],200);
         return response()->json([
-            'data' => 'Verified Email Was Sent.',
+            'data' => 
+            [
+                'message'=>'Verified Email Was Sent.',
+                'resend_link'=>route('resend.verify',['User'=>$user]),
+            ],
         ],200);
     }
 
