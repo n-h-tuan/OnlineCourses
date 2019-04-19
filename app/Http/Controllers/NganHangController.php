@@ -44,6 +44,15 @@ class NganHangController extends Controller
     {
         // $NganHang = NganHan::create($request->all());
         // return response()->json($NganHang);
+        $request->validate(
+            [
+                'file'=>'required|mimes:xsxl',
+            ],
+            [
+                'required' => 'Bạn chưa chọn file.',
+                'mimes' => 'File không đúng định dạng, chỉ được chọn file excel .xsxl',
+            ]
+        );
         Excel::import(new NganHangImport, request()->file('file'));
         return response()->json([
             'data' => 'Import dữ liệu ngân hàng thành công',

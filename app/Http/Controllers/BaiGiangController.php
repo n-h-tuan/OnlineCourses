@@ -29,10 +29,8 @@ class BaiGiangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc)
+    public function index(KhoaHoc $KhoaHoc)
     {
-        // $collect = new BaiGiangCollection($TheLoaiKhoaHoc->id, $MangKhoaHoc->id);
-        // new BaiGiangCollection($TheLoaiKhoaHoc->id, $MangKhoaHoc->id);
         return BaiGiangCollection::collection($KhoaHoc->bai_giang)->sortBy('KhoaHoc_id');
     }
 
@@ -55,19 +53,19 @@ class BaiGiangController extends Controller
      */
     //Bắt buộc người dùng tạo khóa học trước rồi mới được thêm bài giảng
 
-    public function store(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc, BaiGiangRequest $request)
+    public function store(KhoaHoc $KhoaHoc, BaiGiangRequest $request)
     {   
         $this->KhoaHocThuocGiangVien($KhoaHoc);
         try
         {
             foreach($request->data as $rq)
             {
-                
+                $embedURL = $this->convertYoutube($rq['EmbededURL']);
                 BaiGiang::create([
                     'KhoaHoc_id'=> $KhoaHoc->id,
                     'TenBaiGiang' => $rq['TenBaiGiang'],
                     'MoTa' => $rq['MoTa'],
-                    'EmbededURL' => $rq['EmbededURL'],
+                    'EmbededURL' => $embedURL,
                 ]);
             }
             return response()->json([
@@ -102,7 +100,7 @@ class BaiGiangController extends Controller
      * @param  \App\BaiGiang  $baiGiang
      * @return \Illuminate\Http\Response
      */
-    public function show(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc, BaiGiang $BaiGiang)
+    public function show(KhoaHoc $KhoaHoc, BaiGiang $BaiGiang)
     {
         // Nếu người dùng là giảng viên hoặc admin
         if(Auth::user()->level_id != 3)
@@ -143,7 +141,7 @@ class BaiGiangController extends Controller
      * @param  \App\BaiGiang  $baiGiang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc, BaiGiang $BaiGiang)
+    public function update(Request $request, KhoaHoc $KhoaHoc, BaiGiang $BaiGiang)
     {
         $this->KhoaHocThuocGiangVien($KhoaHoc);
         $this->BaiGiangThuocKhoaHoc($KhoaHoc, $BaiGiang);
@@ -161,7 +159,7 @@ class BaiGiangController extends Controller
      * @param  \App\BaiGiang  $baiGiang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc, BaiGiang $BaiGiang)
+    public function destroy(KhoaHoc $KhoaHoc, BaiGiang $BaiGiang)
     {
         $this->KhoaHocThuocGiangVien($KhoaHoc);
         $this->BaiGiangThuocKhoaHoc($KhoaHoc, $BaiGiang);
@@ -170,10 +168,10 @@ class BaiGiangController extends Controller
             'data'=>"Xóa thành công bài giảng $BaiGiang->TenBaiGiang",
         ],200);
     }
-    public function importBaiGiang(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc)
+    public function importBaiGiang(Request $request, KhoaHoc $KhoaHoc)
     {
         $this->KhoaHocThuocGiangVien($KhoaHoc);
-        request()->validate(
+        $request->validate(
             [
                 'file' => 'required|mimes:xlsx',
             ],
@@ -230,5 +228,12 @@ class BaiGiangController extends Controller
     {
         if($BaiGiang->KhoaHoc_id != $KhoaHoc->id)
             throw new BaiGiangKhongThuocKhoaHoc();
+    }
+    public function convertYoutube($string) {
+        return preg_replace(
+            "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+            "www.youtube.com/embed/$2",
+            $string
+        );
     }
 }

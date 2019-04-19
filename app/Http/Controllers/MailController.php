@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 // use App\Mail\MailSendCode;
 use App\Http\Traits\MailTrait;
 use App\User;
+use App\CodeKhoaHoc;
 
 class MailController extends Controller
 {
@@ -26,6 +27,11 @@ class MailController extends Controller
         $email = "nguyenledly1997@gmail.com";
         $this->SendCode($code,$email);
         return "Mail Sent!";
+    }
+    public function ResendCode($Code,$Email)
+    {
+        $code_KH = CodeKhoaHoc::find($Code); 
+        $this->SendCode($code_KH,$Email);
     }
     public function VerifyEmail(User $User)
     {

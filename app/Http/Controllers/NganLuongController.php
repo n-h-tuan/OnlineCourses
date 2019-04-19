@@ -104,12 +104,19 @@ class NganLuongController extends Controller
             
             // Tiến hành gửi code sang cho user.
             $code_object = $this->GetCode($KhoaHoc->id);
-            $code_khoa_hoc = $code_object->code; 
+            // $code_khoa_hoc = $code_object->code; 
             $email = $User->email;
             $this->SendCode($code_object,$email);
 
+            // Cập nhật số lượng học viên cho giảng viên
+            $this->CapNhatSoLuongHocVien($KhoaHoc);
+ 
             return response()->json([
-                'data'=>"Bạn đã thực hiện giao dịch cho khóa học <b>$TenKhoaHoc</b>, một mã code đã được gửi về email $email. Sử dụng mã code đó để kích hoạt khóa học. Xin cám ơn.",
+                'data'=>
+                [
+                    'message' => "Bạn đã thực hiện giao dịch cho khóa học <b>$TenKhoaHoc</b>, một mã code đã được gửi về email $email. Sử dụng mã code đó để kích hoạt khóa học. Xin cám ơn.",
+                    'resend_link' => route('resend.code',['Code'=>$code_object->id, 'Email'=>$email]),
+                ],
             ],200);
         }
         else
@@ -133,5 +140,13 @@ class NganLuongController extends Controller
     {
         $code = CodeKhoaHoc::where('KhoaHoc_id',$KhoaHoc_id)->where('TrangThai',1)->first();
         return $code;
+    }
+
+    public function CapNhatSoLuongHocVien($KhoaHoc)
+    {
+        $giangvien = \App\GiangVien::find($KhoaHoc->GiangVien_id);
+        $soLuongHocVien = 1 + $giangvien->SoLuongHocVien;
+        $giangvien->SoLuongHocVien = $soLuongHocVien;
+        $giangvien->save();
     }
 }

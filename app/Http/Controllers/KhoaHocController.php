@@ -28,7 +28,7 @@ class KhoaHocController extends Controller
         $this->middleware('isAdmin')->only('indexAdmin');
         $this->middleware('isGiangVien')->except('index','show');
     }
-    public function indexAdmin(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc)
+    public function indexAdmin(MangKhoaHoc $MangKhoaHoc)
     {
         return KhoaHocCollection::collection($MangKhoaHoc->khoa_hoc);
     }
@@ -39,19 +39,19 @@ class KhoaHocController extends Controller
      */
 
     
-    public function index(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc)
+    public function index(MangKhoaHoc $MangKhoaHoc)
     {
-        $khoaHocAll = $MangKhoaHoc->khoa_hoc;
-        $collection = collect();
-        // Kiểm tra Khóa học thuộc về GV có còn thời hạn không, nếu không thì ko hiển thị
-        foreach($khoaHocAll as $kh)
-        {
-            if( $kh->giang_vien->TrangThai == 1)
-                $collection->add($kh);
-        }
+        // $khoaHocAll = $MangKhoaHoc->khoa_hoc;
+        // $collection = collect();
+        // // Kiểm tra Khóa học thuộc về GV có còn thời hạn không, nếu không thì ko hiển thị
+        // foreach($khoaHocAll as $kh)
+        // {
+        //     if( $kh->giang_vien->TrangThai == 1)
+        //         $collection->add($kh);
+        // }
         
-        return KhoaHocCollection::collection($collection);
-        // return KhoaHocCollection::collection($MangKhoaHoc->khoa_hoc);
+        // return KhoaHocCollection::collection($collection);
+        return KhoaHocCollection::collection($MangKhoaHoc->khoa_hoc);
     }
 
     /**
@@ -70,7 +70,7 @@ class KhoaHocController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(KhoaHocRequest $request, TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc)
+    public function store(KhoaHocRequest $request, MangKhoaHoc $MangKhoaHoc)
     {
         $giangvien = GiangVien::where('user_id',Auth::id())->first();
         $KhoaHoc = new KhoaHoc;
@@ -90,6 +90,9 @@ class KhoaHocController extends Controller
 
         $KhoaHoc->save();
         
+        // Cập nhật số lượng khóa học của Giảng viên
+        $this->CapNhatSoLuongKhoaHoc($giangvien);
+        
         //Kiểm tra xem người dùng này đã khai báo tài khoản ngân hàng hay chưa? Nếu chưa sẽ gửi mail
         $bankAccount = TaiKhoanNganHang::where('user_id',Auth::id())->first();
         if($bankAccount == "")
@@ -102,7 +105,7 @@ class KhoaHocController extends Controller
         ],200);
     }
 
-    public function show(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc)
+    public function show(MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc)
     {
         
         // $khoaHoc = KhoaHoc::find($id);
@@ -116,6 +119,7 @@ class KhoaHocController extends Controller
         // }
         // else
         // {
+            $this->KiemTraKhoaHoc($MangKhoaHoc, $KhoaHoc);
             views($KhoaHoc)->delayInSession(3)->record();
             $KhoaHoc->SoLuotXem = views($KhoaHoc)->count();
             $KhoaHoc->save();
@@ -138,8 +142,9 @@ class KhoaHocController extends Controller
      * @param  \App\KhoaHoc  $khoaHoc
      * @return \Illuminate\Http\Response
      */
-    public function update(KhoaHocUpdateRequest $request, TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc)
+    public function update(KhoaHocUpdateRequest $request, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc)
     {
+        $this->KiemTraKhoaHoc($MangKhoaHoc, $KhoaHoc);
         $this->KhoaHocThuocGiangVien($KhoaHoc);
         $KhoaHoc->update($request->all());
         $KhoaHoc->ThanhTien = \round((1-($request->GiamGia)/100) * $request->GiaTien);
@@ -162,8 +167,9 @@ class KhoaHocController extends Controller
      * @param  \App\KhoaHoc  $khoaHoc
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TheLoaiKhoaHoc $TheLoaiKhoaHoc, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc)
+    public function destroy(MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc)
     {
+        $this->KiemTraKhoaHoc($MangKhoaHoc, $KhoaHoc);
         $this->KhoaHocThuocGiangVien($KhoaHoc);
         $KhoaHoc->delete();
         return response([
@@ -229,6 +235,13 @@ class KhoaHocController extends Controller
 
         $finalString = $str1.$str2;
         return $finalString;
+    }
+
+    public function CapNhatSoLuongKhoaHoc($GiangVien)
+    {
+        $soLuongKhoaHoc = 1 + $GiangVien->SoLuongKhoaHoc;
+        $GiangVien->SoLuongKhoaHoc = $soLuongKhoaHoc;
+        $GiangVien->save();
     }
     
 }

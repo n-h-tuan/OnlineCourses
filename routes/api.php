@@ -96,22 +96,24 @@ Route::get('/Logout','LogoutController@logout');
 Route::group(['prefix' => 'Mail'], function () {
     Route::get('Verify/{User}','MailController@VerifyEmail');
     Route::get('ResetPassword','MailController@ResetPasswordEmail');
+    Route::get('ResendCode/{Code}/{Email}','MailController@ResendCode')->name('resend.code');
 });
 
 Route::group(['prefix' => 'Report'], function () {
     Route::get('HoaDon','ReportController@HoaDonReport');
+    Route::get('CodeKH','ReportController@CodeKHReport');
 });
 // ========================================================================================
 
 Route::apiResource('/TheLoaiKhoaHoc','TheLoaiKhoaHocController');
 Route::group(['prefix' => 'TheLoaiKhoaHoc'], function () {
-    Route::apiResource('/{TheLoaiKhoaHoc}/MangKhoaHoc','MangKhoaHocController');
-    Route::group(['prefix' => '/{TheLoaiKhoaHoc}/MangKhoaHoc'], function () {
-        Route::get('/{MangKhoaHoc}/KhoaHoc/Admin','KhoaHocController@indexAdmin')->name('indexAdmin');
-        Route::apiResource('/{MangKhoaHoc}/KhoaHoc','KhoaHocController');
-        Route::group(['prefix' => '/{MangKhoaHoc}/KhoaHoc'], function () {
-            Route::apiResource('/{KhoaHoc}/BaiGiang','BaiGiangController');
-            Route::post('/{KhoaHoc}/BaiGiang/Import','BaiGiangController@importBaiGiang')->name('ImportBaiGiang');
-        });
-    });
+    Route::apiResource('/{TheLoaiKhoaHoc}/MangKhoaHoc','MangKhoaHocController');   
+});
+Route::group(['prefix' => 'MangKhoaHoc'], function () {
+    Route::get('/{MangKhoaHoc}/KhoaHoc/Admin','KhoaHocController@indexAdmin')->name('indexAdmin');
+    Route::apiResource('/{MangKhoaHoc}/KhoaHoc','KhoaHocController');
+});
+Route::group(['prefix' => 'KhoaHoc'], function () {
+    Route::apiResource('/{KhoaHoc}/BaiGiang','BaiGiangController');
+    Route::post('/{KhoaHoc}/BaiGiang/Import','BaiGiangController@importBaiGiang')->name('ImportBaiGiang');
 });

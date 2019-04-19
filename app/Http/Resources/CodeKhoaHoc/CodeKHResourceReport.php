@@ -4,7 +4,7 @@ namespace App\Http\Resources\CodeKhoaHoc;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CodeKHResource extends JsonResource
+class CodeKHResourceReport extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,7 +17,7 @@ class CodeKHResource extends JsonResource
         return [
             'id' => $this->id,
             'code' => $this->code,
-            'KhoaHoc_id' =>$this->khoa_hoc->TenKH,
+            'KhoaHoc_id' =>$this->KhoaHoc_id,
             'TrangThai' => $this->TrangThai,
         ];
     }

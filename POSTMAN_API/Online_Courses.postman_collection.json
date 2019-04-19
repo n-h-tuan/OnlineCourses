@@ -1,0 +1,3698 @@
+{
+	"info": {
+		"_postman_id": "85987730-a39e-4614-be53-9655f019040f",
+		"name": "Online_Courses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TheLoaiKhoaHoc",
+			"item": [
+				{
+					"name": "DanhSachTheLoaiKhoaHoc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ThemTheLoaiKhoaHoc",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"description": "Chỉ admin có quyền",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TenTheLoai\" : \"Thời trang\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatTheLoaiKhoaHoc",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TenTheLoai\" : \"Sắc đẹp\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "XoaTheLoaiKhoaHoc",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TenTheLoai\" : \"Sắc đẹp\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MangKhoaHoc",
+			"item": [
+				{
+					"name": "DanhSachMangKhoaHoc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/6/MangKhoaHoc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"6",
+								"MangKhoaHoc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ChiTietMangKhoaHoc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/1/MangKhoaHoc/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ThemMangKhoaHoc",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TheLoaiKH_id\" : \"1\",\n\t\"TenMangKH\" : \"Cơ sở dữ liệu\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/1/MangKhoaHoc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatMangKhoaHoc",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TheLoaiKH_id\" : \"1\",\n\t\"TenMangKH\" : \"Cơ sở dữ liệu\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/1/MangKhoaHoc/17",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "XoaMangKhoaHoc",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TheLoaiKH_id\" : \"1\",\n\t\"TenMangKH\" : \"Cơ sở dữ liệu\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/1/MangKhoaHoc/17",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"17"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "KhoaHoc",
+			"item": [
+				{
+					"name": "DanhSachKhoaHoc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/1/MangKhoaHoc/2/KhoaHoc/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"2",
+								"KhoaHoc",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ChiTietKhoaHoc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"user_1@mymail.co\",\n\t\"password\" : \"123456\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/1/MangKhoaHoc/2/KhoaHoc/23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"2",
+								"KhoaHoc",
+								"23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ThemKhoaHoc",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuan}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "GiangVien_id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "TenKH",
+									"value": "Thiết kế CPU",
+									"type": "text"
+								},
+								{
+									"key": "TomTat",
+									"value": "Khóa học về phần cứng máy tính",
+									"type": "text"
+								},
+								{
+									"key": "GiaTien",
+									"value": "320000",
+									"type": "text"
+								},
+								{
+									"key": "HinhAnh",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/1/MangKhoaHoc/2/KhoaHoc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"2",
+								"KhoaHoc"
+							]
+						},
+						"description": "Thêm mới khóa học.\nChỉ có ADMIN hoặc Giảng Viên mới thực hiện được chức năng này.\nYêu cầu:\n\t- Đăng nhập\n\t- Request gồm: (tất cả bắt buộc đều phải có data, kể cả hình ảnh)\n\t\t• TenKH (Tên khóa học)\n\t\t• TomTat (Tóm tắt)\n\t\t• GiaTien\n\t\t• HinhAnh"
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatKhoaHoc",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuan}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"MangKH_id\":2,\n\t\"GiangVien_id\":4,\n\t\"TenKH\":\"Bảo trì hiệu quả\",\n\t\"TomTat\":\"Khóa học về phần cứng máy tính \",\n\t\"GiaTien\":120000,\n\t\"GiamGia\":10\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/1/MangKhoaHoc/2/KhoaHoc/23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"2",
+								"KhoaHoc",
+								"23"
+							]
+						},
+						"description": "Cập nhật lại khóa học, chẳng hạn User muốn giảm giá khóa học thì vào đây xử lý (tính theo %).\nYêu cầu: \n\t- Chỉ có giảng viên của khóa học hiện tại mới có quyền thay đổi\n\t- Request gồm: MangKH_id (id của MangKhoaHoc mới, nếu user muốn cho Khóa học này thuộc về mảng khóa học khác); GiangVien_id (Không được thay đổi, chỉ hiện thị nhưng ở chế độ ReadOnly) ; TenKH; TomTat; GiaTien; GiamGia.\n\t- Thường thì khi chỉnh sửa, sẽ hiển thị toàn bộ thông tin lên form, User muốn sửa phần nào thì sửa."
+					},
+					"response": []
+				},
+				{
+					"name": "XoaKhoaHoc",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/1/MangKhoaHoc/2/KhoaHoc/23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"2",
+								"KhoaHoc",
+								"23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DanhSachKhoaHocAdmin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/1/MangKhoaHoc/3/KhoaHoc/Admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"3",
+								"KhoaHoc",
+								"Admin"
+							]
+						},
+						"description": "Admin có thể xem mọi khóa học, dù cho nó có hết hạn đi chăng nữa (Thiết kế ban đầu khi thu phí đăng ký giảng viên, nhưng vì ăn hoa hồng nên ko cần thiết nữa)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NhapCode",
+			"item": [
+				{
+					"name": "NhapCode",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{abc}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "KhoaHoc_id",
+									"value": "23",
+									"type": "text"
+								},
+								{
+									"key": "ThanhToan_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "TongTien",
+									"value": "320000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/HoaDon",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"HoaDon"
+							]
+						},
+						"description": "Người dùng nhập code sau khi đã thanh toán, code sẽ được gửi về email của người dùng.\nYêu cầu: \n\t- Đăng nhập.\n\t- Người dùng phải mua khóa học trước thì code mới có hiệu lực (Tránh trường hợp người dùng mò điên ra code).\n\t- Request gồm:\n\t\t• code (gửi đi mã code mà người dùng nhập)."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Level",
+			"item": [
+				{
+					"name": "DanhSachLevel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/Level",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"Level"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ThemLevel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TenLevel\":\"Guest\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/Level",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"Level"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatLevel",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TenLevel\":\"Guest\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/Level/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"Level",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "XoaLevel",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/Level/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"Level",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Ngoài danh sách Level, thì các api còn lại đều phải là Admin thì mới thực hiện được",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "cda869ee-ed9a-4c64-a71e-6bd25e98f58d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e6dd4249-a655-43cf-a615-5ccb8febcf89",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "DanhSachUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/User",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ChiTietUser",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/User/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"User",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "KhoaHocCuaToi",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{tuanledly}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/User/KhoaHocCuaToi",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"User",
+								"KhoaHocCuaToi"
+							]
+						},
+						"description": "Trả về khóa học mà User hiện hành đã mua, Yêu cầu: đăng nhập"
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{tuan}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Nguyễn Hoàng Tuấn\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/User/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"User",
+								"8"
+							]
+						},
+						"description": "User muốn thay đổi thông tin thì vào đây.\nYêu cầu:\n\t- Đăng nhập\n\t- Request gồm: name; HinhAnh (Nếu user muốn đổi ảnh); Trên form, nếu người dùng tick vào checkbox đổi mật khẩu, thì sẽ gửi: PasswordHienTai, PasswordMoi, PasswordMoiNhapLai"
+					},
+					"response": []
+				},
+				{
+					"name": "XoaUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"description": "Chỉ có admin mới có quyền xóa User",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/User/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"User",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TroThanhGiangVien or GiaHanThoiHanKhiDaHetThoiHan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{duy}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TomTat\":\"Tôi là giảng viên Tiêu Khánh Duy\",\n\t\"ThoiHanGV_id\":1,\n\t\"TenGiangVien\":\"Khánh Duy\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/User/TroThanhGiangVien",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"User",
+								"TroThanhGiangVien"
+							]
+						},
+						"description": "Đăng ký trở thành giảng viên hoặc gia hạn thời hạn (Yêu cầu mới thì ko cần gia hạn vì giảng viên tồn tại mãi)\nYêu cầu: \n\t- Đăng nhập\n\t- Request gồm: TomTat (Tóm tắt bản thân giảng viên); ThoiHanGV_id (Duy cho mặc định là 4, vì đây là thời hạn tồn tại vĩnh viễn, thay vì có nhiều lựa chọn như lúc trước); TenGiangVien (Họ Tên của Giảng viên)."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GiangVien",
+			"item": [
+				{
+					"name": "DanhSachGiangVien",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQwZjM4MzY0MzM3Y2NkNzY4YmNmYjRlNzcxMzI5ZTYyM2U4NTQ0ZDI4NjgzNjM5MzJmZDhiMmZjYTg0MDZiMTE5YWU3ZTRmOWI2ZWU5MmViIn0.eyJhdWQiOiIzIiwianRpIjoiZDBmMzgzNjQzMzdjY2Q3NjhiY2ZiNGU3NzEzMjllNjIzZTg1NDRkMjg2ODM2MzkzMmZkOGIyZmNhODQwNmIxMTlhZTdlNGY5YjZlZTkyZWIiLCJpYXQiOjE1NTI1NTcxNTgsIm5iZiI6MTU1MjU1NzE1OCwiZXhwIjoxNTg0MTc5NTU4LCJzdWIiOiIxNyIsInNjb3BlcyI6W119.A87FKpdbSpRqgeLlvcfnx1BjmWNP6R_4Vq-vTItjSHTmZdbr1mSi5fD0LDXKQzO9rBOha7Pdiyp8HJQzkRfEgE_s_8Uf37nViFbjU-VkfrVTnqoOtOaRUPBlHaaK72iqteSgKcSlGKCbENc7OlT54qb6OW8DvCA19OW2q0A7DrxSG_nQqjl-wzs9EKHI_PjqsjenwMyugDc3wDisAV4frgpkN4Xkn18a2iPWmj0gntlGfWoYynfbCUB-GGr0HlvAkIlQwIUnnE2uJWx97w-SlRF4E0ejZdhC2TPGvkpVf_6uvZDCfcTIritbYWgsQvGWf2FP07sl8xutcrP5EPSO4umSNTnfdI0426zASyxskVbz_3hW6C2ysx5aStYbYJ4mmc0lVpqDnFq59ueeC-LFxkMyoxJgML-Rm2hCqjMMg5266qWcAxKgEaW_Z_AZ_V5HlWC1CbJ9F4ynOoktvCSAUXU9b-F0s8nrCPqc0r5ySEQcqQD8r1n6jDhoVHcsDMGv49pfLR7iSWaYEOf9U3-9AMnejiXogjqh-eakT6dA40CEVaUIbLhTsEu44fFRF9W3yuwEVn3x_V7zvxqsR3yoGqj9W9W_VJwDpCg8r2EXZPiR0k8XUZsHz87YgGldcLrop9Uhy4RZZixF00LHgSV8jq-vvvq33BPkCm8u8BEuj5I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/User/16/GiangVien",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"User",
+								"16",
+								"GiangVien"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ChiTietGiangVien",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a9901746-5225-4cd1-a36a-19e93ee8c352",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{duy}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/User/5/GiangVien/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"User",
+								"5",
+								"GiangVien",
+								"4"
+							]
+						},
+						"description": "Trả về thông tin chi tiết của Giảng viên"
+					},
+					"response": []
+				},
+				{
+					"name": "KhoaHocDaDay",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a9901746-5225-4cd1-a36a-19e93ee8c352",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuan}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/User/5/GiangVien/4/KhoaHocDaDay",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"User",
+								"5",
+								"GiangVien",
+								"4",
+								"KhoaHocDaDay"
+							]
+						},
+						"description": "- Các khóa học mà giảng viên đã đăng tải\n- Yêu cầu:\n\t- Đủ tham số trên URL"
+					},
+					"response": []
+				},
+				{
+					"name": "LichSuBanKhoaHoc",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a9901746-5225-4cd1-a36a-19e93ee8c352",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuan}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/User/5/GiangVien/4/LichSuBanKhoaHoc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"User",
+								"5",
+								"GiangVien",
+								"4",
+								"LichSuBanKhoaHoc"
+							]
+						},
+						"description": "Trả về tất cả các hóa đơn mà User đã mua khóa học của mình\nCủa giảng viên nào, thì mới xem được của chính giảng viên đó (vd: gv_4 không thể xem lịch sử bán khóa học của gv_5).\nYêu cầu:\n\t- Đủ tham số URL"
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatGiangVien",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuan}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t \"TenGiangVien\": \"Nguyễn Văn A\",\n    \"TomTat\": \"Tôi là giảng viên Nguyễn Văn A\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/User/5/GiangVien/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"User",
+								"5",
+								"GiangVien",
+								"4"
+							]
+						},
+						"description": "Cập nhật thông tin mới cho giảng viên\nRequest gồm: TenGiangVien; TomTat"
+					},
+					"response": []
+				},
+				{
+					"name": "GiaHanThoiGianGV",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuan}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ThoiHanGV_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/User/8/GiangVien/4/GiaHanThoiHan",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"User",
+								"8",
+								"GiangVien",
+								"4",
+								"GiaHanThoiHan"
+							]
+						},
+						"description": "Gia hạn thêm thòi hạn cho giảng viên tùy theo gói thời hạn mà giảng viên đó chọn.\nYêu cầu:\n\t- Phải là GIẢNG VIÊN.\n\t- Thời hạn giảng viên còn, vì khi hết thì chế độ giảng viên sẽ bị khóa lại, trở lại user thường.\n\t- Request gồm:\n\t\t• ThoiHanGV_id\n========> Không cần thiết nữa, vì Giảng Viên bây giờ sẽ vô thời hạn"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ThoiHanGV",
+			"item": [
+				{
+					"name": "DanhSachThoiHanGV",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/ThoiHanGV",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"ThoiHanGV"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ThemThoiHanGV",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TenThoiHan\":\"1 tháng\",\n\t\"SoNgay\":\"30\",\n\t\"GiaTien\":\"50000\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/ThoiHanGV",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"ThoiHanGV"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatThoiHanGV",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TenThoiHan\":\"30 ngày\",\n\t\"SoNgay\":\"30\",\n\t\"GiaTien\":\"50000\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/ThoiHanGV/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"ThoiHanGV",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "XoaThoiHanGV",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/ThoiHanGV/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"ThoiHanGV",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ThanhToan",
+			"item": [
+				{
+					"name": "DanhSachHinhThucThanhToan",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/ThanhToan",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"ThanhToan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ThemHinhThucThanhToan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"HinhThucThanhToan\":\"Test123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/ThanhToan",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"ThanhToan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatThanhToan",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"HinhThucThanhToan\":\"Updated Test123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/ThanhToan/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"ThanhToan",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "XoaHinhThucThanhToan",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"HinhThucThanhToan\":\"Test123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/ThanhToan/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"ThanhToan",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CodeKhoaHoc",
+			"item": [
+				{
+					"name": "DanhSachCodeKhoaHoc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/CodeKhoaHoc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"CodeKhoaHoc"
+							]
+						},
+						"description": "Danh sách code khóa học.\nChỉ ADMIN có quyền thực hiện các api liên quan CodeKhoaHoc"
+					},
+					"response": []
+				},
+				{
+					"name": "ThemCodeKhoaHoc",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/CodeKhoaHoc/Import",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"CodeKhoaHoc",
+								"Import"
+							]
+						},
+						"description": "Thêm code khóa học vào theo dạng Excel, chỉ có giảng viên có quyền thực hiện"
+					},
+					"response": []
+				},
+				{
+					"name": "XoaCodeKhoaHoc",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/CodeKhoaHoc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"CodeKhoaHoc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HoaDon",
+			"item": [
+				{
+					"name": "AdminD.S.HoaDon",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/HoaDon/Admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"HoaDon",
+								"Admin"
+							]
+						},
+						"description": "Admin có toàn quyền xem tất cả các hóa đơn (lịch sử thanh toán)"
+					},
+					"response": []
+				},
+				{
+					"name": "DanhSachHoaDon (Lich su thanh toan)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/HoaDon",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"HoaDon"
+							]
+						},
+						"description": "- Đây là lịch sử thanh toán của User.\n- Chỉ có User đã mua khóa học mới xem đươc."
+					},
+					"response": []
+				},
+				{
+					"name": "ThemHoaDon",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{abc}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "KhoaHoc_id",
+									"value": "23",
+									"type": "text"
+								},
+								{
+									"key": "ThanhToan_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "TongTien",
+									"value": "320000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/HoaDon",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"HoaDon"
+							]
+						},
+						"description": "Khi người dùng thanh toán bên phía ngân hàng xong, chuyển hướng về trang thanh toán thành công, lưu thông tin vào hóa đơn, hóa đơn vẫn chưa được kích hoạt.\nYêu cầu: \n\t- Đăng nhập\n\t- Request gồm:\n\t\t• KhoaHoc_id\n\t\t• ThanhToan_id (Hình thức thanh toán)\n\t\t• TongTien (tổng tiền mà user thanh toán qua ngân hàng)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DanhGia",
+			"item": [
+				{
+					"name": "DanhGiaKhoaHoc",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/KhoaHoc/23/DanhGia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"KhoaHoc",
+								"23",
+								"DanhGia"
+							]
+						},
+						"description": "Trả về tất cả đánh giá của Khóa học cụ thể.\nYêu cầu: Điền đủ tham số trên URL (KhoaHoc/{KhoaHoc_id}/DanhGia)"
+					},
+					"response": []
+				},
+				{
+					"name": "ChiTietDanhGia",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/KhoaHoc/23/DanhGia/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"KhoaHoc",
+								"23",
+								"DanhGia",
+								"1"
+							]
+						},
+						"description": "Trả về tất cả đánh giá của Khóa học cụ thể.\nYêu cầu: Điền đủ tham số trên URL (KhoaHoc/{KhoaHoc_id}/DanhGia)"
+					},
+					"response": []
+				},
+				{
+					"name": "ThemDanhGia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{abc}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Diem",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "TieuDe",
+									"value": "Chất lượng tốt",
+									"type": "text"
+								},
+								{
+									"key": "NoiDung",
+									"value": "Khóa học đem lại nhiều kiến thức bổ ích",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/KhoaHoc/23/DanhGia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"KhoaHoc",
+								"23",
+								"DanhGia"
+							]
+						},
+						"description": "Cập nhật đánh giá mới khi người dùng sửa. Yêu cầu: - DanhGia của chính user thì mới cập nhật được (tránh trường hợp lấy api rồi dùng user khác để sửa DanhGia của user này). Nếu không đúng sẽ trả về lỗi. - Tham số trên URL (KhoaHoc/{KhoaHoc_id}/DanhGia/{DanhGia_id}) - Request gồm: TieuDe(nullable); NoiDung(nullable); Diem(integer) - Validate: 'TieuDe' => \"min:5|max:100\"; 'NoiDung' => \"min:5|max:255\"; 'Diem' => \"required|numeric|min:0|max:5\";"
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatDanhGia",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TieuDe\" : \"Tiêu đề mới\",\n\t\"NoiDung\" : \"Nội dung mới\",\n\t\"Diem\" : 5\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/KhoaHoc/23/DanhGia/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"KhoaHoc",
+								"23",
+								"DanhGia",
+								"1"
+							]
+						},
+						"description": "Cập nhật đánh giá mới khi người dùng sửa.\nYêu cầu:\n\t- DanhGia của chính user thì mới cập nhật được (tránh trường hợp lấy api rồi dùng user khác để sửa DanhGia của user này). Nếu không đúng sẽ trả về lỗi.\n\t- Tham số trên URL (KhoaHoc/{KhoaHoc_id}/DanhGia/{DanhGia_id})\n\t- Request gồm: TieuDe(nullable); NoiDung(nullable); Diem(integer)\n\t- Validate: \n\t\t'TieuDe' => \"min:5|max:100\";\n        'NoiDung' => \"min:5|max:255\";\n        'Diem' => \"required|numeric|min:0|max:5\";"
+					},
+					"response": []
+				},
+				{
+					"name": "XoaDanhGia",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuanledly}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/KhoaHoc/25/DanhGia/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"KhoaHoc",
+								"25",
+								"DanhGia",
+								"4"
+							]
+						},
+						"description": "Xóa đánh giá của user, chỉ có user đánh giá thì có thể xóa đi đánh giá đó. Nếu ko sẽ trả về lỗi\nYêu cầu: -Đủ tham số trên URL (KhoaHoc/{KhoaHoc_id}/DanhGia/{DanhGia_id})"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BaiGiang",
+			"item": [
+				{
+					"name": "DanhSachBaiGiang",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth 2}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"user_1@mymail.co\",\n\t\"password\" : \"123456\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/1/MangKhoaHoc/2/KhoaHoc/25/BaiGiang",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"2",
+								"KhoaHoc",
+								"25",
+								"BaiGiang"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ChiTietBaiGiang",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{ti}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/1/MangKhoaHoc/2/KhoaHoc/23/BaiGiang/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"2",
+								"KhoaHoc",
+								"23",
+								"BaiGiang",
+								"4"
+							]
+						},
+						"description": "- Show chi tiết của bài giảng, quan trọng là EmbededURL\n- Chỉ hiển thị khi người dùng đã mua khóa học.\n- Nếu người dùng đã mua khóa học, nhưng chưa nhập code khóa học (chưa kích hoạt khóa học), chi tiết bài giảng cũng sẽ không hiển thị.\n- Yêu cầu:\n\t- Đăng nhập\n\t- Đủ id trên URL"
+					},
+					"response": []
+				},
+				{
+					"name": "ThemBaiGiang",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6a4569e4-5be5-4882-b18b-7c79a8c6ae4e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{tuan}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"data\" : [\n\t\t{\n\t\t\t\"KhoaHoc_id\" : 23,\n\t\t\t\"TenBaiGiang\" : \"Đây là bài giảng 1 khóa học 23\",\n\t\t\t\"MoTa\" : \"Đây là mô tả bài giảng 1 khóa học 23\",\n\t\t\t\"EmbededURL\" : \"Đây là embededURL bài giảng 1\"\n\t\t},\n\t\t{\n\t\t\t\"KhoaHoc_id\" : 23,\n\t\t\t\"TenBaiGiang\" : \"Đây là bài giảng 2 khóa học 23\",\n\t\t\t\"MoTa\" : \"Đây là mô tả bài giảng 2 khóa học 23\",\n\t\t\t\"EmbededURL\" : \"Đây là embededURL bài giảng 2\"\n\t\t},\n\t\t{\n\t\t\t\"KhoaHoc_id\" : 23,\n\t\t\t\"TenBaiGiang\" : \"Đây là bài giảng 3 khóa học 23\",\n\t\t\t\"MoTa\" : \"Đây là mô tả bài giảng 3 khóa học 23\",\n\t\t\t\"EmbededURL\" : \"Đây là embededURL bài giảng 3\"\n\t\t}\n\t\t\t]\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/6/MangKhoaHoc/19/KhoaHoc/23/BaiGiang",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"6",
+								"MangKhoaHoc",
+								"19",
+								"KhoaHoc",
+								"23",
+								"BaiGiang"
+							]
+						},
+						"description": "Thêm bài giảng vào khóa học của giảng viên đang đăng nhập\nChỉ có giảng viên tạo khóa học thì mới thực hiện thêm bài giảng.\nRequest gồm: KhoaHoc_id (id hiện tại của khóa học mà gv thêm bài giảng); TenBaiGiang; Mota; EmbededURL (data này là unique, không trùng với bất kỳ url khác)\n===LƯU Ý==== request gửi đi, phải được gói lại trong một mảng object có tên 'data'"
+					},
+					"response": []
+				},
+				{
+					"name": "ThemBaiGiangExcel",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6a4569e4-5be5-4882-b18b-7c79a8c6ae4e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{duy}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/1/MangKhoaHoc/2/KhoaHoc/25/BaiGiang/Import",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"2",
+								"KhoaHoc",
+								"25",
+								"BaiGiang",
+								"Import"
+							]
+						},
+						"description": "Thêm bài giảng theo file Excel, giảng viên sẽ liệt kê các thông tin cần thiết theo vị trí chính xác để thêm nhiều bài giảng cùng một lúc."
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatBaiGiang",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6a4569e4-5be5-4882-b18b-7c79a8c6ae4e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuan}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TenBaiGiang\": \"Đây là bài giảng 1 update khóa học 23\",\n    \"MoTa\": \"Đây là mô tả bài giảng 1 khóa học 23\",\n    \"EmbededURL\": \"Đây là embededURL bài giảng 1\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/1/MangKhoaHoc/2/KhoaHoc/23/BaiGiang/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"2",
+								"KhoaHoc",
+								"23",
+								"BaiGiang",
+								"1"
+							]
+						},
+						"description": "Cập nhật Bài giảng mới\nRequest gồm: TenBaiGiang; MoTa; EmbededURL"
+					},
+					"response": []
+				},
+				{
+					"name": "XoaBaiGiang",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6a4569e4-5be5-4882-b18b-7c79a8c6ae4e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth 2}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TheLoaiKhoaHoc/6/MangKhoaHoc/19/KhoaHoc/23/BaiGiang/36",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"6",
+								"MangKhoaHoc",
+								"19",
+								"KhoaHoc",
+								"23",
+								"BaiGiang",
+								"36"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "DanhSachComment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/KhoaHoc/28/Comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"KhoaHoc",
+								"28",
+								"Comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ThemComment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{teo}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "NoiDung",
+									"value": "Cho hỏi sau khi học khóa học này sẽ có được những kiến thức nào? Cám ơn.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/KhoaHoc/28/Comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"KhoaHoc",
+								"28",
+								"Comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatComment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{teo}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"NoiDung\":\"Nội dung đã được thay đổi lần nữa\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/KhoaHoc/28/Comment/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"KhoaHoc",
+								"28",
+								"Comment",
+								"4"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "XoaComment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{teo}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/KhoaHoc/28/Comment/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"KhoaHoc",
+								"28",
+								"Comment",
+								"4"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CauHoi",
+			"item": [
+				{
+					"name": "DanhSachCauHoi",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "TieuDe",
+									"value": "Tiêu đề câu hỏi",
+									"type": "text"
+								},
+								{
+									"key": "NoiDung",
+									"value": "Nội dung câu hỏi",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/BaiGiang/1/CauHoi",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"BaiGiang",
+								"1",
+								"CauHoi"
+							]
+						},
+						"description": "Danh sách câu hỏi của một bài giảng cụ thể\nYêu cầu: Đủ tham số URL (BaiGiang/{BaiGiang_id}/CauHoi)"
+					},
+					"response": []
+				},
+				{
+					"name": "ThemCauHoi",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "TieuDe",
+									"value": "Lỗi Header",
+									"type": "text"
+								},
+								{
+									"key": "NoiDung",
+									"value": "Vì sao tôi lại bị lỗi này?",
+									"type": "text"
+								},
+								{
+									"key": "HinhAnh",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/BaiGiang/1/CauHoi",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"BaiGiang",
+								"1",
+								"CauHoi"
+							]
+						},
+						"description": "Thêm mới câu hỏi của User vào một bài giảng cụ thể, Chỉ có user nào đã mua khóa học thuộc bài giảng, thì mới được phép đặt câu hỏi. (giống MyClass)\n--Yêu cầu:\n\t- Đủ tham số URL (BaiGiang/{BaiGiang_id}/CauHoi)\n\t- Request gồm: TieuDe; NoiDung; HinhAnh(nullable)\n--Validate gồm:  'TieuDe' => \"required|min:5\",\n            'NoiDung' => \"required|min:5|max:500\",\n            'HinhAnh' => \"mimes:jpeg,png\","
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatCauHoi",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TieuDe\":\"Tiêu đề sau khi cập nhật\",\n\t\"NoiDung\":\"Nội dung sau khi cập nhật\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/BaiGiang/1/CauHoi/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"BaiGiang",
+								"1",
+								"CauHoi",
+								"1"
+							]
+						},
+						"description": "Cập nhật câu hỏi của User vào một bài giảng cụ thể, Chỉ có user là chủ nhân câu hỏi thì mới được phép chỉnh sửa.\n--Yêu cầu:\n\t- Đủ tham số URL (BaiGiang/{BaiGiang_id}/CauHoi)\n\t- Request gồm: TieuDe; NoiDung; HinhAnh(nullable)\n--Validate gồm:  \n\t\t'TieuDe' => \"required|min:5\",\n        'NoiDung' => \"required|min:5|max:500\",\n        'HinhAnh' => \"mimes:jpeg,png\","
+					},
+					"response": []
+				},
+				{
+					"name": "XoaCauHoi",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/BaiGiang/1/CauHoi/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"BaiGiang",
+								"1",
+								"CauHoi",
+								"3"
+							]
+						},
+						"description": "Xóa câu hỏi, admin hoặc user là chủ nhân câu hỏi có quyền xóa câu hỏi\nYêu cầu: Đủ tham số URL (BaiGiang/{BaiGiang_id}/CauHoi/{CauHoi_id})"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Register",
+			"item": [
+				{
+					"name": "RegisterUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "King",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "nguyenledly19972@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "HinhAnh",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/Register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"Register"
+							]
+						},
+						"description": "Đăng ký thành viên mới.\nThành viên sau khi đăng ký sẽ là người dùng thường\nYêu cầu: \n\t- Request gồm:\n\t\t• name\n\t\t• email\n\t\t• password\n\t\t• password_confirmation (nhập lại password)\n\t\t• HinhAnh (có hay không đều được, nếu không có hình ảnh sẽ tự động chọn hình ảnh mặc định như fb)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "DangNhapUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"user_1@mymail.com\",\n\t\"password\" : \"123456\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/Login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"Login"
+							]
+						},
+						"description": "Đăng nhập với email và password"
+					},
+					"response": []
+				},
+				{
+					"name": "ResetPassword",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"nguyenledly19972@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/Mail/ResetPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"Mail",
+								"ResetPassword"
+							]
+						},
+						"description": "Reset về một mật khẩu bất kỳ cho người dùng (Forgot your password)."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Logout",
+			"item": [
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/Logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"Logout"
+							]
+						},
+						"description": "Phải đăng nhập thì mới dùng được api này."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OAuth",
+			"item": [
+				{
+					"name": "Get Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"grant_type\" : \"password\",\n\t\"client_id\" : 2,\n\t\"client_secret\" : \"VuErJS924k0mzr6RLvnKhsSYN75VafOauommgmFD\",\n\t\"email\" : \"admin@gmail.com\",\n\t\"password\" : \"123456\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/oauth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"oauth",
+								"token"
+							]
+						},
+						"description": "Không cần phải quan tâm"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NganHang",
+			"item": [
+				{
+					"name": "DanhSachNganHang",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ThemNganHangExcel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/NganHang",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"NganHang"
+							]
+						},
+						"description": "Thêm tên ngân hàng bằng file excel\nYêu cầu:\n\t- Admin\n\t- Request gồm:\n\t\t• file (file excel chứa dữ liệu tên ngân hàng)"
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatNganHang",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "TenNganHang",
+									"value": "ACB - Á Châu Bank",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/NganHang/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"NganHang",
+								"1"
+							]
+						},
+						"description": "Cập nhật tên mới cho ngân hàng."
+					},
+					"response": []
+				},
+				{
+					"name": "XoaNganHang",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "TenNganHang",
+									"value": "ACB - Á Châu Bank",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/NganHang/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"NganHang",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TaiKhoanNganHang",
+			"item": [
+				{
+					"name": "DanhSachTaiKhoanNganHang",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuan}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TaiKhoanNganHang",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TaiKhoanNganHang"
+							]
+						},
+						"description": "Danh sách tài khoản ngân hàng chỉ có admin có quyền coi."
+					},
+					"response": []
+				},
+				{
+					"name": "ChiTietTaiKhoanNganHang",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuan}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TaiKhoanNganHang/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TaiKhoanNganHang",
+								"1"
+							]
+						},
+						"description": "Chỉ có admin hoặc user thuộc sở hữu tài khoản ngân hàng mới có quyền coi."
+					},
+					"response": []
+				},
+				{
+					"name": "ThemTaiKhoanNganHang",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuan}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "SoTaiKhoan",
+									"value": "123456789123",
+									"type": "text"
+								},
+								{
+									"key": "ChuTaiKhoan",
+									"value": "Nguyễn Hoàng Tuấn",
+									"type": "text"
+								},
+								{
+									"key": "NganHang_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "ChiNhanhNganHang",
+									"value": "PGD Quang Trung",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TaiKhoanNganHang",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TaiKhoanNganHang"
+							]
+						},
+						"description": "Thêm mới tài khoản ngân hàng cho user\nYêu cầu:\n\t- Đăng nhập\n\t- Request gồm:\n\t\t• SoTaiKhoan (gồm 12 tới 19 số)\n\t\t• ChuTaiKhoan (Tên chủ tài khoản)\n\t\t• NganHang_id (id của Ngân hàng)\n\t\t• ChiNhanhNganHang (Chi nhánh của Ngân hàng vừa chọn)"
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatTaiKhoanNganHang",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{tuan}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"SoTaiKhoan\" : \"123456789123\",\n\t\"ChuTaiKhoan\" : \"Nguyễn Hoàng Tuấn\",\n\t\"NganHang_id\" : 3,\n\t\"ChiNhanhNganHang\" : \"PGD Quang Trung\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TaiKhoanNganHang/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TaiKhoanNganHang",
+								"1"
+							]
+						},
+						"description": "User thuộc sở hữu có quyền thay đổi thông tin tài khoản.\nYêu cầu: \n- Đăng nhập - Request gồm: • SoTaiKhoan (gồm 12 tới 19 số) • ChuTaiKhoan (Tên chủ tài khoản) • NganHang_id (id của Ngân hàng) • ChiNhanhNganHang (Chi nhánh của Ngân hàng vừa chọn)"
+					},
+					"response": []
+				},
+				{
+					"name": "XoaTaiKhoanNganHang",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuan}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/TaiKhoanNganHang/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"TaiKhoanNganHang",
+								"2"
+							]
+						},
+						"description": "Admin hoặc User thuộc sở hữu tài khoản ngân hàng có quyền xóa.\nYêu cầu:\n\t- Đủ tham số URL"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NganLuong",
+			"item": [
+				{
+					"name": "ThanhToan",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuanledly}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/NganLuong/ThanhToan?KhoaHoc_id=25&HoTenBuyer=Ledly Tuấn&EmailBuyer=nguyenledly19971@gmail.com&DienThoaiBuyer=0931234789&DiaChiBuyer=123 CMT8, phường 5, quận Tân Bình, TpHCM",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"NganLuong",
+								"ThanhToan"
+							],
+							"query": [
+								{
+									"key": "KhoaHoc_id",
+									"value": "25"
+								},
+								{
+									"key": "HoTenBuyer",
+									"value": "Ledly Tuấn"
+								},
+								{
+									"key": "EmailBuyer",
+									"value": "nguyenledly19971@gmail.com"
+								},
+								{
+									"key": "DienThoaiBuyer",
+									"value": "0931234789"
+								},
+								{
+									"key": "DiaChiBuyer",
+									"value": "123 CMT8, phường 5, quận Tân Bình, TpHCM"
+								}
+							]
+						},
+						"description": "Khi người dùng xác định thanh toán, click vào button thanh toán, chuyển hướng sang trang khác để nhập thông tin cần thiết, cụ thể là thông tin của người mua (mô tả ở Request).\nYêu cầu:\n\t- Người dùng đăng nhập mới được quyền thanh toán\n\t- Request gồm:\n\t\t• KhoaHoc_id (id của khóa học mà người dùng chọn mua)\n\t\t• HoTenBuyer (Họ tên của người mua)\n\t\t• EmailBuyer (Email người mua)\n\t\t• DienThoaiBuyer (Số điện thoại người mua)\n\t\t• DiaChiBuyer (Địa chỉ người mua)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "HoaDonReport",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/Report/HoaDon",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"Report",
+								"HoaDon"
+							]
+						},
+						"description": "Báo cáo doanh thu dựa trên số hóa đơn"
+					},
+					"response": []
+				}
+			],
+			"description": "Báo cáo về Doanh Thu, Code Khóa Học "
+		}
+	]
+}
