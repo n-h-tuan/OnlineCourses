@@ -38,6 +38,7 @@ Route::post('gcs','UserController@testgcs');
 Route::post('cloudiary','UserController@testCloudiary');
 Route::get('test5','BaiGiangController@NguoiDungChuaMuaKhoaHoc');
 Route::get('test6/{KhoaHoc}','DanhGiaController@CapNhatDiemDanhGiaKhoaHoc');
+Route::get('testReport','CodeKhoaHocController@testReport');
 
 // ====================================================================================================
 

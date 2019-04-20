@@ -8,14 +8,15 @@ use App\Http\Resources\CodeKhoaHoc\CodeKHResource;
 use App\Http\Requests\CodeKHRequest;
 use Excel;
 use App\Imports\CodeKHImport;
+use App\KhoaHoc;
 
 class CodeKhoaHocController extends Controller
 {
     //Chỉ admin mới có quyền trong trang này
     public function __construct()
     {
-        $this->middleware('auth:api');
-        $this->middleware('isAdmin');
+        $this->middleware('auth:api')->except('testReport');
+        $this->middleware('isAdmin')->except('testReport');
     }
     /**
      * Display a listing of the resource.
@@ -125,5 +126,28 @@ class CodeKhoaHocController extends Controller
         return response()->json([
             'data' => "Import code khóa học thành công"
         ],200);
+    }
+
+    public function testReport()
+    {
+        $khoahoc = KhoaHoc::all();
+        $dem = count($khoahoc);
+        $collection = collect();
+        $i = 1;
+        foreach($khoahoc as $kh)
+        {
+            $soCode = $kh->code_KH->count();
+            $soCodeConLai = $kh->code_KH->where('TrangThai',1)->count();
+            $arr = [
+                'STT' => $i++,
+                'KhoaHoc' => $kh->id,
+                'SoCode' => $soCode,
+                'SoCodeConLai' => $soCodeConLai,
+            ];
+            $collection->add($arr);
+        }
+        return $collection;
+
+        // return $dem;
     }
 }

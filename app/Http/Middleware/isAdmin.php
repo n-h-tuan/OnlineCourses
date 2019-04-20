@@ -24,9 +24,7 @@ class isAdmin
             else
                 return $next($request);
         }
-        return response()->json([
-            'data' => "Bạn chưa đăng nhập",
-        ],401);
+        return response()->json("Bạn chưa đăng nhập");
 
         
     }

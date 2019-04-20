@@ -24,8 +24,6 @@ class isGiangVien
             else
                 throw new isAdminException;        
         }
-        return response()->json([
-            'data'=>"Bạn chưa đăng nhập",
-        ],401);
+        return response()->json("Bạn chưa đăng nhập");
     }
 }
