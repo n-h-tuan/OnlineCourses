@@ -6,15 +6,15 @@ use App\TheLoaiKhoaHoc;
 use Illuminate\Http\Request;
 use App\Http\Resources\TheLoaiKhoaHoc\TheLoaiKHResource;
 use App\Http\Requests\TheLoaiKHRequest;
+use App\Http\Resources\TheLoaiKhoaHoc\TheLoaiKHCollection;
 
 class TheLoaiKhoaHocController extends Controller
 {
     // Nhớ phân quyền
     public function __construct()
     {
-        $this->middleware('auth:api')->except('index');
-        $this->middleware('verified')->except('index');
-        $this->middleware('isAdmin')->except('index');
+        $this->middleware('auth:api')->except('index','show');
+        $this->middleware('isAdmin')->except('index','show');
     }
     /**
      * Display a listing of the resource.
@@ -23,7 +23,7 @@ class TheLoaiKhoaHocController extends Controller
      */
     public function index()
     {
-        return TheLoaiKHResource::collection(TheLoaiKhoaHoc::all());
+        return TheLoaiKHCollection::collection(TheLoaiKhoaHoc::all());
     }
 
     /**

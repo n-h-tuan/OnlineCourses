@@ -4,10 +4,10 @@ namespace App\Http\Resources\TheLoaiKhoaHoc;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TheLoaiKHResource extends JsonResource
+class TheLoaiKHCollection extends JsonResource
 {
     /**
-     * Transform the resource into an array.
+     * Transform the resource collection into an array.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array
@@ -17,7 +17,6 @@ class TheLoaiKHResource extends JsonResource
         return [
             'id' => $this->id,
             'TenTheLoai' =>$this->TenTheLoai,
-            'MangKH' => $this->mang_khoa_hoc,
-        ]; 
+        ];
     }
 }

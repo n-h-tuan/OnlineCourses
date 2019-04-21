@@ -3,6 +3,7 @@
 namespace App\Http\Resources\KhoaHoc;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\BaiGiang\BaiGiangCollection;
 
 class KhoaHocResource extends JsonResource
 {
@@ -26,6 +27,7 @@ class KhoaHocResource extends JsonResource
             'GiaTien' => $this->GiaTien,
             'DanhGia' =>$this->DanhGia,
             'SoLuotXem' => $this->SoLuotXem,
+            'BaiGiang'=> $this->bai_giang,
         ];
         // return parent::toArray($request);
     }

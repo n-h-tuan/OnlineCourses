@@ -69,7 +69,7 @@ Route::post('/NhapCode','HoaDonController@NhapCode');
 
 Route::group(['prefix' => 'NganLuong'], function () {
     Route::get('/ThanhToan','NganLuongController@ThanhToan');
-    Route::get('/KetQuaTraVe/KhoaHoc/{KhoaHoc}/User/{User}','NganLuongController@KetQuaTraVe');
+    Route::get('/KetQuaTraVe/KhoaHoc/{KhoaHoc}/User/{User}','NganLuongController@KetQuaTraVe')->name('return.url');
 });
 
 Route::group(['prefix' => 'KhoaHoc'], function () {

@@ -8,6 +8,7 @@ use App\Http\Resources\MangKhoaHoc\MangKHResource;
 use App\TheLoaiKhoaHoc;
 use App\Exceptions\MangKhoaHocKhongDung;
 use App\Http\Requests\MangKHRequest;
+use App\Http\Resources\MangKhoaHoc\MangKHCollection;
 
 class MangKhoaHocController extends Controller
 {
@@ -25,7 +26,7 @@ class MangKhoaHocController extends Controller
     public function index(TheLoaiKhoaHoc $TheLoaiKhoaHoc)
     {
         // $theLoaiKhoaHoc = TheLoaiKhoaHoc::find($TheLoaiKhoaHoc);
-        return MangKHResource::collection($TheLoaiKhoaHoc->mang_khoa_hoc);
+        return MangKHCollection::collection($TheLoaiKhoaHoc->mang_khoa_hoc);
     }
 
     /**

@@ -48,7 +48,7 @@ class NganLuongController extends Controller
         // $secure_pass = '4be98d7f90be6e3573cc90cf4ea05d9e';
         $merchant_site_code="47464";
         $secure_pass = '7d18f818e8f155837aceb862bd9d8fbd';
-        $return_url="http://localhost:8000/api/NganLuong/KetQuaTraVe/KhoaHoc/$KhoaHoc_id/User/$user_id";
+        $return_url=route('return.url',['KhoaHoc'=>$KhoaHoc_id,'User'=>$user_id]);
         $receiver_email = "dtonlinecourse@gmail.com";
         $transaction_info = "Thanh toán khóa học $KhoaHoc->TenKH";
         $order_code = $KhoaHoc->TenKH;
