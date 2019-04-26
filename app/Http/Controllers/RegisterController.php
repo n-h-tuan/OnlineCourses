@@ -34,13 +34,7 @@ class RegisterController extends Controller
         $user->save();
 
         // Tạo token cho user
-        $tokenResult = $user->createToken('Personal Access Token'); 
-        $api_token = $tokenResult->accessToken;
-        $token_type = 'Bearer';
-        $user->api_token = $api_token;
-        $user->token_type = $token_type;
-
-        $this->createAPI($request, $user);
+        $this->createAPI($user);
 
         //Gửi mail xác thực
         $this->Verify($user, $user->email);
@@ -57,7 +51,7 @@ class RegisterController extends Controller
         ],200);
     }
 
-    public function createAPI(RegisterRequest $request, User $user)
+    public function createAPI(User $user)
     {
         $tokenResult = $user->createToken('Personal Access Token'); 
         $api_token = $tokenResult->accessToken;

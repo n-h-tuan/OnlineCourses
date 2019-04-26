@@ -60,3 +60,9 @@ Route::get('test2', function(){
 });
 
 Route::get('send/email','MailController@Code');
+
+// Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider')->name('google.login');
+// Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('auth/{provider}', 'LoginController@redirectToProvider')->name('google.login');
+Route::get('auth/{provider}/callback', 'LoginController@handleProviderCallback');

@@ -21,7 +21,7 @@ class BaiGiangController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api')->except('index');
+        $this->middleware('auth:api');
         $this->middleware('isGiangVien')->except('index','show');
     }
     /**
@@ -31,7 +31,25 @@ class BaiGiangController extends Controller
      */
     public function index(KhoaHoc $KhoaHoc)
     {
-        return BaiGiangCollection::collection($KhoaHoc->bai_giang)->sortBy('KhoaHoc_id');
+        // return BaiGiangCollection::collection($KhoaHoc->bai_giang)->sortBy('KhoaHoc_id');
+
+        if(Auth::user()->level_id != 3)
+        {
+            if(!$this->KhoaHocThuocGiangVien($KhoaHoc))
+            {
+                return BaiGiangResource::collection($KhoaHoc->bai_giang)->sortBy('KhoaHoc_id');
+            }
+                
+        }
+        // Nếu người dùng mua khóa học
+        else
+        {
+            if(!$this->NguoiDungMuaKhoaHoc($KhoaHoc))
+            {
+                return BaiGiangResource::collection($KhoaHoc->bai_giang)->sortBy('KhoaHoc_id');
+            }
+        }
+        
     }
 
     /**

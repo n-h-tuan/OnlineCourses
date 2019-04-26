@@ -24,7 +24,14 @@ class BaiGiangImport implements ToModel
             // 'KhoaHoc_id' => 24,
             'TenBaiGiang' => $row[0],
             'MoTa' => $row[1],
-            'EmbededURL' => $row[2],
+            'EmbededURL' => $this->convertYoutube($row[2]),
         ]);
+    }
+    public function convertYoutube($string) {
+        return preg_replace(
+            "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+            "www.youtube.com/embed/$2",
+            $string
+        );
     }
 }

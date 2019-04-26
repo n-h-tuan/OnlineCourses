@@ -16,6 +16,7 @@ class KhoaHocCollection extends JsonResource
     {
         return [
             'id' => $this->id,
+            'MangKH_id' => $this->MangKH_id,
             'TenKH' => $this->TenKH,
             'GiaTien' => $this->GiaTien,
             'HinhAnh' =>$this->HinhAnh,

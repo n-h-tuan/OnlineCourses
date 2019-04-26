@@ -1,0 +1,3552 @@
+{
+	"info": {
+		"_postman_id": "73cbbeaa-d289-4900-9819-3656d7feac64",
+		"name": "Online_Courses khoahocdt.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TheLoaiKhoaHoc",
+			"item": [
+				{
+					"name": "DanhSachTheLoaiKhoaHoc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/TheLoaiKhoaHoc",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ChiTietTheLoaiKhoaHoc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/TheLoaiKhoaHoc/1",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ThemTheLoaiKhoaHoc",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"description": "Chỉ admin có quyền",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TenTheLoai\" : \"Thời trang\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/TheLoaiKhoaHoc",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc"
+							]
+						},
+						"description": "Chỉ Admin có thể thêm xóa sửa\n--Validate: 'TenTheLoai' => \"required|min:3|max:100\","
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatTheLoaiKhoaHoc",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TenTheLoai\" : \"Sắc đẹp\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/TheLoaiKhoaHoc/7",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "XoaTheLoaiKhoaHoc",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TenTheLoai\" : \"Sắc đẹp\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/TheLoaiKhoaHoc/7",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MangKhoaHoc",
+			"item": [
+				{
+					"name": "DanhSachMangKhoaHoc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https:///api/TheLoaiKhoaHoc/1/MangKhoaHoc",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ChiTietMangKhoaHoc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/TheLoaiKhoaHoc/1/MangKhoaHoc/2",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ThemMangKhoaHoc",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TheLoaiKH_id\" : \"1\",\n\t\"TenMangKH\" : \"Cơ sở dữ liệu\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/TheLoaiKhoaHoc/1/MangKhoaHoc",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc"
+							]
+						},
+						"description": "Chỉ Admin có quyền thêm xóa sửa.\r\nValidate: \r\n\t'TheLoaiKH_id' =>\"required\",\r\n    'TenMangKH' => \"required|min:10|max:100\""
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatMangKhoaHoc",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TheLoaiKH_id\" : \"1\",\n\t\"TenMangKH\" : \"Cơ sở dữ liệu\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/TheLoaiKhoaHoc/1/MangKhoaHoc/17",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "XoaMangKhoaHoc",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TheLoaiKH_id\" : \"1\",\n\t\"TenMangKH\" : \"Cơ sở dữ liệu\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/TheLoaiKhoaHoc/1/MangKhoaHoc/17",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"TheLoaiKhoaHoc",
+								"1",
+								"MangKhoaHoc",
+								"17"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "KhoaHoc",
+			"item": [
+				{
+					"name": "DanhSachKhoaHoc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/MangKhoaHoc/2/KhoaHoc",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"MangKhoaHoc",
+								"2",
+								"KhoaHoc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ChiTietKhoaHoc",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/MangKhoaHoc/2/KhoaHoc/23",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"MangKhoaHoc",
+								"2",
+								"KhoaHoc",
+								"23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ThemKhoaHoc",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{tuan}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "TenKH",
+									"value": "Thiết kế CPU",
+									"type": "text"
+								},
+								{
+									"key": "TomTat",
+									"value": "Khóa học về phần cứng máy tính",
+									"type": "text"
+								},
+								{
+									"key": "GiaTien",
+									"value": "320000",
+									"type": "text"
+								},
+								{
+									"key": "HinhAnh",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/MangKhoaHoc/2/KhoaHoc",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"MangKhoaHoc",
+								"2",
+								"KhoaHoc"
+							]
+						},
+						"description": "- Thêm mới khóa học.\n- Chỉ có ADMIN hoặc Giảng Viên mới thực hiện được chức năng này.\n- Yêu cầu:\n\t- Đăng nhập\n\t- Đầy đủ tham số URL\n\t- Request gồm: (tất cả bắt buộc đều phải có data, kể cả hình ảnh)\n\t\t- TenKH (Tên khóa học)\n\t\t- TomTat (Tóm tắt)\n\t\t- GiaTien\n\t\t- HinhAnh\n- Validate:\n\t- 'HinhAnh' => \"required|mimes:jpeg,bmp,jpg,png\",\n    - 'TenKH' => \"required|min:10|max:100\",\n    - 'TomTat' => \"required|min:10|max:200\",\n    - 'GiaTien' => \"required|numeric\","
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatKhoaHoc",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{tuan}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"MangKH_id\":2,\n\t\"GiangVien_id\":4,\n\t\"TenKH\":\"Bảo trì hiệu quả\",\n\t\"TomTat\":\"Khóa học về phần cứng máy tính \",\n\t\"GiaTien\":120000,\n\t\"GiamGia\":10\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/MangKhoaHoc/2/KhoaHoc/23",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"MangKhoaHoc",
+								"2",
+								"KhoaHoc",
+								"23"
+							]
+						},
+						"description": "- Cập nhật lại khóa học, chẳng hạn User muốn giảm giá khóa học thì vào đây xử lý (tính theo %).\n- Yêu cầu: \n\t- Chỉ có giảng viên của khóa học hiện tại mới có quyền thay đổi\n\t- Request gồm: \n\t\t- MangKH_id (id của MangKhoaHoc mới, nếu user muốn cho Khóa học này thuộc về mảng khóa học khác)\n\t\t- GiangVien_id (Không được thay đổi, chỉ hiện thị nhưng ở chế độ ReadOnly)\n\t\t- TenKH\n\t\t- TomTat\n\t\t- GiaTien\n\t\t- GiamGia.\n\t- Thường thì khi chỉnh sửa, sẽ hiển thị toàn bộ thông tin lên form, User muốn sửa phần nào thì sửa."
+					},
+					"response": []
+				},
+				{
+					"name": "XoaKhoaHoc",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/MangKhoaHoc/2/KhoaHoc/3",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"MangKhoaHoc",
+								"2",
+								"KhoaHoc",
+								"3"
+							]
+						},
+						"description": "Chỉ có giảng viên thuộc sở hữu khóa học, hoặc ADMIN thì mới có quyền xóa đi khóa học này"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BaiGiang",
+			"item": [
+				{
+					"name": "DanhSachBaiGiang",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"user_1@mymail.co\",\n\t\"password\" : \"123456\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/KhoaHoc/25/BaiGiang",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"KhoaHoc",
+								"25",
+								"BaiGiang"
+							]
+						},
+						"description": "- Trả về danh sách TÊN các BÀI GIANG của KHÓA HỌC cụ thể."
+					},
+					"response": []
+				},
+				{
+					"name": "ChiTietBaiGiang",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{ti}}",
+								"description": "Nếu đổi thành {{bin}} thì sẽ khác",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/KhoaHoc/23/BaiGiang/4",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"KhoaHoc",
+								"23",
+								"BaiGiang",
+								"4"
+							]
+						},
+						"description": "- Show chi tiết của bài giảng, quan trọng là EmbededURL\n- Chỉ hiển thị khi người dùng đã mua khóa học.\n- Nếu người dùng đã mua khóa học, nhưng chưa nhập code khóa học (chưa kích hoạt khóa học), chi tiết bài giảng cũng sẽ không hiển thị.\n- Yêu cầu:\n\t- Đăng nhập\n\t- Đủ id trên URL"
+					},
+					"response": []
+				},
+				{
+					"name": "ThemBaiGiang",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6a4569e4-5be5-4882-b18b-7c79a8c6ae4e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"description": "{{tuan}} là người tạo khóa học 23, nên thêm bài giảng được. {{duy}} ko phải người tạo khóa học 23 nên ko thể thêm bài giảng.\n",
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{tuan}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"data\" : [\n\t\t{\n\t\t\t\"TenBaiGiang\" : \"Hướng dẫn sửa chữa ổ cứng\",\n\t\t\t\"MoTa\" : \"Đây là mô tả bài giảng 1 khóa học 26\",\n\t\t\t\"EmbededURL\" : \"https://www.youtube.com/watch?v=m0vm_TGx8kg\"\n\t\t},\n\t\t{\n\t\t\t\"TenBaiGiang\" : \"Khắc phục ổ cứng bị lỗi không nhận tín hiệu\",\n\t\t\t\"MoTa\" : \"Đây là mô tả bài giảng 2 khóa học 26\",\n\t\t\t\"EmbededURL\" : \"https://www.youtube.com/watch?v=iU5dSi-XhFk\"\n\t\t},\n\t\t{\n\t\t\t\"TenBaiGiang\" : \"HDD và SSD\",\n\t\t\t\"MoTa\" : \"Đây là mô tả bài giảng 3 khóa học 26\",\n\t\t\t\"EmbededURL\" : \"https://www.youtube.com/watch?v=NUfB9xb7P5I\"\n\t\t}\n\t\t\t]\n}\n"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/KhoaHoc/26/BaiGiang",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"KhoaHoc",
+								"26",
+								"BaiGiang"
+							]
+						},
+						"description": "- Thêm bài giảng vào khóa học của GIẢNG VIÊN đang đăng nhập.\n- Chỉ có GIẢNG VIÊN TẠO KHÓA HỌC này thì mới thực hiện thêm bài giảng.\n- Request gồm: \n\t- TenBaiGiang\n\t- MoTa\n\t- EmbededURL (data này là unique, không trùng với bất kỳ url khác)\n- Validate:\n\t-  'TenBaiGiang.*' => \"required|min:10|max:255\",\n\t-  'MoTa.*' => \"required|min:10|max:500\",\n\t-  'EmbededURL.*' => \"required|unique\",\n- LƯU Ý: request gửi đi, phải được gói lại trong một mảng object có tên 'data' (mở tab body để hiểu rõ hơn)"
+					},
+					"response": []
+				},
+				{
+					"name": "ThemBaiGiangExcel",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6a4569e4-5be5-4882-b18b-7c79a8c6ae4e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{duy}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/KhoaHoc/25/BaiGiang/Import",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"KhoaHoc",
+								"25",
+								"BaiGiang",
+								"Import"
+							]
+						},
+						"description": "- Thêm bài giảng theo file Excel.\n- Giảng viên sẽ liệt kê các thông tin cần thiết theo vị trí chính xác để thêm nhiều bài giảng cùng một lúc.\n- Request:\n\t- file (file excel chứa nội dung bài giảng)\n- Cấu trúc:\n\t- Cột A: Tên bài giảng\n\t- Cột B: Mô tả\n\t- Cột C: Embeded URL\n- Ứng với mỗi bài giảng là một dòng."
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatBaiGiang",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6a4569e4-5be5-4882-b18b-7c79a8c6ae4e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{tuan}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TenBaiGiang\": \"Đây là bài giảng 1 update khóa học 23\",\n    \"MoTa\": \"Đây là mô tả bài giảng 1 khóa học 23\",\n    \"EmbededURL\": \"Đây là embededURL bài giảng 1\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/KhoaHoc/23/BaiGiang/1",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"KhoaHoc",
+								"23",
+								"BaiGiang",
+								"1"
+							]
+						},
+						"description": "- Cập nhật Bài giảng mới (Bài giảng có id là BaiGiang_id)\n- Chỉ có Giảng Viên thuộc sở hữu KHÓA HỌC mới được phép sửa.\n- Request gồm: \n\t- TenBaiGiang\n\t- MoTa\n\t- EmbededURL (unique)\n- Validate:\n\t- 'TenBaiGiang.*' => \"required|min:10|max:255\",\n\t- 'MoTa.*' => \"required|min:10|max:500\",\n\t- 'EmbededURL.*' => \"required|unique\","
+					},
+					"response": []
+				},
+				{
+					"name": "XoaBaiGiang",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6a4569e4-5be5-4882-b18b-7c79a8c6ae4e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{tuan}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/KhoaHoc/23/BaiGiang/2",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"KhoaHoc",
+								"23",
+								"BaiGiang",
+								"2"
+							]
+						},
+						"description": "- Xóa bài giảng (theo BaiGiang_id)\n- Chỉ có Giảng Viên thuộc sở hữu khóa học mới được phép xóa bài giảng"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NhapCode",
+			"item": [
+				{
+					"name": "NhapCode",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{abc}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "bSdnansd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/NhapCode",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"NhapCode"
+							]
+						},
+						"description": "- Người dùng nhập code sau khi đã thanh toán, code sẽ được gửi về email của người dùng.\n- Yêu cầu: \n\t- Đăng nhập.\n\t- Người dùng phải mua khóa học trước thì code mới có hiệu lực (Tránh trường hợp người dùng mò điên ra code).\n\t- Request gồm:\n\t\t- code (gửi đi mã code mà người dùng nhập)."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Level",
+			"item": [
+				{
+					"name": "DanhSachLevel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/Level",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"Level"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ThemLevel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TenLevel\":\"Guest\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/Level",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"Level"
+							]
+						},
+						"description": "- Thêm Level mới, chỉ có ADMIN mới có quyền thực hiện\n- Yêu cầu: \n\t- Request gồm: TenLevel\n- Validate: \n\t- 'TenLevel' => \"required|unique:level\","
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatLevel",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TenLevel\":\"Guest\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/Level/4",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"Level",
+								"4"
+							]
+						},
+						"description": "- Thêm Level mới, chỉ có ADMIN mới có quyền thực hiện\n- Yêu cầu: \n\t- Request gồm: TenLevel\n- Validate: \n\t- 'TenLevel' => \"required|unique:level\","
+					},
+					"response": []
+				},
+				{
+					"name": "XoaLevel",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/Level/4",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"Level",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Ngoài danh sách Level, thì các api còn lại đều phải là Admin thì mới thực hiện được",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "cda869ee-ed9a-4c64-a71e-6bd25e98f58d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e6dd4249-a655-43cf-a615-5ccb8febcf89",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "DanhSachUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/User",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ChiTietUser",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{tuan}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/User/8",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"User",
+								"8"
+							]
+						},
+						"description": "- Chi tiết một user nào đó. \n- Chỉ có thể xem thông tin của chính User đó, ko được xem của user khác. (vd: ở đây user Tuấn ứng với id là 8, nếu xem id khác thì ko được quyền).\n- Yêu cầu:\n\t- Đủ tham số URL (User/{User_id})."
+					},
+					"response": []
+				},
+				{
+					"name": "KhoaHocCuaToi",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{bin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/User/KhoaHocCuaToi",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"User",
+								"KhoaHocCuaToi"
+							]
+						},
+						"description": "Trả về khóa học mà User hiện hành đã mua, Yêu cầu: đăng nhập"
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{tuan}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Nguyễn Hoàng Tuấn\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/User/8",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"User",
+								"8"
+							]
+						},
+						"description": "- User muốn thay đổi thông tin thì vào đây.\n- Yêu cầu:\n\t- Đăng nhập\n\t- Request gồm: \n\t\t- name \n\t\t- HinhAnh (Nếu user muốn đổi ảnh)\n\t\t- Trên form, nếu người dùng tick vào checkbox đổi mật khẩu, thì sẽ gửi: \n\t\t\t- PasswordHienTai\n\t\t\t- PasswordMoi\n\t\t\t- PasswordMoiNhapLai"
+					},
+					"response": []
+				},
+				{
+					"name": "XoaUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"description": "Chỉ có admin mới có quyền xóa User",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/User/15",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"User",
+								"15"
+							]
+						},
+						"description": "Chỉ có ADMIN có quyền xóa đi user."
+					},
+					"response": []
+				},
+				{
+					"name": "TroThanhGiangVien",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{abc}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TomTat\":\"Tôi là giảng viên ABC\",\n\t\"TenGiangVien\":\"Nguyễn ABC\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/User/TroThanhGiangVien",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"User",
+								"TroThanhGiangVien"
+							]
+						},
+						"description": "- Đăng ký trở thành giảng viên\n- Yêu cầu: \n\t- Đăng nhập\n\t- Request gồm: TomTat (Tóm tắt bản thân giảng viên).\n\t- TenGiangVien (Họ Tên của Giảng viên).\n- Validate:\n\t- 'TenGiangVien' => \"required|min:5|max:100\",\n    - 'TomTat' => \"required|min:10\","
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GiangVien",
+			"item": [
+				{
+					"name": "DanhSachGiangVien",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/GiangVien",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"GiangVien"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ChiTietGiangVien",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a9901746-5225-4cd1-a36a-19e93ee8c352",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/GiangVien/4",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"GiangVien",
+								"4"
+							]
+						},
+						"description": "Trả về thông tin chi tiết của Giảng viên"
+					},
+					"response": []
+				},
+				{
+					"name": "ThongTinGiangVienSauKhiLogin",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a9901746-5225-4cd1-a36a-19e93ee8c352",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/GiangVien/Current",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"GiangVien",
+								"Current"
+							]
+						},
+						"description": "- Sau khi đăng nhập, nếu người dùng là có level_id = 2 (là GiangVien) thì dùng api này để lấy thông tin về giảng viên đó.\n- Sử dụng Authorization để xác thực user vừa đăng nhập."
+					},
+					"response": []
+				},
+				{
+					"name": "KhoaHocDaDay",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a9901746-5225-4cd1-a36a-19e93ee8c352",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/GiangVien/5/KhoaHocDaDay",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"GiangVien",
+								"5",
+								"KhoaHocDaDay"
+							]
+						},
+						"description": "- Các khóa học mà giảng viên đã đăng tải, ai cũng có thể xem coi giảng viên này đã dạy những gì\n- Yêu cầu:\n\t- Đủ tham số trên URL"
+					},
+					"response": []
+				},
+				{
+					"name": "LichSuBanKhoaHoc",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a9901746-5225-4cd1-a36a-19e93ee8c352",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{duy}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/GiangVien/5/LichSuBanKhoaHoc",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"GiangVien",
+								"5",
+								"LichSuBanKhoaHoc"
+							]
+						},
+						"description": "- Trả về tất cả các hóa đơn mà User đã mua khóa học của mình\n- Của giảng viên nào, thì mới xem được của chính giảng viên đó (vd: gv_4 không thể xem lịch sử bán khóa học của gv_5).\n- Yêu cầu:\n\t- Đủ tham số URL"
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatGiangVien",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{tuan}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TenGiangVien\": \"Nguyễn Văn A\",\n    \"TomTat\": \"Tôi là giảng viên Nguyễn Văn A\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/GiangVien/4",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"GiangVien",
+								"4"
+							]
+						},
+						"description": "- Cập nhật thông tin mới cho giảng viên\n- Request gồm: \n\t- TenGiangVien\n\t- TomTat\n- Validate: \n\t- 'TenGiangVien' => \"required|min:5|max:100\",\n    - 'TomTat' => \"required|min:10\","
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ThanhToan",
+			"item": [
+				{
+					"name": "DanhSachHinhThucThanhToan",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/ThanhToan",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"ThanhToan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ThemHinhThucThanhToan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"HinhThucThanhToan\":\"Test123\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/ThanhToan",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"ThanhToan"
+							]
+						},
+						"description": "- Thêm mới một hình thức thanh toán khác.\n- Request gồm: \n\t- HinhThucThanhToan(unique)."
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatThanhToan",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"HinhThucThanhToan\":\"Updated Test123\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/ThanhToan/4",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"ThanhToan",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "XoaHinhThucThanhToan",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"HinhThucThanhToan\":\"Test123\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/ThanhToan/3",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"ThanhToan",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CodeKhoaHoc",
+			"item": [
+				{
+					"name": "DanhSachCodeKhoaHoc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/CodeKhoaHoc",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"CodeKhoaHoc"
+							]
+						},
+						"description": "- Danh sách code khóa học.\n- Chỉ ADMIN có quyền thực hiện các api liên quan CodeKhoaHoc"
+					},
+					"response": []
+				},
+				{
+					"name": "ThemCodeKhoaHoc",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/CodeKhoaHoc/Import",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"CodeKhoaHoc",
+								"Import"
+							]
+						},
+						"description": "- Thêm code khóa học vào theo dạng Excel.\n- Chỉ có ADMIN có quyền thực hiện."
+					},
+					"response": []
+				},
+				{
+					"name": "XoaCodeKhoaHoc",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/CodeKhoaHoc",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"CodeKhoaHoc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HoaDon",
+			"item": [
+				{
+					"name": "AdminD.S.HoaDon",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "khoahocdt.com/api/HoaDon/Admin",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"HoaDon",
+								"Admin"
+							]
+						},
+						"description": "- Admin có toàn quyền xem tất cả các hóa đơn của tất cả User."
+					},
+					"response": []
+				},
+				{
+					"name": "DanhSachHoaDon (Lich su thanh toan)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuan}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/HoaDon",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"HoaDon"
+							]
+						},
+						"description": "- Đây là lịch sử thanh toán của User.\n- Chỉ có User đã mua khóa học mới xem đươc."
+					},
+					"response": []
+				},
+				{
+					"name": "ThemHoaDon (Không cần thiết, chỉ để backup)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{abc}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "KhoaHoc_id",
+									"value": "23",
+									"type": "text"
+								},
+								{
+									"key": "ThanhToan_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "TongTien",
+									"value": "320000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/HoaDon",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"HoaDon"
+							]
+						},
+						"description": "- Khi người dùng thanh toán bên phía ngân hàng xong, chuyển hướng về trang thanh toán thành công, lưu thông tin vào hóa đơn, hóa đơn vẫn chưa được kích hoạt.\n- Hóa đơn chỉ được kích hoạt khi người dùng nhập thành công Mã code đã được gửi về mail người dùng.\n- Yêu cầu: \n\t- Đăng nhập\n\t- Request gồm:\n\t\t- KhoaHoc_id\n\t\t- ThanhToan_id (Hình thức thanh toán)\n\t\t- TongTien (tổng tiền mà user thanh toán qua ngân hàng)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DanhGia",
+			"item": [
+				{
+					"name": "DanhGiaKhoaHoc",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/KhoaHoc/25/DanhGia",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"KhoaHoc",
+								"25",
+								"DanhGia"
+							]
+						},
+						"description": "- Trả về tất cả đánh giá của Khóa học cụ thể.\n- Yêu cầu: Điền đủ tham số trên URL (KhoaHoc/{KhoaHoc_id}/DanhGia)"
+					},
+					"response": []
+				},
+				{
+					"name": "ChiTietDanhGia",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/KhoaHoc/23/DanhGia/1",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"KhoaHoc",
+								"23",
+								"DanhGia",
+								"1"
+							]
+						},
+						"description": "- Trả về 1 đánh giá cụ thể.\n- Yêu cầu: Điền đủ tham số trên URL (KhoaHoc/{KhoaHoc_id}/DanhGia)"
+					},
+					"response": []
+				},
+				{
+					"name": "ThemDanhGia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Diem",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "TieuDe",
+									"value": "Chất lượng tốt",
+									"type": "text"
+								},
+								{
+									"key": "NoiDung",
+									"value": "Khóa học đem lại nhiều kiến thức bổ ích",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/KhoaHoc/23/DanhGia",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"KhoaHoc",
+								"23",
+								"DanhGia"
+							]
+						},
+						"description": "- Thêm đánh giá mới khi người dùng đánh giá.\n- Yêu cầu: \n\t- User đã kích hoạt khóa học thì mới đánh giá được. Nếu không đúng sẽ trả về lỗi. \n\t- Tham số trên URL (KhoaHoc/{KhoaHoc_id}/DanhGia) \n\t- Request gồm: \n\t\t- TieuDe(nullable) \n\t\t- NoiDung(nullable) \n\t\t- Diem(integer) \n\t- Validate: \n\t\t- 'TieuDe' => \"min:5|max:100\",\n\t\t- 'NoiDung' => \"min:5|max:255\",\n\t\t- 'Diem' => \"required|numeric|min:0|max:5\";"
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatDanhGia",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TieuDe\" : \"Tiêu đề mới\",\n\t\"NoiDung\" : \"Nội dung mới\",\n\t\"Diem\" : 5\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/KhoaHoc/23/DanhGia/1",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"KhoaHoc",
+								"23",
+								"DanhGia",
+								"1"
+							]
+						},
+						"description": "- Cập nhật đánh giá mới khi người dùng sửa.\n- Yêu cầu:\n\t- DanhGia của chính user thì mới cập nhật được (tránh trường hợp lấy api rồi dùng user khác để sửa DanhGia của user này). Nếu không đúng sẽ trả về lỗi.\n\t- Tham số trên URL (KhoaHoc/{KhoaHoc_id}/DanhGia/{DanhGia_id})\n\t- Request gồm: \n\t\t- TieuDe(nullable)\n\t\t- NoiDung(nullable)\n\t\t- Diem(integer)\n\t- Validate: \n\t\t- 'TieuDe' => \"min:5|max:100\";\n        - 'NoiDung' => \"min:5|max:255\";\n        - 'Diem' => \"required|numeric|min:0|max:5\";"
+					},
+					"response": []
+				},
+				{
+					"name": "XoaDanhGia",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuanledly}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/KhoaHoc/25/DanhGia/4",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"KhoaHoc",
+								"25",
+								"DanhGia",
+								"4"
+							]
+						},
+						"description": "- Xóa đánh giá của user (Xóa theo DanhGia_id)\n- Chỉ có user đánh giá thì có thể xóa đi đánh giá đó. Nếu ko sẽ trả về lỗi\n- Yêu cầu: \n\t- Đủ tham số trên URL (KhoaHoc/{KhoaHoc_id}/DanhGia/{DanhGia_id})"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "DanhSachComment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/KhoaHoc/25/Comment",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"KhoaHoc",
+								"25",
+								"Comment"
+							]
+						},
+						"description": "- Danh sách các comment thuộc Khóa Học hiện hành."
+					},
+					"response": []
+				},
+				{
+					"name": "ThemComment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{bin}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "NoiDung",
+									"value": "Cho hỏi sau khi học khóa học này sẽ có được những kiến thức nào? Cám ơn.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/KhoaHoc/25/Comment",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"KhoaHoc",
+								"25",
+								"Comment"
+							]
+						},
+						"description": "- Thêm mới một comment cho Khóa Học đang hiện hành.\n- Bất cứ ai đăng nhập cũng có thể comment.\n- Request gồm:\n\t- NoiDung (\"required|max:255\",)"
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatComment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"NoiDung\":\"Nội dung đã được thay đổi lần nữa\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/KhoaHoc/25/Comment/1",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"KhoaHoc",
+								"25",
+								"Comment",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "- Cập nhật comment mới\n- Chỉ có user là chủ sở hữu comment thì có quyền thay đổi\n- Request gồm:\n\t- NoiDung (\"required|max:255\")"
+					},
+					"response": []
+				},
+				{
+					"name": "XoaComment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{bin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/KhoaHoc/25/Comment/1",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"KhoaHoc",
+								"25",
+								"Comment",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "- Xóa comment\n- Chỉ có user là chủ sở hữu comment thì có quyền thay đổi"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CauHoi",
+			"item": [
+				{
+					"name": "DanhSachCauHoi",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/BaiGiang/1/CauHoi",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"BaiGiang",
+								"1",
+								"CauHoi"
+							]
+						},
+						"description": "- Danh sách câu hỏi của một bài giảng cụ thể\n- Yêu cầu: Đủ tham số URL (BaiGiang/{BaiGiang_id}/CauHoi)"
+					},
+					"response": []
+				},
+				{
+					"name": "ThemCauHoi",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "TieuDe",
+									"value": "Lỗi Header",
+									"type": "text"
+								},
+								{
+									"key": "NoiDung",
+									"value": "Đã làm theo hướng dẫn nhưng vẫn lỗi?",
+									"type": "text"
+								},
+								{
+									"key": "HinhAnh",
+									"type": "file",
+									"src": "",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/BaiGiang/1/CauHoi",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"BaiGiang",
+								"1",
+								"CauHoi"
+							]
+						},
+						"description": "- Thêm mới câu hỏi của User vào một bài giảng cụ thể.\n- Chỉ có user nào đã mua khóa học thuộc bài giảng, thì mới được phép đặt câu hỏi. (giống MyClass)\n- Yêu cầu:\n\t- Đủ tham số URL (BaiGiang/{BaiGiang_id}/CauHoi)\n\t- Request gồm: TieuDe; NoiDung; HinhAnh(nullable)\n- Validate gồm:  \n\t- 'TieuDe' => \"required|min:5\",\n\t- 'NoiDung' => \"required|min:5|max:500\",\n\t- 'HinhAnh' => \"mimes:jpeg,png\","
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatCauHoi",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{bin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TieuDe\":\"Tiêu đề sau khi cập nhật\",\n\t\"NoiDung\":\"Nội dung sau khi cập nhật\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/BaiGiang/1/CauHoi/1",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"BaiGiang",
+								"1",
+								"CauHoi",
+								"1"
+							]
+						},
+						"description": "- Cập nhật câu hỏi của User vào một bài giảng cụ thể.\n- Chỉ có user là chủ nhân câu hỏi thì mới được phép chỉnh sửa.\n- Yêu cầu:\n\t- Đủ tham số URL (BaiGiang/{BaiGiang_id}/CauHoi)\n\t- Request gồm: TieuDe; NoiDung; HinhAnh(nullable)\n- Validate gồm:  \n\t- 'TieuDe' => \"required|min:5\",\n    - 'NoiDung' => \"required|min:5|max:500\",\n    - 'HinhAnh' => \"mimes:jpeg,png\","
+					},
+					"response": []
+				},
+				{
+					"name": "XoaCauHoi",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/BaiGiang/1/CauHoi/1",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"BaiGiang",
+								"1",
+								"CauHoi",
+								"1"
+							]
+						},
+						"description": "Xóa câu hỏi, admin hoặc user là chủ nhân câu hỏi có quyền xóa câu hỏi\nYêu cầu: Đủ tham số URL (BaiGiang/{BaiGiang_id}/CauHoi/{CauHoi_id})"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Register",
+			"item": [
+				{
+					"name": "RegisterUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "King",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "nguyenledly19972@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "HinhAnh",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/Register",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"Register"
+							]
+						},
+						"description": "- Đăng ký thành viên mới.\n- Thành viên sau khi đăng ký sẽ là người dùng thường\n- Yêu cầu: \n\t- Request gồm:\n\t\t- name\n\t\t- email\n\t\t- password\n\t\t- password_confirmation (nhập lại password)\n\t\t- HinhAnh (có hay không đều được, nếu không có hình ảnh sẽ tự động chọn hình ảnh mặc định như fb)\n- Validate:\n\t- 'name' => \"required|min:3|max:50\",\n\t- 'email' => \"required|unique:users|email\",\n\t- 'password' => \"required|confirmed|min:6\", (confirmed là đảm bảo password và password_confirmation giống nhau)\n- Kết quả trả về:\n\t- Trả về đối tượng 'data' gồm:\n\t\t- 'message' : 'Verified Email Was Sent'\n\t\t- 'resend_link': '<URL resend email, khi chạy link này, sẽ gửi lại 1 email vào hộp thư của user>'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "DangNhapUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"admin@gmail.com\",\n\t\"password\" : \"123456\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/Login",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"Login"
+							]
+						},
+						"description": "Đăng nhập với email và password"
+					},
+					"response": []
+				},
+				{
+					"name": "ResetPassword",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"user_01@mail.com\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/Mail/ResetPassword",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"Mail",
+								"ResetPassword"
+							]
+						},
+						"description": "- Reset về một mật khẩu bất kỳ cho người dùng (Forgot your password).\n- Request gồm:\n\t- email"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Logout",
+			"item": [
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/Logout",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"Logout"
+							]
+						},
+						"description": "Phải đăng nhập thì mới dùng được api này."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NganHang",
+			"item": [
+				{
+					"name": "DanhSachNganHang",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/NganHang",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"NganHang"
+							]
+						},
+						"description": "- Trả về Danh sách các ngân hàng hỗ trợ chuyển khoản"
+					},
+					"response": []
+				},
+				{
+					"name": "ThemNganHangExcel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/NganHang",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"NganHang"
+							]
+						},
+						"description": "- Thêm tên ngân hàng bằng file excel\n- Chỉ ADMIN được quyền\n- Yêu cầu:\n\t- Request gồm: file (file excel chứa dữ liệu tên ngân hàng)\n- Cấu trúc:\n\t- Cột A: Tên Ngân Hàng"
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatNganHang",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "TenNganHang",
+									"value": "ACB - Á Châu Bank",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/NganHang/1",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"NganHang",
+								"1"
+							]
+						},
+						"description": "- Cập nhật tên mới cho ngân hàng.\n- Reqeust gồm: TenNganHang"
+					},
+					"response": []
+				},
+				{
+					"name": "XoaNganHang",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "TenNganHang",
+									"value": "ACB - Á Châu Bank",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/NganHang/1",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"NganHang",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TaiKhoanNganHang",
+			"item": [
+				{
+					"name": "DanhSachTaiKhoanNganHang",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/TaiKhoanNganHang",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"TaiKhoanNganHang"
+							]
+						},
+						"description": "- Danh sách tài khoản ngân hàng.\n- Chỉ có ADMIN có quyền coi toàn bộ các tài khoản."
+					},
+					"response": []
+				},
+				{
+					"name": "TaiKhoanCuaUserHienTai",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{tuan}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/TaiKhoanNganHang/Current",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"TaiKhoanNganHang",
+								"Current"
+							]
+						},
+						"description": "- User nào đăng nhập thì sẽ lấy được tất cả tài khoản ngân hàng của user đó.\n- Sử dụng Authorization"
+					},
+					"response": []
+				},
+				{
+					"name": "ChiTietTaiKhoanNganHang",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuan}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/TaiKhoanNganHang/1",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"TaiKhoanNganHang",
+								"1"
+							]
+						},
+						"description": "Chỉ có admin hoặc user thuộc sở hữu tài khoản ngân hàng mới có quyền coi."
+					},
+					"response": []
+				},
+				{
+					"name": "ThemTaiKhoanNganHang",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{tuan}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "SoTaiKhoan",
+									"value": "159753158412",
+									"type": "text"
+								},
+								{
+									"key": "ChuTaiKhoan",
+									"value": "Nguyễn Hoàng Tuấn",
+									"type": "text"
+								},
+								{
+									"key": "NganHang_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "ChiNhanhNganHang",
+									"value": "PGD Nam Sài Gòn",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/TaiKhoanNganHang",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"TaiKhoanNganHang"
+							]
+						},
+						"description": "- Thêm mới tài khoản ngân hàng cho user\n- Yêu cầu:\n\t- Đăng nhập\n\t- Request gồm:\n\t\t- SoTaiKhoan (gồm 12 tới 19 số)\n\t\t- ChuTaiKhoan (Tên chủ tài khoản)\n\t\t- NganHang_id (id của Ngân hàng)\n\t\t- ChiNhanhNganHang (Chi nhánh của Ngân hàng vừa chọn)\n- Validate:\n\t- 'SoTaiKhoan'=>'required|unique|string|min:12|max:19',\n\t- 'ChuTaiKhoan' => 'required|min:5',\n\t- 'NganHang_id' =>'required',\n\t- 'ChiNhanhNganHang' => 'required|min:5',"
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatTaiKhoanNganHang",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{tuan}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"SoTaiKhoan\" : \"123456789123\",\n\t\"ChuTaiKhoan\" : \"Nguyễn Hoàng Tuấn\",\n\t\"NganHang_id\" : 3,\n\t\"ChiNhanhNganHang\" : \"PGD Quang Trung\"\n}"
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/TaiKhoanNganHang/1",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"TaiKhoanNganHang",
+								"1"
+							]
+						},
+						"description": "- User thuộc sở hữu có quyền thay đổi thông tin tài khoản.\n- Yêu cầu: \n\t- Đăng nhập \n\t- Request gồm:\n\t\t- SoTaiKhoan (gồm 12 tới 19 số) \n\t\t- ChuTaiKhoan (Tên chủ tài khoản) \n\t\t- NganHang_id (id của Ngân hàng) \n\t\t- ChiNhanhNganHang (Chi nhánh của Ngân hàng vừa chọn)"
+					},
+					"response": []
+				},
+				{
+					"name": "XoaTaiKhoanNganHang",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuan}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/TaiKhoanNganHang/2",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"TaiKhoanNganHang",
+								"2"
+							]
+						},
+						"description": "- Admin hoặc User thuộc sở hữu tài khoản ngân hàng có quyền xóa.\n- Yêu cầu:\n\t- Đủ tham số URL"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NganLuong",
+			"item": [
+				{
+					"name": "ThanhToan",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tuanledly}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/NganLuong/ThanhToan?KhoaHoc_id=25&HoTenBuyer=Bin Ledly King&EmailBuyer=nguyenledly19971@gmail.com&DienThoaiBuyer=0931234789&DiaChiBuyer=123 CMT8, phường 5, quận Tân Bình, TpHCM",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"NganLuong",
+								"ThanhToan"
+							],
+							"query": [
+								{
+									"key": "KhoaHoc_id",
+									"value": "25"
+								},
+								{
+									"key": "HoTenBuyer",
+									"value": "Bin Ledly King"
+								},
+								{
+									"key": "EmailBuyer",
+									"value": "nguyenledly19971@gmail.com"
+								},
+								{
+									"key": "DienThoaiBuyer",
+									"value": "0931234789"
+								},
+								{
+									"key": "DiaChiBuyer",
+									"value": "123 CMT8, phường 5, quận Tân Bình, TpHCM"
+								}
+							]
+						},
+						"description": "- Khi người dùng xác định thanh toán, click vào button thanh toán, chuyển hướng sang trang khác để nhập thông tin cần thiết, cụ thể là thông tin của người mua (mô tả ở Request).\n- Yêu cầu:\n\t- Người dùng đăng nhập mới được quyền thanh toán\n\t- Request gồm:\n\t\t- KhoaHoc_id (required) (id của khóa học mà người dùng chọn mua)\n\t\t- HoTenBuyer (required) (Họ tên của người mua)\n\t\t- EmailBuyer (required|email) (Email người mua)\n\t\t- DienThoaiBuyer (required) (Số điện thoại người mua)\n\t\t- DiaChiBuyer (required) (Địa chỉ người mua)\n- Kết quả trả về:\n\t- Một object 'data' gồm:\n\t\t- 'message' : '<Thông báo mua khóa học thành công>, gửi về mail người dùng một mã CODE để kích hoạt khóa học'\n\t\t- 'resend_link' : 'URL gửi lại CODE khóa học'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "HoaDonReport",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/Report/HoaDon",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"Report",
+								"HoaDon"
+							]
+						},
+						"description": "- Báo cáo doanh thu dựa trên số hóa đơn\n- Để test, chạy URL này trên web browser."
+					},
+					"response": []
+				},
+				{
+					"name": "CodeKHReport",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://khoahocdt.com/api/Report/CodeKH",
+							"protocol": "https",
+							"host": [
+								"khoahocdt",
+								"com"
+							],
+							"path": [
+								"api",
+								"Report",
+								"CodeKH"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Báo cáo về Doanh Thu, Code Khóa Học "
+		}
+	]
+}

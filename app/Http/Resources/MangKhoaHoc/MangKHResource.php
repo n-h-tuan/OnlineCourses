@@ -14,11 +14,12 @@ class MangKHResource extends JsonResource
      */
     public function toArray($request)
     {
+        $objKhoaHoc = $this->khoa_hoc;
         return [
             'id' => $this->id,
             'TheLoaiKH' => $this->the_loai_khoa_hoc->TenTheLoai,
             'TenMangKH' => $this->TenMangKH,
-            'KhoaHoc' => $this->khoa_hoc,
+            'KhoaHoc' => $this->khoa_hoc
         ];
     }
 }

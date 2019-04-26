@@ -89,9 +89,13 @@ Route::group(['prefix' => 'BaiGiang'], function () {
 });
 
 
+Route::group(['prefix' => 'Login'], function () {
+    Route::get('{provider}', 'LoginController@redirectToProvider')->name('google.login');
+    Route::get('{provider}/callback', 'LoginController@handleProviderCallback');
+    Route::post('Local','LoginController@login');
+});
 
-Route::post('/Login','LoginController@login');
-Route::post('/Register',['verify' => true, 'uses'=>'RegisterController@register']);
+Route::post('/Register','RegisterController@register');
 Route::get('/Logout','LogoutController@logout');
 
 Route::group(['prefix' => 'Mail'], function () {
