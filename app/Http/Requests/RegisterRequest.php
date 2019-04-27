@@ -27,6 +27,8 @@ class RegisterRequest extends FormRequest
             'name' => "required|min:3|max:50",
             'email' => "required|unique:users|email",
             'password' => "required|confirmed|min:6",
+            'NgaySinh' => "required",
+            'SoDienThoai' => "required",
             // 'level_id' => "required",
         ];
     }
@@ -43,6 +45,8 @@ class RegisterRequest extends FormRequest
             'password.required' => "Bạn chưa nhập password",
             'password.confirmed' => "Password không giống nhau",
             'password.min' => "Password tối thiểu 6 ký tự",
+            'NgaySinh.required' => "Bạn chưa nhập ngày sinh",
+            'SoDienThoai.required' => "Bạn chưa nhập số điện thoại",
             // 'level_id.required' => "Chọn level cho user",
         ];
     }

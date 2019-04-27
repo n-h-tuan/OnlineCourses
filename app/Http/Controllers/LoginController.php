@@ -39,7 +39,7 @@ class LoginController extends Controller
         Auth::login($authUser, true);
         return response()->json([
             'data' => new UserResource($authUser),
-            ]);
+        ]);
         // return redirect($this->redirectTo);
     }
 

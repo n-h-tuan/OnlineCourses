@@ -20,6 +20,8 @@ class RegisterController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->level_id = 3;
+        $user->NgaySinh = $request->NgaySinh;
+        $user->SoDienThoai = $request->SoDienThoai;
         // Lưu Ảnh
         if($request->hasFile('HinhAnh'))
         {

@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
             $table->string('HinhAnh')->nullable();
+            $table->string('NgaySinh')->nullable();
+            $table->string('SoDienThoai')->nullable();
             $table->longText('api_token')->nullable();
             $table->string('token_type',10)->nullable();
             $table->rememberToken();

@@ -22,6 +22,8 @@ class UserResource extends JsonResource
             'provider' => $this->provider,
             'provider_id' => $this->provider_id,
             'HinhAnh' => $this->HinhAnh,
+            'NgaySinh' =>$this->NgaySinh,
+            'SoDienThoai' => $this->SoDienThoai,
             'api_token' => $this->api_token,
         ];
     }

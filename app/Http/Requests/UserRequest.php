@@ -29,6 +29,8 @@ class UserRequest extends FormRequest
             'name' => "required|min:3|max:50",
             'email' => 'required|unique:users,email,'.Auth::id().'|email',
             'password' => "required|confirmed|min:6",
+            'NgaySinh' => "required",
+            'SoDienThoai' => "required",
             // 'level_id' => "required",
         ];
     }
@@ -39,12 +41,14 @@ class UserRequest extends FormRequest
             'name.required' => "Bạn chưa nhập tên",
             'name.min' => "Tên nằm trong khoảng 3-50 ký tự",
             'name.max' => "Tên nằm trong khoảng 3-50 ký tự",
-            'email.required' => "Bạn chưa điền email",
+            'email.required' => "Bạn chưa nhập email",
             'email.unique' => "Email đã tồn tại",
             'email.email' => "Email không đúng định dạng",
             'password.required' => "Bạn chưa nhập password",
             'password.confirmed' => "Password không giống nhau",
             'password.min' => "Password tối thiểu 6 ký tự",
+            'NgaySinh.required' => "Bạn chưa nhập ngày sinh",
+            'SoDienThoai.required' => "Bạn chưa nhập số điện thoại",
             // 'level_id.required' => "Chọn level cho user",
         ];
     }
