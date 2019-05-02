@@ -21,7 +21,6 @@ class BaiGiangImport implements ToModel
     {
         return new BaiGiang([
             'KhoaHoc_id' => $this->_KhoaHoc_id,
-            // 'KhoaHoc_id' => 24,
             'TenBaiGiang' => $row[0],
             'MoTa' => $row[1],
             'EmbededURL' => $this->convertYoutube($row[2]),

@@ -25,7 +25,7 @@ class KhoaHocUpdateRequest extends FormRequest
     {
         return [
             'MangKH_id' => "required",
-            'GiangVien_id' => "required",
+            // 'GiangVien_id' => "required",
             // 'HinhAnh' => "required",
             'TenKH' => "required|min:10|max:100",
             'TomTat' => "required|min:10|max:200",

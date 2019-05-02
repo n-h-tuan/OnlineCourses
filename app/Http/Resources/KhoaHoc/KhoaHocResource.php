@@ -27,7 +27,7 @@ class KhoaHocResource extends JsonResource
             'GiaTien' => $this->GiaTien,
             'DanhGia' =>$this->DanhGia,
             'SoLuotXem' => $this->SoLuotXem,
-            'BaiGiang'=> $this->bai_giang,
+            // 'BaiGiang'=> $this->bai_giang,
         ];
         // return parent::toArray($request);
     }

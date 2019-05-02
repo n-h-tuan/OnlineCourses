@@ -110,6 +110,8 @@ class UserController extends Controller
             ]
         );
         $User->name = $request->name;
+        $User->NgaySinh = $request->NgaySinh;
+        $User->SoDienThoai = $request->SoDienThoai;
 
         //Lưu ảnh
         if($request->hasFile('HinhAnh'))

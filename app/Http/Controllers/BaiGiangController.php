@@ -89,6 +89,7 @@ class BaiGiangController extends Controller
             return response()->json([
                 'data'=>"Thêm bài giảng thành công",
             ],200);
+            // return count($request->data);
         }
         catch(\Exception $e)
         {
@@ -203,6 +204,7 @@ class BaiGiangController extends Controller
             return response()->json("Bạn chưa chọn file"); 
         }
         $khoahoc_id = $KhoaHoc->id;
+        // return $request->file;
         $import = Excel::import(new BaiGiangImport($khoahoc_id), request()->file('file'));
          
         return response()->json([

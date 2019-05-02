@@ -146,7 +146,12 @@ class KhoaHocController extends Controller
     {
         $this->KiemTraKhoaHoc($MangKhoaHoc, $KhoaHoc);
         $this->KhoaHocThuocGiangVien($KhoaHoc);
-        $KhoaHoc->update($request->all());
+        // $KhoaHoc->update($request->all());
+        $KhoaHoc->MangKH_id = $request->MangKH_id;
+        $KhoaHoc->TenKH = $request->TenKH;
+        $KhoaHoc->TomTat = $request->TomTat;
+        $KhoaHoc->GiaTien = $request->GiaTien;
+        $KhoaHoc->GiamGia = $request->GiamGia;
         $KhoaHoc->ThanhTien = \round((1-($request->GiamGia)/100) * $request->GiaTien);
         // Tìm giải pháp để lưu ảnh ko bị lặp khi người dùng muốn đổi ảnh
         if($request->hasFile('HinhAnh'))
