@@ -45,6 +45,8 @@ Route::get('testReport','CodeKhoaHocController@testReport');
 // Route::apiResource('/TheLoaiKhoaHoc','TheLoaiKhoaHocController');
 // Route::apiResource('/MangKhoaHoc','MangKhoaHocController');
 // Route::apiResource('/KhoaHoc','KhoaHocController');
+
+// ============================ USER ===============================
 Route::get('/User/KhoaHocCuaToi','UserController@KhoaHocCuaToi');
 Route::apiResource('/User','UserController');
 Route::post('/User/TroThanhGiangVien','UserController@TroThanhGiangVien');
@@ -54,50 +56,63 @@ Route::post('/User/TroThanhGiangVien','UserController@TroThanhGiangVien');
 //     Route::apiResource('/{User}/GiangVien','GiangVienController');  
 //     Route::post('{User}/GiangVien/{GiangVien}/GiaHanThoiHan','GiangVienController@GiaHanThoiHanGV');  
 // });
+
+// ============================ GIẢNG VIÊN ===============================
 Route::get('GiangVien/{GiangVien}/KhoaHocDaDay','GiangVienController@KhoaHocDaDay');
 Route::get('GiangVien/{GiangVien}/LichSuBanKhoaHoc','GiangVienController@LichSuBanKhoaHoc');
 Route::get('GiangVien/Current','GiangVienController@getGiangVien');
 Route::apiResource('GiangVien','GiangVienController');
 
+// ============================ NGÂN HÀNG & TÀI KHOẢN NGÂN HÀNG ===============================
 Route::apiResource('/NganHang','NganHangController');
 Route::get('/TaiKhoanNganHang/Current','TaiKhoanNganHangController@TaiKhoanCuaCurrentUser');
 Route::apiResource('/TaiKhoanNganHang','TaiKhoanNganHangController');
 
+// ============================ HÓA ĐƠN & NHẬP CODE ===============================
 Route::get('/HoaDon/Admin','HoaDonController@adminIndex');
 Route::apiResource('/HoaDon','HoaDonController');
 Route::post('/NhapCode','HoaDonController@NhapCode');
 
+// ============================ THANH TOÁN NGÂN LƯỢNG ===============================
 Route::group(['prefix' => 'NganLuong'], function () {
     Route::get('/ThanhToan','NganLuongController@ThanhToan');
     Route::get('/KetQuaTraVe/KhoaHoc/{KhoaHoc}/User/{User}','NganLuongController@KetQuaTraVe')->name('return.url');
 });
 
+// ============================ COMMENT & ĐÁNH GIÁ ===============================
 Route::group(['prefix' => 'KhoaHoc'], function () {
     Route::apiResource('/{KhoaHoc}/Comment','CommentController');    
     Route::apiResource('/{KhoaHoc}/DanhGia','DanhGiaController');
 });
 
+// ============================ LEVEL USER ===============================
 Route::apiResource('/Level','LevelController');
 Route::apiResource('/ThoiHanGV','ThoiHanGVController');
 
+// ============================ CODE KÍCH HOẠT KHÓA HỌC ===============================
 Route::apiResource('/CodeKhoaHoc','CodeKhoaHocController');
 Route::post('/CodeKhoaHoc/Import','CodeKhoaHocController@import')->name('import');
+
+// ============================ HÌNH THỨC THANH TOÁN ===============================
 Route::apiResource('/ThanhToan','ThanhToanController');
 
+// ============================ CÂU HỎI THEO BÀI GIẢNG ===============================
 Route::group(['prefix' => 'BaiGiang'], function () {
     Route::apiResource('/{BaiGiang}/CauHoi','CauHoiController');    
 });
 
-
+// ============================ LOGIN (LOCAL - GOOGLE - FACEBOOK) ===============================
 Route::group(['prefix' => 'Login'], function () {
     Route::get('{provider}', 'LoginController@redirectToProvider')->name('google.login');
     Route::get('{provider}/callback', 'LoginController@handleProviderCallback');
     Route::post('Local','LoginController@login');
 });
 
+// ============================ REGISTER ===============================
 Route::post('/Register','RegisterController@register');
 Route::get('/Logout','LogoutController@logout');
 
+// ============================ MAIL ===============================
 Route::group(['prefix' => 'Mail'], function () {
     Route::get('Verify/{User}','MailController@VerifyEmail')->name('mail.verify');
     Route::get('Resend/{User}','MailController@ResendVerifyEmail')->name('resend.verify');
@@ -105,20 +120,29 @@ Route::group(['prefix' => 'Mail'], function () {
     Route::get('ResendCode/{Code}/{Email}','MailController@ResendCode')->name('resend.code');
 });
 
+// ============================ REPORT (HÓA ĐƠN - CODE KH) ===============================
 Route::group(['prefix' => 'Report'], function () {
     Route::get('HoaDon','ReportController@HoaDonReport');
     Route::get('CodeKH','ReportController@CodeKHReport');
 });
+
+// ============================ SEARCH (KHÓA HỌC) ===============================
+Route::get('Search','KhoaHocController@SearchKhoaHoc');
 // ========================================================================================
 
+// ============================ THỂ LOẠI KHÓA HỌC ===============================
 Route::apiResource('/TheLoaiKhoaHoc','TheLoaiKhoaHocController');
 Route::group(['prefix' => 'TheLoaiKhoaHoc'], function () {
     Route::apiResource('/{TheLoaiKhoaHoc}/MangKhoaHoc','MangKhoaHocController');   
 });
+
+// ============================ MẢNG KHÓA HỌC ===============================
 Route::group(['prefix' => 'MangKhoaHoc'], function () {
     Route::get('/{MangKhoaHoc}/KhoaHoc/Admin','KhoaHocController@indexAdmin')->name('indexAdmin');
     Route::apiResource('/{MangKhoaHoc}/KhoaHoc','KhoaHocController');
 });
+
+// ============================ KHÓA HỌC ===============================
 Route::group(['prefix' => 'KhoaHoc'], function () {
     Route::apiResource('/{KhoaHoc}/BaiGiang','BaiGiangController');
     Route::post('/{KhoaHoc}/BaiGiang/Import','BaiGiangController@importBaiGiang')->name('ImportBaiGiang');

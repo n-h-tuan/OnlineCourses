@@ -24,9 +24,9 @@ class KhoaHocController extends Controller
     use MailTrait;
     public function __construct()
     {
-        $this->middleware('auth:api')->except('index','show');
+        $this->middleware('auth:api')->except('index','show','SearchKhoaHoc');
         $this->middleware('isAdmin')->only('indexAdmin');
-        $this->middleware('isGiangVien')->except('index','show');
+        $this->middleware('isGiangVien')->except('index','show','SearchKhoaHoc');
     }
     public function indexAdmin(MangKhoaHoc $MangKhoaHoc)
     {
@@ -244,4 +244,10 @@ class KhoaHocController extends Controller
         $GiangVien->save();
     }
     
+    public function SearchKhoaHoc(Request $request)
+    {
+        $TuKhoa = $request->TuKhoa;
+        $dsKhoaHoc = KhoaHoc::where('TenKH','like',"%$TuKhoa%")->orWhere('TomTat','like',"%$TuKhoa%")->get();
+        return KhoaHocCollection::collection($dsKhoaHoc);
+    }
 }
