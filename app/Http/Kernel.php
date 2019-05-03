@@ -69,7 +69,7 @@ class Kernel extends HttpKernel
         'isAdmin' => \App\Http\Middleware\isAdmin::class,
         'isGiangVien' => \App\Http\Middleware\isGiangVien::class,
         'checkThoiHanGV' => \App\Http\Middleware\ThoiHanGVMiddleware::class,
-        // 'header' => \App\Http\Middleware\HeaderMiddleware::class,
+        'VerifyEmail' => \App\Http\Middleware\VerifyEmail::class,
     ];
 
     /**

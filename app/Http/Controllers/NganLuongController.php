@@ -19,6 +19,7 @@ class NganLuongController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api')->only('ThanhToan');
+        $this->middleware('VerifyEmail')->only('ThanhToan');
     }
     /**
      * Người dùng gửi thông tin Khóa Học gồm:

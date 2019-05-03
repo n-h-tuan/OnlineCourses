@@ -25,6 +25,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api')->except('index','testgcs0','testCloudiary');
+        $this->middleware('VerifyEmail')->only('TroThanhGiangVien');
         $this->middleware('isAdmin')->only('destroy');
     }
      /**
