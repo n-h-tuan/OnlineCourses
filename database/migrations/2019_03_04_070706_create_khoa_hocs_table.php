@@ -27,6 +27,7 @@ class CreateKhoaHocsTable extends Migration
             $table->float('ThanhTien',9,0)->nullable();
             $table->integer('DanhGia')->default(0);
             $table->integer('SoLuotXem')->default(0);
+            $table->integer('TrangThai')->default(0); // 0: Khóa học chưa được duyệt, 1: Khóa học đã được duyệt, -1: Khóa học bị từ chối
             $table->timestamps();
         });
     }

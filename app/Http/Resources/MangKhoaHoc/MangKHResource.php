@@ -19,7 +19,7 @@ class MangKHResource extends JsonResource
             'id' => $this->id,
             'TheLoaiKH' => $this->the_loai_khoa_hoc->TenTheLoai,
             'TenMangKH' => $this->TenMangKH,
-            'KhoaHoc' => $this->khoa_hoc
+            'KhoaHoc' => $this->khoa_hoc->where('TrangThai',1),
         ];
     }
 }

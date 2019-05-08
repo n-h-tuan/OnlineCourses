@@ -60,6 +60,7 @@ Route::post('/User/TroThanhGiangVien','UserController@TroThanhGiangVien');
 // ============================ GIẢNG VIÊN ===============================
 Route::get('GiangVien/{GiangVien}/KhoaHocDaDay','GiangVienController@KhoaHocDaDay');
 Route::get('GiangVien/{GiangVien}/LichSuBanKhoaHoc','GiangVienController@LichSuBanKhoaHoc');
+Route::get('GiangVien/{GiangVien}/KhoaHocChoDuyet','GiangVienController@KhoaHocChoDuyet');
 Route::get('GiangVien/Current','GiangVienController@getGiangVien');
 Route::apiResource('GiangVien','GiangVienController');
 
@@ -147,3 +148,6 @@ Route::group(['prefix' => 'KhoaHoc'], function () {
     Route::apiResource('/{KhoaHoc}/BaiGiang','BaiGiangController');
     Route::post('/{KhoaHoc}/BaiGiang/Import','BaiGiangController@importBaiGiang')->name('ImportBaiGiang');
 });
+
+// ============================ ADMIN DUYỆT KHÓA HỌC ===============================
+Route::apiResource('Admin/DuyetKhoaHoc','DuyetKhoaHoc');

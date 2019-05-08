@@ -20,7 +20,7 @@ class KhoaHocCollection extends JsonResource
             'TenKH' => $this->TenKH,
             'GiaTien' => $this->GiaTien,
             'HinhAnh' =>$this->HinhAnh,
-            'GiangVien_id' => $this->GiangVien_id,
+            'GiangVien_id' => $this->giang_vien->TenGiangVien,
         ];
     }
 }

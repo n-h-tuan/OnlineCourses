@@ -19,6 +19,7 @@ use JD\Cloudder\Facades\Cloudder;
 use App\GiangVien;
 use App\TaiKhoanNganHang;
 use App\Http\Traits\MailTrait;
+use App\Exceptions\KhoaHocChuaDuocDuyet;
 class KhoaHocController extends Controller
 {
     use MailTrait;
@@ -30,7 +31,7 @@ class KhoaHocController extends Controller
     }
     public function indexAdmin(MangKhoaHoc $MangKhoaHoc)
     {
-        return KhoaHocCollection::collection($MangKhoaHoc->khoa_hoc);
+        return KhoaHocCollection::collection($MangKhoaHoc->khoa_hoc->where('TrangThai',1));
     }
     /**
      * Display a listing of the resource.
@@ -51,7 +52,7 @@ class KhoaHocController extends Controller
         // }
         
         // return KhoaHocCollection::collection($collection);
-        return KhoaHocCollection::collection($MangKhoaHoc->khoa_hoc);
+        return KhoaHocCollection::collection($MangKhoaHoc->khoa_hoc->where('TrangThai',1));
     }
 
     /**
@@ -80,6 +81,7 @@ class KhoaHocController extends Controller
         $KhoaHoc->TomTat = $request->TomTat;
         $KhoaHoc->GiaTien = $request->GiaTien;
         $KhoaHoc->ThanhTien = $request->GiaTien;
+        $KhoaHoc->TrangThai = 0;
 
         //Luu Hinh Anh
         if($request->hasFile('HinhAnh'))
@@ -91,7 +93,7 @@ class KhoaHocController extends Controller
         $KhoaHoc->save();
         
         // Cập nhật số lượng khóa học của Giảng viên
-        $this->CapNhatSoLuongKhoaHoc($giangvien);
+        // $this->CapNhatSoLuongKhoaHoc($giangvien);
         
         //Kiểm tra xem người dùng này đã khai báo tài khoản ngân hàng hay chưa? Nếu chưa sẽ gửi mail
         $bankAccount = TaiKhoanNganHang::where('user_id',Auth::id())->first();
@@ -186,6 +188,8 @@ class KhoaHocController extends Controller
     {
         if($KhoaHoc->MangKH_id != $MangKhoaHoc->id)
             throw new KhoaHocKhongDung;
+        elseif($KhoaHoc->TrangThai!=1)
+            throw new KhoaHocChuaDuocDuyet();
     }
 
     public function KhoaHocThuocGiangVien(KhoaHoc $KhoaHoc)

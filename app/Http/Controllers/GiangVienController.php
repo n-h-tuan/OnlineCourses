@@ -14,6 +14,7 @@ use App\Http\Resources\User\KhoaHocCuaToiCollection;
 use App\Exceptions\GiangVienKhongDung;
 use App\HoaDon;
 use App\Http\Resources\GiangVien\LichSuBanKhoaHocResource;
+use App\Http\Resources\KhoaHoc\KhoaHocCollection;
 
 
 class GiangVienController extends Controller
@@ -130,7 +131,7 @@ class GiangVienController extends Controller
 
     public function KhoaHocDaDay( GiangVien $GiangVien)
     {
-        $khoahoc = KhoaHoc::where('GiangVien_id',$GiangVien->id)->get();
+        $khoahoc = KhoaHoc::where('GiangVien_id',$GiangVien->id)->where('TrangThai',1)->get();
         return KhoaHocCuaToiCollection::collection($khoahoc);
     }
 
@@ -157,5 +158,11 @@ class GiangVienController extends Controller
             if($gv->id != $GiangVien->id)
                 throw new GiangVienKhongDung;
         }
+    }
+    public function KhoaHocChoDuyet(GiangVien $GiangVien)
+    {
+        $this->KiemTraGiangVien($GiangVien);
+        $khoahoc = KhoaHoc::where('GiangVien_id',$GiangVien->id)->where('TrangThai',0)->get();
+        return KhoaHocCollection::collection($khoahoc);
     }
 }

@@ -11,7 +11,7 @@ class KhoaHoc extends Model implements ViewableContract
     use Viewable;
     //
     protected $table = "khoa_hoc";
-    protected $fillable = ['MangKH_id','GiangVien_id','HinhAnh','TenKH','TomTat','GiaTien','GiamGia','ThanhTien','DanhGia','SoLuotXem'];
+    protected $fillable = ['MangKH_id','GiangVien_id','HinhAnh','TenKH','TomTat','GiaTien','GiamGia','ThanhTien','DanhGia','SoLuotXem','TrangThai'];
     public function giang_vien()
     {
         return $this->belongsTo('App\GiangVien','GiangVien_id','id');

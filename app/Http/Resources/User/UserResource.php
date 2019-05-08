@@ -25,6 +25,7 @@ class UserResource extends JsonResource
             'NgaySinh' =>$this->NgaySinh,
             'SoDienThoai' => $this->SoDienThoai,
             'api_token' => $this->api_token,
+            'verify_email' => ($this->email_verified_at == "") ? "Chưa xác thực" : "Đã xác thực", 
         ];
     }
 }
