@@ -47,8 +47,8 @@ class NganLuongController extends Controller
 
         // $merchant_site_code="47460";
         // $secure_pass = '4be98d7f90be6e3573cc90cf4ea05d9e';
-        $merchant_site_code="47464";
-        $secure_pass = '7d18f818e8f155837aceb862bd9d8fbd';
+        $merchant_site_code="47523";
+        $secure_pass = 'ebef6c593dc3332e9cf7ddda34c1d540';
         $return_url=route('return.url',['KhoaHoc'=>$KhoaHoc_id,'User'=>$user_id]);
         $receiver_email = "dtonlinecourse@gmail.com";
         $transaction_info = "Thanh toán khóa học $KhoaHoc->TenKH";
@@ -87,8 +87,8 @@ class NganLuongController extends Controller
             'error_text' => $request->error_text,
             // 'merchant_site_code' => '47460',
             // 'secure_pass' => '4be98d7f90be6e3573cc90cf4ea05d9e',
-            'merchant_site_code' => '47464',
-            'secure_pass' => '7d18f818e8f155837aceb862bd9d8fbd',
+            'merchant_site_code' => '47523',
+            'secure_pass' => 'ebef6c593dc3332e9cf7ddda34c1d540',
         );
 
         $secure_code = $request->secure_code;
@@ -112,13 +112,14 @@ class NganLuongController extends Controller
             // Cập nhật số lượng học viên cho giảng viên
             $this->CapNhatSoLuongHocVien($KhoaHoc);
  
-            return response()->json([
-                'data'=>
-                [
-                    'message' => "Bạn đã thực hiện giao dịch cho khóa học <b>$TenKhoaHoc</b>, một mã code đã được gửi về email $email. Sử dụng mã code đó để kích hoạt khóa học. Xin cám ơn.",
-                    'resend_link' => route('resend.code',['Code'=>$code_object->id, 'Email'=>$email]),
-                ],
-            ],200);
+            // return response()->json([
+            //     'data'=>
+            //     [
+            //         'message' => "Bạn đã thực hiện giao dịch cho khóa học <b>$TenKhoaHoc</b>, một mã code đã được gửi về email $email. Sử dụng mã code đó để kích hoạt khóa học. Xin cám ơn.",
+            //         'resend_link' => route('resend.code',['Code'=>$code_object->id, 'Email'=>$email]),
+            //     ],
+            // ],200);
+            return view('payment',['TenKH'=>$TenKhoaHoc,'email'=>$email,'code_id'=>$code_object->id]);
         }
         else
             return response()->json("Giao dịch thất bại!"); 

@@ -66,3 +66,7 @@ Route::get('send/email','MailController@Code');
 
 Route::get('auth/{provider}', 'LoginController@redirectToProvider')->name('google.login');
 Route::get('auth/{provider}/callback', 'LoginController@handleProviderCallback');
+
+Route::get('payment_recall',function(){
+    return view('payment');
+})->name('payment.recall');
