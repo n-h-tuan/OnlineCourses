@@ -81,6 +81,8 @@ Route::post('/NhapCode','HoaDonController@NhapCode');
 Route::group(['prefix' => 'NganLuong'], function () {
     Route::get('/ThanhToan','NganLuongController@ThanhToan');
     Route::get('/KetQuaTraVe/KhoaHoc/{KhoaHoc}/User/{User}','NganLuongController@KetQuaTraVe')->name('return.url');
+    Route::get('/ThongBao','NganLuongController@ThongBao')->name('thongbao');
+    Route::get('/redirect','NganLuongController@redirectThongBao');
 });
 
 // ============================ COMMENT & ĐÁNH GIÁ ===============================
@@ -121,7 +123,7 @@ Route::group(['prefix' => 'Mail'], function () {
     Route::get('Verify/{User}','MailController@VerifyEmail')->name('mail.verify');
     Route::get('Resend/{User}','MailController@ResendVerifyEmail')->name('resend.verify');
     Route::get('ResetPassword','MailController@ResetPasswordEmail');
-    Route::get('ResendCode/{Code}/{Email}','MailController@ResendCode')->name('resend.code');
+    Route::get('ResendCode','MailController@ResendCode')->name('resend.code');
 });
 
 // ============================ REPORT (HÓA ĐƠN - CODE KH) ===============================

@@ -135,6 +135,8 @@ class UserController extends Controller
             {
                 $User->password = bcrypt($request->PasswordMoi);
             }
+            else
+                return response()->json('Mật khẩu hiện tại không đúng');
         }
         $User->save();
 

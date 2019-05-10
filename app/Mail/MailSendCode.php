@@ -10,15 +10,15 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class MailSendCode extends Mailable
 {
     use Queueable, SerializesModels;
-    public $code;
+    public $code_object_array;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($code)
+    public function __construct($code_object_array)
     {
-        $this->code = $code;
+        $this->code_object_array = $code_object_array;
     }
 
     /**
@@ -28,7 +28,7 @@ class MailSendCode extends Mailable
      */
     public function build()
     {
-        return $this->view('email.code');
+        return $this->view('email.code2');
         // return $this->view('layouts.app');
     }
 }

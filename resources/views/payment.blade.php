@@ -24,8 +24,8 @@
   <section class="container">
         
         <div class="content">
-            <p>Chúc mừng bạn đã thực hiện giao dịch thành công cho khóa học {{$TenKH}}. Code kích hoạt khóa học đã được gửi vào địa chỉ email "{{$email}}" của bạn</p>
-            <a href="{{route('resend.code',['Code'=>$code_id, 'Email'=>$email])}}">Click vào đây nếu chưa nhận được mail</a>
+            <p>Chúc mừng bạn đã thực hiện giao dịch thành công. Code kích hoạt khóa học đã được gửi vào địa chỉ email "{{$email}}" của bạn</p>
+            <a href="{{route('resend.code',['Code'=>$code_id_string, 'Email'=>$email])}}" target="_blank">Click vào đây nếu chưa nhận được mail</a>
             <p>Đảm bảo bạn đã nhận email trước khi tiếp tục</p>
             <a href='#' class="return-btn btn btn-success"><i class="fa fa-arrow-left"></i>  Quay lại trang chủ</a>
         </div>

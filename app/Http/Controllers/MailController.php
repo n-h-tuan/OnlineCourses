@@ -28,10 +28,17 @@ class MailController extends Controller
         $this->SendCode($code,$email);
         return "Mail Sent!";
     }
-    public function ResendCode($Code,$Email)
+    public function ResendCode(Request $request)
     {
-        $code_KH = CodeKhoaHoc::find($Code); 
-        $this->SendCode($code_KH,$Email);
+        $code_id_array = explode(",",$request->Code);
+        $code_object_array = [];
+        foreach($code_id_array as $code_id)
+        {
+            $code_object = CodeKhoaHoc::find($code_id);
+            $code_object_array[] = $code_object; 
+        }
+         
+        $this->SendCode($code_object_array,$request->Email);
     }
     public function VerifyEmail(User $User)
     {

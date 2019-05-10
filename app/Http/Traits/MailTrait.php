@@ -9,10 +9,10 @@ use App\Mail\MailBankAccount;
 
 
 trait MailTrait{
-    public function SendCode($code, $email)
+    public function SendCode($code_object_array, $email)
     {
         // $code = "$code";
-        Mail::to($email)->send(new MailSendCode($code));
+        Mail::to($email)->send(new MailSendCode($code_object_array));
         // return "Mail Sent!";
     }
 
