@@ -138,17 +138,19 @@ Route::get('Search','KhoaHocController@SearchKhoaHoc');
 
 // ============================ THỂ LOẠI KHÓA HỌC ===============================
 Route::apiResource('/TheLoaiKhoaHoc','TheLoaiKhoaHocController');
+
+// ============================ MẢNG KHÓA HỌC ===============================
 Route::group(['prefix' => 'TheLoaiKhoaHoc'], function () {
     Route::apiResource('/{TheLoaiKhoaHoc}/MangKhoaHoc','MangKhoaHocController');   
 });
 
-// ============================ MẢNG KHÓA HỌC ===============================
+// ============================ KHÓA HỌC ===============================
 Route::group(['prefix' => 'MangKhoaHoc'], function () {
     Route::get('/{MangKhoaHoc}/KhoaHoc/Admin','KhoaHocController@indexAdmin')->name('indexAdmin');
     Route::apiResource('/{MangKhoaHoc}/KhoaHoc','KhoaHocController');
 });
 
-// ============================ KHÓA HỌC ===============================
+// ============================ BÀI GIẢNG ===============================
 Route::group(['prefix' => 'KhoaHoc'], function () {
     Route::apiResource('/{KhoaHoc}/BaiGiang','BaiGiangController');
     Route::post('/{KhoaHoc}/BaiGiang/Import','BaiGiangController@importBaiGiang')->name('ImportBaiGiang');

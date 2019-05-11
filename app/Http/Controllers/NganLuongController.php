@@ -185,6 +185,14 @@ class NganLuongController extends Controller
             $email = $User->email;
             $this->SendCode($code_object_array,$email);
 
+            // TrangThai của Code chuyển về -1 (Code chưa đưuọc dùng, nhưng đã có sở hữu), đảm bảo code đã được gửi đi
+            foreach($code_object_array as $code_object)
+            {
+                $code_object->TrangThai = -1;
+                $code_object->save();
+            }
+            
+
             // // Cập nhật số lượng học viên cho giảng viên
             // $this->CapNhatSoLuongHocVien($KhoaHoc);
  

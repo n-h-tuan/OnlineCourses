@@ -118,7 +118,7 @@ class HoaDonController extends Controller
         );
         $user = Auth::user();
         // Kiểm tra code còn tồn tại
-        $code = CodeKhoaHoc::where('code',$request->code)->where('TrangThai',1)->first();
+        $code = CodeKhoaHoc::where('code',$request->code)->where('TrangThai',-1)->first();
         if($code == "")
             return response()->json("Code không tồn tại");
         // Nếu code tồn tại, kiểm tra xem người dùng đã mua khóa học này chưa
