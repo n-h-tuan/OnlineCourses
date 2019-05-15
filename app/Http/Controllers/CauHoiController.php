@@ -13,6 +13,7 @@ use App\Http\Requests\CauHoiRequest;
 use App\Exceptions\isUserException;
 use App\Exceptions\NguoiDungChuaMuaKhoaHoc;
 use JD\Cloudder\Facades\Cloudder;
+use App\Exceptions\KhoaHocKhongThuocGiangVien;
 
 class CauHoiController extends Controller
 {
@@ -48,7 +49,12 @@ class CauHoiController extends Controller
      */
     public function store(CauHoiRequest $request, BaiGiang $BaiGiang)
     {
-        $kq = $this->UserMuaKhoaHoc($BaiGiang);
+        if(Auth::user()->level_id == 3)
+        {
+            $this->UserMuaKhoaHoc($BaiGiang);
+        }
+        $this->KhoaHocThuocGiangVien($BaiGiang);
+        
         $cauhoi = new CauHoi;
         $cauhoi->user_id = Auth::id();
         $cauhoi->BaiGiang_id = $BaiGiang->id;
@@ -150,6 +156,17 @@ class CauHoiController extends Controller
         $hoadon = HoaDon::where('user_id',$user->id)->where('KhoaHoc_id',$khoahoc_id)->where('TrangThai',1)->first();
         if($hoadon=="")
             throw new NguoiDungChuaMuaKhoaHoc();
+    }
+
+    public function KhoaHocThuocGiangVien(BaiGiang $BaiGiang)
+    {
+        $user = Auth::user();
+        $giangvien = $user->giang_vien;
+        foreach($giangvien as $gv)
+        {
+            if($BaiGiang->khoa_hoc->GiangVien_id != $gv->id)
+                throw new KhoaHocKhongThuocGiangVien();
+        }
     }
     public function CauHoiThuocUser(CauHoi $CauHoi)
     {

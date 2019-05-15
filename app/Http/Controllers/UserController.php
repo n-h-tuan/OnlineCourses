@@ -151,6 +151,21 @@ class UserController extends Controller
         //     echo "FALSE";
     }
 
+    public function UserUpdateImage(Request $request, User $User)
+    {
+        //Lưu ảnh
+        //     $url = $this->LuuAnhUser($request);
+        //     $User->HinhAnh = $url;
+
+        // $User->save();
+
+        // // $User->password = bcrypt($request->password); // Sau này làm có quy trình kiểm tra mk hiện tại , r mới đổi mk
+        // return response()->json([
+        //     'data'=>"Cập nhật thành công ảnh user: $url ",
+        // ],200);
+        return $request->HinhAnh;
+    }
+
 
     /**
      * Remove the specified resource from storage.

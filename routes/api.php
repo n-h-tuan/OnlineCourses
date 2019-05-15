@@ -53,6 +53,7 @@ Route::get('test7',function(){
 Route::get('/User/KhoaHocCuaToi','UserController@KhoaHocCuaToi');
 Route::apiResource('/User','UserController');
 Route::post('/User/TroThanhGiangVien','UserController@TroThanhGiangVien');
+Route::put('/User/{User}/UserUpdateImage','UserController@UserUpdateImage')->name('user.UpdateImage');
 // Route::group(['prefix' => 'User'], function () {
 //     Route::get('/{User}/GiangVien/{GiangVien}/KhoaHocDaDay','GiangVienController@KhoaHocDaDay');
 //     Route::get('/{User}/GiangVien/{GiangVien}/LichSuBanKhoaHoc','GiangVienController@LichSuBanKhoaHoc');
