@@ -22,16 +22,18 @@ class RegisterController extends Controller
         $user->level_id = 3;
         $user->NgaySinh = $request->NgaySinh;
         $user->SoDienThoai = $request->SoDienThoai;
+
+        // User không cần thêm ảnh mới khi tạo account 
         // Lưu Ảnh
-        if($request->hasFile('HinhAnh'))
-        {
-            // $path = $request->file('HinhAnh')->store('user_image');
-            $url = $this->LuuAnhUser($request);
-            $user->HinhAnh = $url; 
-        }
-        else {
-            $user->HinhAnh = "https://res.cloudinary.com/tuannguyen/image/upload/v1553498961/user/default.jpg";
-        }
+        // if($request->hasFile('HinhAnh'))
+        // {
+        //     // $path = $request->file('HinhAnh')->store('user_image');
+        //     $url = $this->LuuAnhUser($request);
+        //     $user->HinhAnh = $url; 
+        // }
+        // else {
+        $user->HinhAnh = "https://res.cloudinary.com/tuannguyen/image/upload/v1553498961/user/default.jpg";
+        // }
 
         $user->save();
 
@@ -100,14 +102,4 @@ class RegisterController extends Controller
         $finalString = $str1.$str2;
         return $finalString;
     }
-    // public function test()
-    // {
-    //     $a = $this->test2();
-    //     return $a;
-    // }
-    // public function test2()
-    // {
-    //     $b = "HỌC! HỌC NỮA! HỌC MÃI! HỌC CHẾT MẸ";
-    //     return $b;
-    // }
 }

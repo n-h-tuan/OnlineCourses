@@ -84,11 +84,11 @@ class KhoaHocController extends Controller
         $KhoaHoc->TrangThai = 0;
 
         //Luu Hinh Anh
-        if($request->hasFile('HinhAnh'))
-        {
-            $url = $this->LuuAnhKhoaHoc($request);
-            $KhoaHoc->HinhAnh = $url;
-        }
+        // if($request->hasFile('HinhAnh'))
+        // {
+        //     $url = $this->LuuAnhKhoaHoc($request);
+        //     $KhoaHoc->HinhAnh = $url;
+        // }
 
         $KhoaHoc->save();
         
@@ -107,6 +107,19 @@ class KhoaHocController extends Controller
         ],200);
     }
 
+    public function ThemHoacCapNhatHinhAnh(Request $request, MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc)
+    {
+        $this->KiemTraKhoaHoc($MangKhoaHoc, $KhoaHoc);
+        $this->KhoaHocThuocGiangVien($KhoaHoc);
+
+        $url = $this->LuuAnhKhoaHoc($request);
+        $KhoaHoc->HinhAnh = $url;
+
+        $KhoaHoc->save();
+        return response()->json([
+            'data' => "$url",
+        ],200);
+    }
     public function show(MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc)
     {
         
@@ -156,11 +169,11 @@ class KhoaHocController extends Controller
         $KhoaHoc->GiamGia = $request->GiamGia;
         $KhoaHoc->ThanhTien = \round((1-($request->GiamGia)/100) * $request->GiaTien);
         // Tìm giải pháp để lưu ảnh ko bị lặp khi người dùng muốn đổi ảnh
-        if($request->hasFile('HinhAnh'))
-        {
-            $url = $this->LuuAnhKhoaHoc($request);
-            $KhoaHoc->HinhAnh = $url;
-        }
+        // if($request->hasFile('HinhAnh'))
+        // {
+        //     $url = $this->LuuAnhKhoaHoc($request);
+        //     $KhoaHoc->HinhAnh = $url;
+        // }
         
         $KhoaHoc->save();
         return response([

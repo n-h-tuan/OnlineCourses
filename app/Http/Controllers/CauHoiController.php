@@ -61,11 +61,11 @@ class CauHoiController extends Controller
         $cauhoi->TieuDe = $request->TieuDe;
         $cauhoi->NoiDung = $request->NoiDung;
 
-        if($request->hasFile('HinhAnh'))
-        {
-            $url = $this->LuuAnhKhoaHoc($request);
-            $cauhoi->HinhAnh = $url;
-        }
+        // if($request->hasFile('HinhAnh'))
+        // {
+        //     $url = $this->LuuAnhKhoaHoc($request);
+        //     $cauhoi->HinhAnh = $url;
+        // }
 
         $cauhoi->save();
         return response()->json([
@@ -73,6 +73,17 @@ class CauHoiController extends Controller
         ],200);
     }
 
+    public function ThemHoacCapNhatHinhAnh(Request $request, BaiGiang $BaiGiang, CauHoi $CauHoi)
+    {
+        $this->CauHoiThuocUser($CauHoi);
+        // return $CauHoi;
+        $url = $this->LuuAnhKhoaHoc($request);
+        $CauHoi->HinhAnh = $url;
+        $CauHoi->save();
+        return response()->json([
+            'data' => "$url",
+        ],200);
+    }
     /**
      * Display the specified resource.
      *
@@ -115,11 +126,11 @@ class CauHoiController extends Controller
         );
         $CauHoi->TieuDe = $request->TieuDe;
         $CauHoi->NoiDung = $request->NoiDung;
-        if($request->hasFile('HinhAnh'))
-        {
-            $url = $this->LuuAnhKhoaHoc($request);
-            $CauHoi->HinhAnh = $url;
-        }
+        // if($request->hasFile('HinhAnh'))
+        // {
+        //     $url = $this->LuuAnhKhoaHoc($request);
+        //     $CauHoi->HinhAnh = $url;
+        // }
 
         $CauHoi->save();
         return response()->json([

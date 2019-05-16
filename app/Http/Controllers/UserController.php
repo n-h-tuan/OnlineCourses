@@ -115,11 +115,11 @@ class UserController extends Controller
         $User->SoDienThoai = $request->SoDienThoai;
 
         //Lưu ảnh
-        if($request->hasFile('HinhAnh'))
-        {
-            $url = $this->LuuAnhUser($request);
-            $User->HinhAnh = $url;
-        }
+        // if($request->hasFile('HinhAnh'))
+        // {
+        //     $url = $this->LuuAnhUser($request);
+        //     $User->HinhAnh = $url;
+        // }
         
         // Nếu User check button đổi password thì thực hiện đổi password
         if($request->CheckPassword=="on")
@@ -154,16 +154,15 @@ class UserController extends Controller
     public function UserUpdateImage(Request $request, User $User)
     {
         //Lưu ảnh
-        //     $url = $this->LuuAnhUser($request);
-        //     $User->HinhAnh = $url;
+        $url = $this->LuuAnhUser($request);
+        $User->HinhAnh = $url;
 
-        // $User->save();
+        $User->save();
 
-        // // $User->password = bcrypt($request->password); // Sau này làm có quy trình kiểm tra mk hiện tại , r mới đổi mk
-        // return response()->json([
-        //     'data'=>"Cập nhật thành công ảnh user: $url ",
-        // ],200);
-        return $request->HinhAnh;
+        return response()->json([
+            'data'=>"$url",
+        ],200);
+        // return $request->HinhAnh;
     }
 
 

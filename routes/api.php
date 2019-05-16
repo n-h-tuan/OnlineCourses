@@ -106,6 +106,7 @@ Route::apiResource('/ThanhToan','ThanhToanController');
 // ============================ CÂU HỎI THEO BÀI GIẢNG ===============================
 Route::group(['prefix' => 'BaiGiang'], function () {
     Route::apiResource('/{BaiGiang}/CauHoi','CauHoiController');    
+    Route::post('/{BaiGiang}/CauHoi/{CauHoi}/AddOrUpdateImage','CauHoiController@ThemHoacCapNhatHinhAnh');
 });
 
 // ============================ LOGIN (LOCAL - GOOGLE - FACEBOOK) ===============================
@@ -149,6 +150,7 @@ Route::group(['prefix' => 'TheLoaiKhoaHoc'], function () {
 Route::group(['prefix' => 'MangKhoaHoc'], function () {
     Route::get('/{MangKhoaHoc}/KhoaHoc/Admin','KhoaHocController@indexAdmin')->name('indexAdmin');
     Route::apiResource('/{MangKhoaHoc}/KhoaHoc','KhoaHocController');
+    Route::post('/{MangKhoaHoc}/KhoaHoc/{KhoaHoc}/AddOrUpdateImage','KhoaHocController@ThemHoacCapNhatHinhAnh');
 });
 
 // ============================ BÀI GIẢNG ===============================
