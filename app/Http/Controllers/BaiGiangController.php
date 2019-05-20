@@ -33,22 +33,40 @@ class BaiGiangController extends Controller
     {
         // return BaiGiangCollection::collection($KhoaHoc->bai_giang)->sortBy('KhoaHoc_id');
 
-        if(Auth::user()->level_id != 3)
-        {
-            if(!$this->KhoaHocThuocGiangVien($KhoaHoc))
-            {
-                return BaiGiangResource::collection($KhoaHoc->bai_giang)->sortBy('KhoaHoc_id');
-            }
-                
-        }
-        // Nếu người dùng mua khóa học
-        else
+        if(Auth::user()->level_id == 3)
         {
             if(!$this->NguoiDungMuaKhoaHoc($KhoaHoc))
             {
                 return BaiGiangResource::collection($KhoaHoc->bai_giang)->sortBy('KhoaHoc_id');
             }
         }
+        elseif(Auth::user()->level_id == 2)
+        {
+            if($this->KhoaHocThuocGiangVien($KhoaHoc))
+            {
+                return BaiGiangResource::collection($KhoaHoc->bai_giang)->sortBy('KhoaHoc_id');
+            }
+        }
+        else 
+        {
+            return BaiGiangResource::collection($KhoaHoc->bai_giang)->sortBy('KhoaHoc_id');
+        }
+        // if(Auth::user()->level_id != 3)
+        // {
+        //     if(!$this->KhoaHocThuocGiangVien($KhoaHoc)||!$this->NguoiDungMuaKhoaHoc($KhoaHoc))
+        //     {
+        //         return BaiGiangResource::collection($KhoaHoc->bai_giang)->sortBy('KhoaHoc_id');
+        //     }
+                
+        // }
+        // // Nếu người dùng mua khóa học
+        // else
+        // {
+        //     if(!$this->NguoiDungMuaKhoaHoc($KhoaHoc))
+        //     {
+        //         return BaiGiangResource::collection($KhoaHoc->bai_giang)->sortBy('KhoaHoc_id');
+        //     }
+        // }
         
     }
 
@@ -219,10 +237,16 @@ class BaiGiangController extends Controller
     {
         $user = Auth::user();
         $giangvien = $user->giang_vien;
+        $hoadon = HoaDon::where('KhoaHoc_id',$KhoaHoc->id)->where('user_id',$user->id)->where('TrangThai',1)->first();
         foreach($giangvien as $gv)
         {
-            if($KhoaHoc->GiangVien_id != $gv->id)
-                throw new KhoaHocKhongThuocGiangVien;
+            if($hoadon=="")
+                if($KhoaHoc->GiangVien_id == $gv->id)
+                    return true;
+                else
+                    throw new KhoaHocKhongThuocGiangVien;
+            else
+                return true;
         }
         
     }
