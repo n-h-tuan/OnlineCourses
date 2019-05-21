@@ -147,6 +147,7 @@ Route::group(['prefix' => 'TheLoaiKhoaHoc'], function () {
 });
 
 // ============================ KHÓA HỌC ===============================
+Route::get('KhoaHocNoiBat','KhoaHocController@KhoaHocNoiBat');
 Route::group(['prefix' => 'MangKhoaHoc'], function () {
     Route::get('/{MangKhoaHoc}/KhoaHoc/Admin','KhoaHocController@indexAdmin')->name('indexAdmin');
     Route::apiResource('/{MangKhoaHoc}/KhoaHoc','KhoaHocController');

@@ -25,9 +25,9 @@ class KhoaHocController extends Controller
     use MailTrait;
     public function __construct()
     {
-        $this->middleware('auth:api')->except('index','show','SearchKhoaHoc');
+        $this->middleware('auth:api')->except('index','show','SearchKhoaHoc','KhoaHocNoiBat');
         $this->middleware('isAdmin')->only('indexAdmin');
-        $this->middleware('isGiangVien')->except('index','show','SearchKhoaHoc');
+        $this->middleware('isGiangVien')->except('index','show','SearchKhoaHoc','KhoaHocNoiBat');
     }
     public function indexAdmin(MangKhoaHoc $MangKhoaHoc)
     {
@@ -196,7 +196,7 @@ class KhoaHocController extends Controller
             'data' => "Xóa thành công ".$KhoaHoc->TenKH,
         ],200);
     }
-
+    
     public function KiemTraKhoaHoc(MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc)
     {
         if($KhoaHoc->MangKH_id != $MangKhoaHoc->id)
@@ -271,5 +271,10 @@ class KhoaHocController extends Controller
         $TuKhoa = $request->TuKhoa;
         $dsKhoaHoc = KhoaHoc::where('TenKH','like',"%$TuKhoa%")->orWhere('TomTat','like',"%$TuKhoa%")->get();
         return KhoaHocCollection::collection($dsKhoaHoc);
+    }
+    public function KhoaHocNoiBat()
+    {
+        $khoahoc = KhoaHoc::all()->sortByDesc('SoLuotXem')->take(10);
+        return KhoaHocCollection::collection($khoahoc);
     }
 }

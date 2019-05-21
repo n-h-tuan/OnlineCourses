@@ -27,6 +27,6 @@ class HeaderMiddleware
         ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')
         ->header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, Authorization, X-Requested-With, Application')
         ->header('Access-Control-Allow-Credentials','true')
-        ->header('X-Content-Type-Options: nosniff');
+        ->header('X-Content-Type-Options', 'nosniff');
     }
 }

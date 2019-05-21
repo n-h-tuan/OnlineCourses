@@ -14,13 +14,23 @@ class KhoaHocCollection extends JsonResource
      */
     public function toArray($request)
     {
+        $dg_arr = [];
+    	$danh_gia = $this->DanhGia;
+    	for($i=0; $i<$danh_gia; $i++)
+    	{
+    		$dg_arr[] = $danh_gia;
+    	}
         return [
             'id' => $this->id,
             'MangKH_id' => $this->MangKH_id,
             'TenKH' => $this->TenKH,
             'GiaTien' => $this->GiaTien,
+            'GiamGia' =>$this->GiamGia,
+            'ThanhTien' =>$this->ThanhTien,
+            'DanhGia' => $dg_arr,
+            'SoLuotXem' =>$this->SoLuotXem,
             'HinhAnh' =>$this->HinhAnh,
-            'GiangVien_id' => $this->giang_vien->TenGiangVien,
+            'GiangVien' => $this->giang_vien->TenGiangVien,
         ];
     }
 }
