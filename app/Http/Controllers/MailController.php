@@ -43,14 +43,32 @@ class MailController extends Controller
     public function VerifyEmail(User $User)
     {
         if($User->email_verified_at != "")
-            return response()->json("Email bạn đã được xác thực."); 
+        {
+            // return "Email bạn đã được xác thực."; 
+            echo '<html>
+            <head>
+                <meta http-equiv="refresh" content="5;url=https://www.khoahocdt.com/" />
+            </head>
+            <body>';
+            echo 'Email bạn đã được xác thực <br>';
+            echo "Redirecting https://khoahocdt.com/......";
+            echo '</body></html>';
+        }
         else
         {
             $User->email_verified_at = new \DateTime();
             $User->save();
-            return response()->json([
-                'data' => "Xác thực email $User->email thành công."
-            ],200);
+            // return response()->json([
+            //     'data' => "Xác thực email $User->email thành công."
+            // ],200);
+            echo '<html>
+            <head>
+                <meta http-equiv="refresh" content="5;url=https://www.khoahocdt.com/" />
+            </head>
+            <body>';
+            echo '<p style="color: #82e070; text-align: center;"><h2> Xác thực email '."$User->email".' thành công.</h2></p>';
+            echo "Redirecting https://khoahocdt.com/......";
+            echo '</body></html>';
         }
     }
     public function ResendVerifyEmail(User $User)

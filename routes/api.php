@@ -114,6 +114,7 @@ Route::group(['prefix' => 'Login'], function () {
     Route::get('{provider}', 'LoginController@redirectToProvider')->name('google.login');
     Route::get('{provider}/callback', 'LoginController@handleProviderCallback');
     Route::post('Local','LoginController@login');
+    Route::post('GetGoogleUser','LoginController@NhanThongTinGoogleUser');
 });
 
 // ============================ REGISTER ===============================

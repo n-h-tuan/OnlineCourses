@@ -61,9 +61,57 @@ class LoginController extends Controller
             'name'     => $user->name,
             'email'    => $user->email,
             'HinhAnh'  => $user->avatar,
+            'email_verified_at' => new \DateTime(),
             'provider' => $provider,
             'password' => bcrypt(str_random(10)),
             'provider_id' => $user->id
+        ]);
+        $tokenResult = $newUser->createToken('Personal Access Token'); 
+        $api_token = $tokenResult->accessToken;
+        $token_type = 'Bearer';
+        $newUser->api_token = $api_token;
+        $newUser->token_type = $token_type;
+        
+        $newUser->save();
+        return $newUser;
+    }
+    public function NhanThongTinGoogleUser (Request $request)
+    {
+        // Nhận name, email, HinhAnh, provider, provider_id
+        $request->validate(
+            [
+                'name'=>'required',
+                'email'=>'required|email',
+                'HinhAnh' => 'required',
+                'provider'=>'required',
+                'provider_id'=>'required',
+            ],
+            []
+        );
+        $authUser = User::where('provider_id', $request->provider_id)->first();
+        if ($authUser) {
+            return response()->json([
+                'data'=> new UserResource($authUser),
+            ],200);
+        }
+        $checkUser = User::where('email', $request->email)->first();
+        if($checkUser)
+            throw new SocialLoginException();
+        $newUser = $this->TaoUser($request);
+        return response()->json([
+            'data'=> new UserResource($newUser),
+        ],200);
+    }
+    public function TaoUser(Request $request)
+    {
+        $newUser = User::create([
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'HinhAnh'  => $request->HinhAnh,
+            'email_verified_at' => new \DateTime(),
+            'provider' => $request->provider,
+            'password' => bcrypt(str_random(10)),
+            'provider_id' => $request->provider_id
         ]);
         $tokenResult = $newUser->createToken('Personal Access Token'); 
         $api_token = $tokenResult->accessToken;
