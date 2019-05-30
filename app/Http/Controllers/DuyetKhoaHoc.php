@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\KhoaHoc;
 use App\Http\Resources\DuyetKhoaHoc\DuyetKhoaHocResource;
+use App\Http\Resources\User\KhoaHocCuaToiCollection;
 
 class DuyetKhoaHoc extends Controller
 {
@@ -46,5 +47,10 @@ class DuyetKhoaHoc extends Controller
         $soLuongKhoaHoc = 1 + $GiangVien->SoLuongKhoaHoc;
         $GiangVien->SoLuongKhoaHoc = $soLuongKhoaHoc;
         $GiangVien->save();
+    }
+    public function DanhSachKhoaHocNgungKinhDoanh()
+    {
+        $khoahoc = KhoaHoc::where('TrangThai',-1)->get();
+        return KhoaHocCuaToiCollection::collection($khoahoc);
     }
 }

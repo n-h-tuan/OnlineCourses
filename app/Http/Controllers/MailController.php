@@ -12,6 +12,11 @@ use App\CodeKhoaHoc;
 class MailController extends Controller
 {
     use MailTrait;
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:api')->only('ResetPasswordEmail');
+    //     $this->middleware('VerifyEmail')->only('ResetPasswordEmail');
+    // }
 
     // public function SendCode()
     // {

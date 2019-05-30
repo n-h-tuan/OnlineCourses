@@ -159,10 +159,52 @@ class GiangVienController extends Controller
                 throw new GiangVienKhongDung;
         }
     }
+    public function KhoaHocThuocGiangVien(KhoaHoc $KhoaHoc, $GiangVien_id)
+    {
+        if($KhoaHoc->GiangVien_id!=$GiangVien_id)
+            throw new \App\Exceptions\KhoaHocKhongThuocGiangVien();
+    }
     public function KhoaHocChoDuyet(GiangVien $GiangVien)
     {
         $this->KiemTraGiangVien($GiangVien);
         $khoahoc = KhoaHoc::where('GiangVien_id',$GiangVien->id)->where('TrangThai',0)->get();
         return KhoaHocCollection::collection($khoahoc);
+    }
+    public function NgungKinhDoanhKhoaHoc(Request $request, GiangVien $GiangVien)
+    {
+        $this->KiemTraGiangVien($GiangVien);
+        $khoahoc_id = $request->KhoaHoc_id;
+        $KhoaHoc = KhoaHoc::find($khoahoc_id);
+        $this->KhoaHocThuocGiangVien($KhoaHoc,$GiangVien->id);
+        if($KhoaHoc->TrangThai != 1)
+            return response()->json('Khóa học đã ngừng kinh doanh hoặc chưa được duyệt');
+        $KhoaHoc->TrangThai = -1; // Ngừng kinh doanh
+        $KhoaHoc->save();
+        
+        return response()->json([
+            'data'=>"Ngừng kinh doanh khóa học $KhoaHoc->TenKH thành công",
+        ],200);
+    }
+
+    public function KinhDoanhLaiKhoaHoc(Request $request, GiangVien $GiangVien)
+    {
+        $this->KiemTraGiangVien($GiangVien);
+        $khoahoc_id = $request->KhoaHoc_id;
+        $KhoaHoc = KhoaHoc::find($khoahoc_id);
+        $this->KhoaHocThuocGiangVien($KhoaHoc,$GiangVien->id);
+        if($KhoaHoc->TrangThai!=-1)
+            return response()->json('Khóa học vẫn đang trong quá trình kinh doanh hoặc chưa được duyệt');
+        $KhoaHoc->TrangThai = 0; // Chờ duyệt
+        $KhoaHoc->save();
+
+        return response()->json([
+            'data'=>"Kinh doanh lại khóa học $KhoaHoc->TenKH thành công",
+        ],200);
+    }
+    public function DanhSachKhoaHocNgungKinhDoanh(GiangVien $GiangVien)
+    {
+        $this->KiemTraGiangVien($GiangVien);
+        $khoahoc = KhoaHoc::where('GiangVien_id',$GiangVien->id)->where('TrangThai',-1)->get();
+        return KhoaHocCuaToiCollection::collection($khoahoc);
     }
 }

@@ -160,4 +160,9 @@ class HoaDonController extends Controller
             'data'=>"Xóa thành công hóa đơn $HoaDon->id",
         ],200);
     }
+
+    public function DanhSachGhiDanhKhoaHoc()
+    {
+        return \App\Http\Resources\GiangVien\LichSuBanKhoaHocResource::collection(HoaDon::all());
+    }
 }

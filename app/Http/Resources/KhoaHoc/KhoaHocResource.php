@@ -25,8 +25,11 @@ class KhoaHocResource extends JsonResource
             'TenKH' => $this->TenKH,
             'TomTat' => $this->TomTat,
             'GiaTien' => $this->GiaTien,
+            'GiamGia' =>$this->GiamGia,
+            'ThanhTien' =>$this->ThanhTien,
             'DanhGia' =>$this->DanhGia,
             'SoLuotXem' => $this->SoLuotXem,
+            'TrangThai' => ($this->TrangThai!=1) ? "Chưa được duyệt" : "Đã được duyệt",
             // 'BaiGiang'=> $this->bai_giang,
         ];
         // return parent::toArray($request);

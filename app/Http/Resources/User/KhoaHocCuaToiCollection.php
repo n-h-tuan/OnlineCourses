@@ -18,7 +18,7 @@ class KhoaHocCuaToiCollection extends JsonResource
             'id' => $this->id,
             'MangKH_id' => $this->MangKH_id,
             'TenKH' => $this->TenKH,
-            'GiaTien' => $this->GiaTien,
+            'GiaTien' => $this->ThanhTien,
             'HinhAnh' =>$this->HinhAnh,
             'GiangVien' => $this->giang_vien->TenGiangVien,
         ];

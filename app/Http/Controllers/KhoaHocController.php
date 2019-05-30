@@ -135,6 +135,7 @@ class KhoaHocController extends Controller
         // else
         // {
             $this->KiemTraKhoaHoc($MangKhoaHoc, $KhoaHoc);
+            $this->KiemTraDuyetKhoaHoc($KhoaHoc);
             views($KhoaHoc)->delayInSession(3)->record();
             $KhoaHoc->SoLuotXem = views($KhoaHoc)->count();
             $KhoaHoc->save();
@@ -201,7 +202,10 @@ class KhoaHocController extends Controller
     {
         if($KhoaHoc->MangKH_id != $MangKhoaHoc->id)
             throw new KhoaHocKhongDung;
-        elseif($KhoaHoc->TrangThai!=1)
+    }
+    public function KiemTraDuyetKhoaHoc(KhoaHoc $KhoaHoc)
+    {
+        if($KhoaHoc->TrangThai != 1)
             throw new KhoaHocChuaDuocDuyet();
     }
 
