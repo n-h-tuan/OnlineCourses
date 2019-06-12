@@ -19,6 +19,7 @@ class BaiGiangImport implements ToModel
     */
     public function model(array $row)
     {
+        $this->KiemTraYoutubeURL($row[2]);
         return new BaiGiang([
             'KhoaHoc_id' => $this->_KhoaHoc_id,
             'TenBaiGiang' => $row[0],
@@ -32,5 +33,12 @@ class BaiGiangImport implements ToModel
             "www.youtube.com/embed/$2",
             $string
         );
+    }
+    public function KiemTraYoutubeURL($string)
+    {
+        $parts = parse_url($string);
+        if(($parts['host']!="www.youtube.com") && ($parts['host']!="youtu.be"))
+            // return response()->json('Định dạng Youtube Video không đúng');
+            throw new \App\Exceptions\YoutubeURLException;
     }
 }

@@ -40,7 +40,11 @@ Route::get('test5','BaiGiangController@NguoiDungChuaMuaKhoaHoc');
 Route::get('test6/{KhoaHoc}','DanhGiaController@CapNhatDiemDanhGiaKhoaHoc');
 Route::get('testReport','CodeKhoaHocController@testReport');
 Route::get('test7',function(){
-    return view('payment');
+    $parts = parse_url("https://www.youtube.com/5quhM8hp3OY");
+    if(($parts['host']!="www.youtube.com") && ($parts['host']!="youtu.be"))
+        echo "Khác";
+    else 
+        echo "Giống";
 });
 
 // ====================================================================================================
@@ -169,4 +173,5 @@ Route::group(['prefix' => 'Admin'], function () {
     Route::get('/DanhSachGhiDanhKhoaHoc','HoaDonController@DanhSachGhiDanhKhoaHoc');
     Route::get('/DanhSachKhoaHocNgungKinhDoanh','DuyetKhoaHoc@DanhSachKhoaHocNgungKinhDoanh');
     Route::apiResource('/DuyetKhoaHoc','DuyetKhoaHoc');
+    Route::post('CapQuyenGiangVien/User/{User}','UserController@AdminCapQuyenUserTroThanhGiangVien');
 });

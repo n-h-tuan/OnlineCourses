@@ -26,7 +26,7 @@ class UserController extends Controller
     {
         $this->middleware('auth:api')->except('index','testgcs0','testCloudiary');
         $this->middleware('VerifyEmail')->only('TroThanhGiangVien');
-        $this->middleware('isAdmin')->only('destroy');
+        $this->middleware('isAdmin')->only('destroy','AdminCapQuyenUserTroThanhGiangVien');
     }
      /**
      * Display a listing of the resource.
@@ -191,6 +191,49 @@ class UserController extends Controller
         }
     }
 
+    public function AdminCapQuyenUserTroThanhGiangVien(User $User)
+    {
+        if(count($User->giang_vien) <= 0) 
+        {
+            $giangVien = new GiangVien;
+            $giangVien->user_id = $User->id;
+
+            $giangVien->TenGiangVien = $User->name;
+            
+            $giangVien->TomTat = "Tôi là giảng viên $User->name";
+            $giangVien->ThoiHanGV_id = 4;
+            $giangVien->SoLuongHocVien = 0;
+            $giangVien->SoLuongKhoaHoc = 0;
+            $User->level_id = 2;
+            $giangVien->save();
+            $User->save();
+            //Sau khi lưu giảng viên mới, trỏ tới bảng Thời hạn GV để lấy giá trị
+            $dt = date('d-m-Y H:i:s');
+            $giangVien->NgayHetHan = $this->tinhNgayHetHan($dt, $giangVien->thoi_han_gv->SoNgay);
+            $giangVien->save();
+
+            return response([
+                'data' => "Cấp quyền người dùng $User->name trở thành giảng viên thành công",
+            ]);
+        }
+        //Nếu đã tồn tại User này trong bảng GiangVien thì cập nhật Ngày Hết Hạn và thoihan_id mới
+        else 
+        {
+            $giangVien = $User->giang_vien;
+            foreach($giangVien as $gv)
+            {
+                $gv->TrangThai = 1;
+                $User->level_id = 2;
+                $gv->save();
+                $User->save();
+                $this->KhoaHocCuaUserTroLaiGiangVien($gv);
+    
+                return response([
+                    'data' => "Cấp quyền người dùng $User->name trở thành giảng viên thành công",
+                ]);
+            }
+        }
+    }
     public function TroThanhGiangVien(GiangVienRequest $request)
     {
         // SAU KHI USER THANH TOÁN THÌ MỚI TIẾN HÀNH THỰC HIỆN FUNCTION NÀY
@@ -232,14 +275,15 @@ class UserController extends Controller
                     $giangVien = $user->giang_vien;
                     foreach($giangVien as $gv)
                     {
-                        $gv->ThoiHanGV_id = $request->ThoiHanGV_id;
+                        // $gv->ThoiHanGV_id = $request->ThoiHanGV_id;
                         $gv->TrangThai = 1;
                         $user->level_id = 2;
                         $gv->save();
                         $user->save();
-                        $dt = date('d-m-Y H:i:s');
-                        $gv->NgayHetHan = $this->tinhNgayHetHan($dt, $gv->thoi_han_gv->SoNgay);
-                        $gv->save();
+                        $this->KhoaHocCuaUserTroLaiGiangVien($gv);
+                        // $dt = date('d-m-Y H:i:s');
+                        // $gv->NgayHetHan = $this->tinhNgayHetHan($dt, $gv->thoi_han_gv->SoNgay);
+                        // $gv->save();
             
                         return response([
                             'data' => new GiangVienResource($gv),
@@ -321,6 +365,16 @@ class UserController extends Controller
         }
         return KhoaHocCuaToiCollection::collection($collection);
 
+    }
+
+    public function KhoaHocCuaUserTroLaiGiangVien($GiangVien)
+    {
+        $KhoaHoc = KhoaHoc::where('GiangVien_id',$GiangVien->id)->where('TrangThai',-1)->get();
+        foreach($KhoaHoc as $kh)
+        {
+            $kh->TrangThai = 1;
+            $kh->save();
+        }
     }
     public function testgcs(Request $request)
     {

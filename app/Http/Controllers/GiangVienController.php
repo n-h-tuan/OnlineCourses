@@ -93,8 +93,9 @@ class GiangVienController extends Controller
      * @param  \App\GiangVien  $giangVien
      * @return \Illuminate\Http\Response
      */
-    public function update(GiangVienRequest $request,  GiangVien $GiangVien)
+    public function update(GiangVienRequest $request, GiangVien $GiangVien)
     {
+        $this->KiemTraGiangVien($GiangVien);
         $GiangVien->update($request->all());
         return response()->json([
             'data' => "Cập nhật thành công giảng viên $GiangVien->TenGiangVien",
@@ -107,12 +108,24 @@ class GiangVienController extends Controller
      * @param  \App\GiangVien  $giangVien
      * @return \Illuminate\Http\Response
      */
-    public function destroy( GiangVien $GiangVien)
+    public function destroy(GiangVien $GiangVien)
     {
-        $GiangVien->delete();
+        // $GiangVien->delete();
+        // return response()->json([
+        //     'data' => "Xoá thành công giảng viên $GiangVien->TenGiangVien",
+        // ]);
+        $this->KiemTraGiangVien($GiangVien);
+        $GiangVien->TrangThai = 0;
+        $user = Auth::user();
+        $user->level_id = 3;
+        $user->save();
+        $this->KhoaHocGiangVienNgungDay($GiangVien);
+        $GiangVien->save();
+        // $this->KhoaHocGiangVienNgungDay($GiangVien);
         return response()->json([
-            'data' => "Xoá thành công giảng viên $GiangVien->TenGiangVien",
+            'data' => "Giảng viên $GiangVien->TenGiangVien không còn hiệu lực."
         ]);
+
     }
 
     public function GiaHanThoiHanGV(Request $request,  GiangVien $GiangVien)
@@ -206,5 +219,15 @@ class GiangVienController extends Controller
         $this->KiemTraGiangVien($GiangVien);
         $khoahoc = KhoaHoc::where('GiangVien_id',$GiangVien->id)->where('TrangThai',-1)->get();
         return KhoaHocCuaToiCollection::collection($khoahoc);
+    }
+
+    public function KhoaHocGiangVienNgungDay(GiangVien $GiangVien)
+    {
+        $KhoaHoc = KhoaHoc::where('GiangVien_id',$GiangVien->id)->where('TrangThai',1)->get();
+        foreach($KhoaHoc as $kh)
+        {
+            $kh->TrangThai = -1; // Khóa Học coi như đưa về chờ duyệt
+            $kh->save();
+        }
     }
 }

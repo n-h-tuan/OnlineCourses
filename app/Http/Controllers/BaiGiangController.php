@@ -17,6 +17,7 @@ use App\Exceptions\KhoaHocKhongThuocGiangVien;
 use App\HoaDon;
 use App\Exceptions\NguoiDungChuaMuaKhoaHoc;
 use App\Exceptions\BaiGiangKhongThuocKhoaHoc;
+use App\Exceptions\YoutubeURLException;
 class BaiGiangController extends Controller
 {
     public function __construct()
@@ -96,6 +97,10 @@ class BaiGiangController extends Controller
         {
             foreach($request->data as $rq)
             {
+                // $this->validateYoutubeURL($rq['EmbededURL']);
+                $parts = parse_url($rq['EmbededURL']);
+                if(($parts['host']!="www.youtube.com") && ($parts['host']!="youtu.be"))
+                    return response()->json('Định dạng Youtube Video không đúng');
                 $embedURL = $this->convertYoutube($rq['EmbededURL']);
                 BaiGiang::create([
                     'KhoaHoc_id'=> $KhoaHoc->id,
@@ -112,25 +117,14 @@ class BaiGiangController extends Controller
         catch(\Exception $e)
         {
             
-            if($e->getCode() == 23000)
+            // if($e->getCode() == 23000)
                 return response()->json("EmbededURL đã tồn tại.");
-            else
-            return response()->json($e->getMessage());
+            // else
+            // return response()->json($e->getMessage());
             
         }
     }
-    public function validateRq($request)
-    {
-        $request->validate(
-            [
-                'KhoaHoc_id' => "required",
-                'TenBaiGiang' => "required|min:10|max:1000",
-                'MoTa' => "required|min:10|max:1000",
-                'EmbededURL' => "required|unique:bai_giang,EmbededURL",
-            ],
-            []
-        );
-    }
+  
     /**
      * Display the specified resource.
      *
@@ -232,7 +226,13 @@ class BaiGiangController extends Controller
         //         'data' => "This is khoahoc_id $khoahoc_id",
         //     ],200);
     }
-
+    public function validateYoutubeURL($url)
+    {
+        $parts = parse_url($url);
+        if(($parts['host']!="www.youtube.com") && ($parts['host']!="youtu.be"))
+            // return $parts['host'];
+            throw new YoutubeURLException;
+    }
     public function KhoaHocThuocGiangVien(KhoaHoc $KhoaHoc)
     {
         $user = Auth::user();

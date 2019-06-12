@@ -93,7 +93,14 @@ class NganLuongController extends Controller
         foreach($KH_id_array as $KH_id)
         {
             $KhoaHoc = \App\KhoaHoc::find($KH_id);
-            $KH_array[] = $KhoaHoc; 
+            $bool = $this->KiemTraKhoaHocCoConCodeKhong($KH_id);
+            if(!$bool)
+            {
+                return \response()->json('Khóa học "'.$KhoaHoc->TenKH. '" tạm thời hết, vui lòng chọn khóa học khác. Xin cám ơn.');
+            }
+            else{
+                $KH_array[] = $KhoaHoc;
+            }
         }
 
         $user_id = Auth::id();
@@ -288,9 +295,14 @@ class NganLuongController extends Controller
     {
         return view('payment',['email'=>$request->email,'code_id_string'=>$request->code_id_string]);
     }
-    public function redirectThongBao()
+    
+    public function KiemTraKhoaHocCoConCodeKhong($KhoaHoc_id)
     {
-        $string = "abc";
-        return redirect(route('thongbao',['string'=>$string]));
+        $code = CodeKhoaHoc::where('KhoaHoc_id',$KhoaHoc_id)->where('TrangThai',1)->first();
+        if($code == "")
+            return false;
+        else
+            return true;
     }
+
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\KhoaHoc;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\TheLoaiKhoaHoc;
 use App\MangKhoaHoc;
@@ -31,7 +32,7 @@ class KhoaHocController extends Controller
     }
     public function indexAdmin(MangKhoaHoc $MangKhoaHoc)
     {
-        return KhoaHocCollection::collection($MangKhoaHoc->khoa_hoc->where('TrangThai',1));
+        return KhoaHocCollection::collection($MangKhoaHoc->khoa_hoc);
     }
     /**
      * Display a listing of the resource.
@@ -136,7 +137,8 @@ class KhoaHocController extends Controller
         // {
             $this->KiemTraKhoaHoc($MangKhoaHoc, $KhoaHoc);
             $this->KiemTraDuyetKhoaHoc($KhoaHoc);
-            views($KhoaHoc)->delayInSession(3)->record();
+            views($KhoaHoc)->delayInSession(Carbon::now()->addMinutes(3))->record();
+            // views($KhoaHoc)->delayInSession(3)->record();
             $KhoaHoc->SoLuotXem = views($KhoaHoc)->count();
             $KhoaHoc->save();
             return new KhoaHocResource($KhoaHoc);

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\CodeKhoaHoc;
-use Illuminate\Http\Request;
-use App\Http\Resources\CodeKhoaHoc\CodeKHResource;
 use App\Http\Requests\CodeKHRequest;
-use Excel;
+use App\Http\Resources\CodeKhoaHoc\CodeKHResource;
 use App\Imports\CodeKHImport;
 use App\KhoaHoc;
+use Excel;
+use Illuminate\Http\Request;
 
 class CodeKhoaHocController extends Controller
 {
@@ -109,23 +109,27 @@ class CodeKhoaHocController extends Controller
 
     public function import(Request $request)
     {
-        request()->validate(
-            [
-                'file' => 'required|mimes:xlsx',
-            ],
-            [
-                'file.required' => 'Bạn chưa chọn file',
-                'file.mimes' => 'File bạn chọn không đúng định dạng. Chỉ được chọn file .xlsx (excel)'
-            ]
-        );
-        if(!request()->file('file'))
-        {    
-            return response()->json("Bạn chưa chọn file"); 
+        try {
+            request()->validate(
+                [
+                    'file' => 'required|mimes:xlsx',
+                ],
+                [
+                    'file.required' => 'Bạn chưa chọn file',
+                    'file.mimes' => 'File bạn chọn không đúng định dạng. Chỉ được chọn file .xlsx (excel)',
+                ]
+            );
+            if (!request()->file('file')) {
+                return response()->json("Bạn chưa chọn file");
+            }
+            Excel::import(new CodeKHImport, request()->file('file'));
+            return response()->json([
+                'data' => "Import Code Khóa Học thành công.",
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json('Import Code Khóa Học thất bại!');
         }
-        Excel::import(new CodeKHImport, request()->file('file'));
-        return response()->json([
-            'data' => "Import code khóa học thành công"
-        ],200);
+
     }
 
     public function testReport()
@@ -134,10 +138,9 @@ class CodeKhoaHocController extends Controller
         $dem = count($khoahoc);
         $collection = collect();
         $i = 1;
-        foreach($khoahoc as $kh)
-        {
+        foreach ($khoahoc as $kh) {
             $soCode = $kh->code_KH->count();
-            $soCodeConLai = $kh->code_KH->where('TrangThai',1)->count();
+            $soCodeConLai = $kh->code_KH->where('TrangThai', 1)->count();
             $arr = [
                 'STT' => $i++,
                 'KhoaHoc' => $kh->id,
@@ -150,4 +153,5 @@ class CodeKhoaHocController extends Controller
 
         // return $dem;
     }
+
 }
