@@ -28,7 +28,7 @@ class CauHoiController extends Controller
      */
     public function index(BaiGiang $BaiGiang)
     {
-        return CauHoiResource::collection($BaiGiang->cau_hoi);
+        return CauHoiResource::collection($BaiGiang->cau_hoi->sortByDesc("created_at"));
     }
 
     /**

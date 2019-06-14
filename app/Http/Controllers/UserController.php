@@ -193,45 +193,49 @@ class UserController extends Controller
 
     public function AdminCapQuyenUserTroThanhGiangVien(User $User)
     {
-        if(count($User->giang_vien) <= 0) 
+        if($User->level_id == 3)
         {
-            $giangVien = new GiangVien;
-            $giangVien->user_id = $User->id;
-
-            $giangVien->TenGiangVien = $User->name;
-            
-            $giangVien->TomTat = "Tôi là giảng viên $User->name";
-            $giangVien->ThoiHanGV_id = 4;
-            $giangVien->SoLuongHocVien = 0;
-            $giangVien->SoLuongKhoaHoc = 0;
-            $User->level_id = 2;
-            $giangVien->save();
-            $User->save();
-            //Sau khi lưu giảng viên mới, trỏ tới bảng Thời hạn GV để lấy giá trị
-            $dt = date('d-m-Y H:i:s');
-            $giangVien->NgayHetHan = $this->tinhNgayHetHan($dt, $giangVien->thoi_han_gv->SoNgay);
-            $giangVien->save();
-
-            return response([
-                'data' => "Cấp quyền người dùng $User->name trở thành giảng viên thành công",
-            ]);
-        }
-        //Nếu đã tồn tại User này trong bảng GiangVien thì cập nhật Ngày Hết Hạn và thoihan_id mới
-        else 
-        {
-            $giangVien = $User->giang_vien;
-            foreach($giangVien as $gv)
+            if(count($User->giang_vien) <= 0) 
             {
-                $gv->TrangThai = 1;
+                $giangVien = new GiangVien;
+                $giangVien->user_id = $User->id;
+                $giangVien->TenGiangVien = $User->name;
+                
+                $giangVien->TomTat = "Tôi là giảng viên $User->name";
+                $giangVien->ThoiHanGV_id = 4;
+                $giangVien->SoLuongHocVien = 0;
+                $giangVien->SoLuongKhoaHoc = 0;
                 $User->level_id = 2;
-                $gv->save();
+                $giangVien->save();
                 $User->save();
-                $this->KhoaHocCuaUserTroLaiGiangVien($gv);
-    
+                //Sau khi lưu giảng viên mới, trỏ tới bảng Thời hạn GV để lấy giá trị
+                $dt = date('d-m-Y H:i:s');
+                $giangVien->NgayHetHan = $this->tinhNgayHetHan($dt, $giangVien->thoi_han_gv->SoNgay);
+                $giangVien->save();
                 return response([
                     'data' => "Cấp quyền người dùng $User->name trở thành giảng viên thành công",
                 ]);
             }
+            //Nếu đã tồn tại User này trong bảng GiangVien thì cập nhật Ngày Hết Hạn và thoihan_id mới
+            else 
+            {
+                $giangVien = $User->giang_vien;
+                foreach($giangVien as $gv)
+                {
+                    $gv->TrangThai = 1;
+                    $User->level_id = 2;
+                    $gv->save();
+                    $User->save();
+                    $this->KhoaHocCuaUserTroLaiGiangVien($gv);
+        
+                    return response([
+                        'data' => "Cấp quyền người dùng $User->name trở thành giảng viên thành công",
+                    ]);
+                }
+            }
+        }
+        else{
+            return response()->json($User->name.' đã là giảng viên.');
         }
     }
     public function TroThanhGiangVien(GiangVienRequest $request)

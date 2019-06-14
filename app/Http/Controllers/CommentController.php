@@ -23,7 +23,7 @@ class CommentController extends Controller
      */
     public function index(KhoaHoc $KhoaHoc)
     {
-        return CommentResource::collection($KhoaHoc->comment);
+        return CommentResource::collection($KhoaHoc->comment->sortByDesc("created_at"));
     }
 
     /**
