@@ -20,6 +20,7 @@ class CreateBaiGiangsTable extends Migration
             $table->string('TenBaiGiang');
             $table->longText('MoTa')->nullable();
             $table->string('EmbededURL')->unique();
+            $table->smallInteger('HocThu')->nullable(); // 0: Không ----- 1: Có
             $table->timestamps();
         });
     }

@@ -164,6 +164,7 @@ Route::group(['prefix' => 'MangKhoaHoc'], function () {
 
 // ============================ BÀI GIẢNG ===============================
 Route::group(['prefix' => 'KhoaHoc'], function () {
+    Route::get('/{KhoaHoc}/BaiGiangPublic','BaiGiangController@indexPublic');
     Route::apiResource('/{KhoaHoc}/BaiGiang','BaiGiangController');
     Route::post('/{KhoaHoc}/BaiGiang/Import','BaiGiangController@importBaiGiang')->name('ImportBaiGiang');
 });

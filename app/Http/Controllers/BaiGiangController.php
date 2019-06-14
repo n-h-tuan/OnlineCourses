@@ -18,12 +18,18 @@ use App\HoaDon;
 use App\Exceptions\NguoiDungChuaMuaKhoaHoc;
 use App\Exceptions\BaiGiangKhongThuocKhoaHoc;
 use App\Exceptions\YoutubeURLException;
+use App\Http\Resources\BaiGiang\BaiGiangPublicResource;
 class BaiGiangController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api');
-        $this->middleware('isGiangVien')->except('index','show');
+        $this->middleware('auth:api')->except('indexPublic');
+        $this->middleware('isGiangVien')->except('index','show','indexPublic');
+    }
+    
+    public function indexPublic(KhoaHoc $KhoaHoc)
+    {
+        return BaiGiangPublicResource::collection($KhoaHoc->bai_giang);
     }
     /**
      * Display a listing of the resource.
@@ -107,6 +113,7 @@ class BaiGiangController extends Controller
                     'TenBaiGiang' => $rq['TenBaiGiang'],
                     'MoTa' => $rq['MoTa'],
                     'EmbededURL' => $embedURL,
+                    'HocThu' => $rq['HocThu'],
                 ]);
             }
             return response()->json([
@@ -179,6 +186,7 @@ class BaiGiangController extends Controller
         $BaiGiang->TenBaiGiang = $request->TenBaiGiang;
         $BaiGiang->MoTa = $request->MoTa;
         $BaiGiang->EmbededURL = $request->EmbededURL;
+        $BaiGiang->HocThu = $request->HocThu;
         $BaiGiang->save();
 
         return \response()->json(['data'=> "Cập nhất bài giảng $BaiGiang->TenBaiGiang thành công"]);

@@ -32,6 +32,7 @@ class BaiGiangRequest extends FormRequest
             'TenBaiGiang.*' => "required|min:10|max:255",
             'MoTa.*' => "required|min:10|max:500",
             'EmbededURL.*' => "required|unique:bai_giang,EmbededURL",
+            'HocThu.*' => "required",
         ];
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Resources\BaiGiang;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BaiGiangResource extends JsonResource
+class BaiGiangPublicResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,12 +15,9 @@ class BaiGiangResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'KhoaHoc_id' => $this->KhoaHoc_id,
-            'TenBaiGiang' => $this->TenBaiGiang,
-            'MoTa'=>$this->MoTa,
-            'EmbededURL' => $this->EmbededURL,  
-            'HocThu'=>($this->HocThu==0)?"Không":"Có",
+            'id'=>$this->id,
+            'TenBaiGiang'=>$this->TenBaiGiang,
+            'EmbededURL' => ($this->HocThu==0) ? null : $this->EmbededURL, 
         ];
     }
 }

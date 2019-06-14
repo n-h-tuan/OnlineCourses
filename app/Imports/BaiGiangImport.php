@@ -25,6 +25,7 @@ class BaiGiangImport implements ToModel
             'TenBaiGiang' => $row[0],
             'MoTa' => $row[1],
             'EmbededURL' => $this->convertYoutube($row[2]),
+            'HocThu'=>$row[3],
         ]);
     }
     public function convertYoutube($string) {
