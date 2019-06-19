@@ -36,6 +36,21 @@ Route::get('test01',function(){
     return $newFormat;
 });
 
+Route::get('randomString',function(){
+    for ($i=0; $i < 10; $i++) { 
+        echo "=============================================== </br>";
+        // $md5 =MD5(microtime()); 
+        // echo $md5."<br/>";
+        // $str_shuffle = str_shuffle($md5);
+        // echo $str_shuffle."<br/>";
+        // echo substr($str_shuffle,0,10)."<br/>";
+        echo substr(str_shuffle(md5(microtime())),0,10)."<br/>";
+        // echo "=============================================== </br>";
+    }
+});
+Route::get('Count','NganLuongController@KiemTraCodeKhoaHocItHon2');
+Route::get('TestAddCode','NganLuongController@testting');
+
 Route::get('import',function(){
     return view('import');
 });

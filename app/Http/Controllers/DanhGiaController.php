@@ -17,7 +17,12 @@ class DanhGiaController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api')->except('index','show','CapNhatDiemDanhGiaKhoaHoc');
+        $this->middleware('isAdmin')->only('DanhGiaAll');
         
+    }
+    public function DanhGiaAll()
+    {
+        return DanhGiaResource::collection(DanhGia::all()->sortByDesc('created_at'));
     }
     /**
      * Display a listing of the resource.
@@ -26,7 +31,7 @@ class DanhGiaController extends Controller
      */
     public function index(KhoaHoc $KhoaHoc)
     {
-        return DanhGiaResource::collection($KhoaHoc->danh_gia);
+        return DanhGiaResource::collection($KhoaHoc->danh_gia->sortByDesc('created_at'));
         
     }
 
@@ -119,11 +124,13 @@ class DanhGiaController extends Controller
      */
     public function destroy(KhoaHoc $KhoaHoc, DanhGia $DanhGium)
     {
-        $this->DanhGiaThuocUser($DanhGium);
-        $DanhGium->delete();
-        return response()->json([
-            'data'=>'Xóa thành công đánh giá',
-        ],200);
+        if(Auth::user()->level_id==1 || !$this->DanhGiaThuocUser($DanhGium))
+        {
+            $DanhGium->delete();
+            return response()->json([
+                'data'=>'Xóa thành công đánh giá',
+            ],200);
+        }
     }
     public function UserMuaKhoaHoc($KhoaHoc_id)
     {

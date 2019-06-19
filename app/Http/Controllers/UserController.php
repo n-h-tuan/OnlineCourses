@@ -99,69 +99,74 @@ class UserController extends Controller
      */
     public function update(Request $request, User $User)
     {
-        $this->KiemTraUserHienTai($User);
-        request()->validate(
-            [
-                'name' => "required|min:3|max:50",
-            ],
-            [
-                'name.required' => "Bạn chưa nhập tên",
-                'name.min' => "Tên nằm trong khoảng 3-50 ký tự",
-                'name.max' => "Tên nằm trong khoảng 3-50 ký tự",
-            ]
-        );
-        $User->name = $request->name;
-        $User->NgaySinh = $request->NgaySinh;
-        $User->SoDienThoai = $request->SoDienThoai;
-
-        //Lưu ảnh
-        // if($request->hasFile('HinhAnh'))
-        // {
-        //     $url = $this->LuuAnhUser($request);
-        //     $User->HinhAnh = $url;
-        // }
-        
-        // Nếu User check button đổi password thì thực hiện đổi password
-        if($request->CheckPassword=="on")
+        if(Auth::user()->level_id==1||!$this->KiemTraUserHienTai($User))
         {
-            $request->validate(
+            request()->validate(
                 [
-                    'PasswordHienTai' => 'required|min:6',
-                    'PasswordMoi' => 'required|min:6',
-                    'PasswordMoiNhapLai' =>'required|min:6|same:PasswordMoi',
-                ],[]
+                    'name' => "required|min:3|max:50",
+                ],
+                [
+                    'name.required' => "Bạn chưa nhập tên",
+                    'name.min' => "Tên nằm trong khoảng 3-50 ký tự",
+                    'name.max' => "Tên nằm trong khoảng 3-50 ký tự",
+                ]
             );
-            if(Hash::check($request->PasswordHienTai, $User->password))
+            $User->name = $request->name;
+            $User->NgaySinh = $request->NgaySinh;
+            $User->SoDienThoai = $request->SoDienThoai;
+
+            //Lưu ảnh
+            // if($request->hasFile('HinhAnh'))
+            // {
+            //     $url = $this->LuuAnhUser($request);
+            //     $User->HinhAnh = $url;
+            // }
+            
+            // Nếu User check button đổi password thì thực hiện đổi password
+            if($request->CheckPassword=="on")
             {
-                $User->password = bcrypt($request->PasswordMoi);
+                $request->validate(
+                    [
+                        'PasswordHienTai' => 'required|min:6',
+                        'PasswordMoi' => 'required|min:6',
+                        'PasswordMoiNhapLai' =>'required|min:6|same:PasswordMoi',
+                    ],[]
+                );
+                if(Hash::check($request->PasswordHienTai, $User->password))
+                {
+                    $User->password = bcrypt($request->PasswordMoi);
+                }
+                else
+                    return response()->json('Mật khẩu hiện tại không đúng');
             }
-            else
-                return response()->json('Mật khẩu hiện tại không đúng');
+            $User->save();
+
+            // $User->password = bcrypt($request->password); // Sau này làm có quy trình kiểm tra mk hiện tại , r mới đổi mk
+            return response()->json([
+                'data'=>"Cập nhật thành công ".$User->name,
+            ],200);
+
+            // if(Hash::check($request->PasswordHienTai, $User->password))
+            //     echo "TRUE <br>";
+            // else
+            //     echo "FALSE";
         }
-        $User->save();
-
-        // $User->password = bcrypt($request->password); // Sau này làm có quy trình kiểm tra mk hiện tại , r mới đổi mk
-        return response()->json([
-            'data'=>"Cập nhật thành công ".$User->name,
-        ],200);
-
-        // if(Hash::check($request->PasswordHienTai, $User->password))
-        //     echo "TRUE <br>";
-        // else
-        //     echo "FALSE";
     }
 
     public function UserUpdateImage(Request $request, User $User)
     {
         //Lưu ảnh
-        $url = $this->LuuAnhUser($request);
-        $User->HinhAnh = $url;
-
-        $User->save();
-
-        return response()->json([
-            'data'=>"$url",
-        ],200);
+        if(Auth::user()->level_id == 1 || !$this->KiemTraUserHienTai($User))
+        {
+            $url = $this->LuuAnhUser($request);
+            $User->HinhAnh = $url;
+    
+            $User->save();
+    
+            return response()->json([
+                'data'=>"$url",
+            ],200);
+        }
         // return $request->HinhAnh;
     }
 

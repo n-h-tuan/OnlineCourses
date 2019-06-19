@@ -128,12 +128,14 @@ class TaiKhoanNganHangController extends Controller
      */
     public function destroy(TaiKhoanNganHang $TaiKhoanNganHang)
     {
-        $this->KiemTraUser($TaiKhoanNganHang);
-        $TaiKhoanNganHang->delete();
+        if(Auth::user()->level_id==1 || !$this->KiemTraUser($TaiKhoanNganHang))
+        {
+            $TaiKhoanNganHang->delete();
 
-        return response()->json([
-            'data' => "Xóa thành công tài khoản ngân hàng $TaiKhoanNganHang->ChuTaiKhoan",
-        ],200);
+            return response()->json([
+                'data' => "Xóa thành công tài khoản ngân hàng $TaiKhoanNganHang->ChuTaiKhoan",
+            ],200);
+        }
     }
 
     public function KiemTraUser(TaiKhoanNganHang $TaiKhoanNganHang)

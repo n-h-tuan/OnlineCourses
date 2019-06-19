@@ -183,9 +183,10 @@ class BaiGiangController extends Controller
     {
         $this->KhoaHocThuocGiangVien($KhoaHoc);
         $this->BaiGiangThuocKhoaHoc($KhoaHoc, $BaiGiang);
+        $this->validateYoutubeURL($request->EmbededURL);
         $BaiGiang->TenBaiGiang = $request->TenBaiGiang;
         $BaiGiang->MoTa = $request->MoTa;
-        $BaiGiang->EmbededURL = $request->EmbededURL;
+        $BaiGiang->EmbededURL = $this->convertYoutube($request->EmbededURL);
         $BaiGiang->HocThu = $request->HocThu;
         $BaiGiang->save();
 

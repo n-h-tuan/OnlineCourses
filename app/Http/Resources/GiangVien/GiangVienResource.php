@@ -22,6 +22,7 @@ class GiangVienResource extends JsonResource
             'HinhAnh' => $this->user->HinhAnh,
             'SoLuongHocVien' => $this->SoLuongHocVien,
             'SoLuongKhoaHoc' => $this->SoLuongKhoaHoc,
+            'TrangThai'=>($this->TrangThai==0) ? "Hết hiệu lực" : "Còn hiệu lực",
             // 'ThoiHanGV' => $this->thoi_han_gv->TenThoiHan,
             // 'NgayHetHan' => $this->NgayHetHan,
             

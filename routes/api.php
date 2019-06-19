@@ -46,6 +46,7 @@ Route::get('test7',function(){
     else 
         echo "Giống";
 });
+Route::get('test8/{BaiGiang}','CauHoiController@KhoaHocThuocGiangVien');
 
 // ====================================================================================================
 
@@ -57,7 +58,7 @@ Route::get('test7',function(){
 Route::get('/User/KhoaHocCuaToi','UserController@KhoaHocCuaToi');
 Route::apiResource('/User','UserController');
 Route::post('/User/TroThanhGiangVien','UserController@TroThanhGiangVien');
-Route::put('/User/{User}/UserUpdateImage','UserController@UserUpdateImage')->name('user.UpdateImage');
+Route::post('/User/{User}/UserUpdateImage','UserController@UserUpdateImage')->name('user.UpdateImage');
 // Route::group(['prefix' => 'User'], function () {
 //     Route::get('/{User}/GiangVien/{GiangVien}/KhoaHocDaDay','GiangVienController@KhoaHocDaDay');
 //     Route::get('/{User}/GiangVien/{GiangVien}/LichSuBanKhoaHoc','GiangVienController@LichSuBanKhoaHoc');
@@ -94,6 +95,8 @@ Route::group(['prefix' => 'NganLuong'], function () {
 });
 
 // ============================ COMMENT & ĐÁNH GIÁ ===============================
+Route::get('CommentAll','CommentController@CommentAll');
+Route::get('DanhGiaAll','DanhGiaController@DanhGiaAll');
 Route::group(['prefix' => 'KhoaHoc'], function () {
     Route::apiResource('/{KhoaHoc}/Comment','CommentController');    
     Route::apiResource('/{KhoaHoc}/DanhGia','DanhGiaController');
@@ -111,6 +114,7 @@ Route::post('/CodeKhoaHoc/Import','CodeKhoaHocController@import')->name('import'
 Route::apiResource('/ThanhToan','ThanhToanController');
 
 // ============================ CÂU HỎI THEO BÀI GIẢNG ===============================
+Route::get('CauHoiAll','CauHoiController@CauHoiAll');
 Route::group(['prefix' => 'BaiGiang'], function () {
     Route::apiResource('/{BaiGiang}/CauHoi','CauHoiController');    
     Route::post('/{BaiGiang}/CauHoi/{CauHoi}/AddOrUpdateImage','CauHoiController@ThemHoacCapNhatHinhAnh');

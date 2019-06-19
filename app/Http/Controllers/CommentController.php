@@ -15,6 +15,11 @@ class CommentController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api')->except('index','show');
+        $this->middleware('isAdmin')->only('CommentAll');
+    }
+    public function CommentAll()
+    {
+        return CommentResource::collection(Comment::all()->sortByDesc("created_at"));
     }
     /**
      * Display a listing of the resource.
@@ -103,11 +108,13 @@ class CommentController extends Controller
      */
     public function destroy(KhoaHoc $KhoaHoc, Comment $Comment)
     {
-        $this->CommentThuocUser($Comment);
-        $Comment->delete();
-        return \response()->json([
-            'data' => "Xóa thành công comment $Comment->id",
-        ],202);
+        if(Auth::user()->level_id==1 || !$this->CommentThuocUser($Comment))
+        {
+            $Comment->delete();
+            return \response()->json([
+                'data' => "Xóa thành công comment $Comment->id",
+            ],202);
+        }
     }
 
     public function CommentThuocUser(Comment $Comment)

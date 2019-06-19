@@ -15,8 +15,10 @@ class LichSuBanKhoaHocResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'KhoaHoc' => $this->khoa_hoc->TenKH,
             'user' => $this->user->name,
+            'email' => $this->user->email,
             'TongTien' => $this->TongTien,
             'created_at' =>($this->created_at)=="" ? null : date('d-m-Y H:i:s',strtotime($this->created_at)),
         ];

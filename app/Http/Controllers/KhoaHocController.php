@@ -74,7 +74,10 @@ class KhoaHocController extends Controller
      */
     public function store(KhoaHocRequest $request, MangKhoaHoc $MangKhoaHoc)
     {
-        $giangvien = GiangVien::where('user_id',Auth::id())->first();
+        if(Auth::user()->level_id == 1 )
+            $giangvien = GiangVien::find(4); // Lấy user Tuấn
+        else
+            $giangvien = GiangVien::where('user_id',Auth::id())->first();
         $KhoaHoc = new KhoaHoc;
         $KhoaHoc->MangKH_id = $MangKhoaHoc->id;
         $KhoaHoc->GiangVien_id = $giangvien->id;
@@ -193,11 +196,13 @@ class KhoaHocController extends Controller
     public function destroy(MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc)
     {
         $this->KiemTraKhoaHoc($MangKhoaHoc, $KhoaHoc);
-        $this->KhoaHocThuocGiangVien($KhoaHoc);
-        $KhoaHoc->delete();
-        return response([
-            'data' => "Xóa thành công ".$KhoaHoc->TenKH,
-        ],200);
+        if(Auth::user()->level_id==1 || !$this->KhoaHocThuocGiangVien($KhoaHoc))
+        {
+            $KhoaHoc->delete();
+            return response([
+                'data' => "Xóa thành công ".$KhoaHoc->TenKH,
+            ],200);
+        }
     }
     
     public function KiemTraKhoaHoc(MangKhoaHoc $MangKhoaHoc, KhoaHoc $KhoaHoc)
@@ -275,7 +280,7 @@ class KhoaHocController extends Controller
     public function SearchKhoaHoc(Request $request)
     {
         $TuKhoa = $request->TuKhoa;
-        $dsKhoaHoc = KhoaHoc::where('TenKH','like',"%$TuKhoa%")->orWhere('TomTat','like',"%$TuKhoa%")->get();
+        $dsKhoaHoc = KhoaHoc::where('TenKH','like',"%$TuKhoa%")->orWhere('TomTat','like',"%$TuKhoa%")->where("TrangThai",1)->get();
         return KhoaHocCollection::collection($dsKhoaHoc);
     }
     public function KhoaHocNoiBat()

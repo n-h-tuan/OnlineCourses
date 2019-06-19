@@ -114,17 +114,20 @@ class GiangVienController extends Controller
         // return response()->json([
         //     'data' => "Xoá thành công giảng viên $GiangVien->TenGiangVien",
         // ]);
-        $this->KiemTraGiangVien($GiangVien);
-        $GiangVien->TrangThai = 0;
-        $user = Auth::user();
-        $user->level_id = 3;
-        $user->save();
-        $this->KhoaHocGiangVienNgungDay($GiangVien);
-        $GiangVien->save();
-        // $this->KhoaHocGiangVienNgungDay($GiangVien);
-        return response()->json([
-            'data' => "Giảng viên $GiangVien->TenGiangVien không còn hiệu lực."
-        ]);
+        if(Auth::user()->level_id==1 || !$this->KiemTraGiangVien($GiangVien));
+        {   
+            $GiangVien->TrangThai = 0;
+            // $user = Auth::user();
+            $user = $GiangVien->user;
+            $user->level_id = 3;
+            $user->save();
+            $this->KhoaHocGiangVienNgungDay($GiangVien);
+            $GiangVien->save();
+            // $this->KhoaHocGiangVienNgungDay($GiangVien);
+            return response()->json([
+                'data' => "Giảng viên $GiangVien->TenGiangVien không còn hiệu lực."
+           ]);
+        }
 
     }
 

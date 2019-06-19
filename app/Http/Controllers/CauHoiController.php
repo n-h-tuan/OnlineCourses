@@ -20,6 +20,11 @@ class CauHoiController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api')->except('index');
+        $this->middleware('isAdmin')->only('CauHoiAll');
+    }
+    public function CauHoiAll()
+    {
+        return CauHoiResource::collection(CauHoi::all()->sortByDesc("created_at"));
     }
     /**
      * Display a listing of the resource.
@@ -48,17 +53,13 @@ class CauHoiController extends Controller
      */
     public function store(CauHoiRequest $request, BaiGiang $BaiGiang)
     {
-        if(Auth::user()->level_id == 3)
-        {
-            $this->UserMuaKhoaHoc($BaiGiang);
-        }
-        $this->KhoaHocThuocGiangVien($BaiGiang);
-        
+        $this->UserMuaKhoaHocOrGiangVienCuaKhoaHoc($BaiGiang);
         $cauhoi = new CauHoi;
         $cauhoi->user_id = Auth::id();
         $cauhoi->BaiGiang_id = $BaiGiang->id;
         $cauhoi->TieuDe = $request->TieuDe;
         $cauhoi->NoiDung = $request->NoiDung;
+    
 
         // if($request->hasFile('HinhAnh'))
         // {
@@ -145,18 +146,25 @@ class CauHoiController extends Controller
      */
     public function destroy(BaiGiang $BaiGiang, CauHoi $CauHoi)
     {
-        if((Auth::user()->level_id == 1))
-        {
-            $CauHoi->delete();
-            return response()->json([
-                'data'=>'Xóa thành công câu hỏi',
-            ],200);
-        }
-        $this->CauHoiThuocUser($CauHoi);
-        $CauHoi->delete();
-            return response()->json([
-                'data'=>'Xóa thành công câu hỏi',
-            ],200);
+        if(Auth::user()->level_id == 1 || !$this->CauHoiThuocUser($CauHoi))
+            {
+                $CauHoi->delete();
+                return response()->json([
+                    'data'=>'Xóa thành công câu hỏi',
+                ],200);        
+            }
+    }
+    public function UserMuaKhoaHocOrGiangVienCuaKhoaHoc($BaiGiang)
+    {
+        $user = Auth::user();
+        $khoahoc_id = $BaiGiang->KhoaHoc_id;
+        $giangvien = $user->giang_vien->first();
+        $hoadon = HoaDon::where('user_id',$user->id)->where('KhoaHoc_id',$khoahoc_id)->where('TrangThai',1)->first();
+        if($hoadon=="")
+            {
+                if($giangvien=="" || $BaiGiang->khoa_hoc->GiangVien_id != $giangvien->id)
+                    throw new KhoaHocKhongThuocGiangVien();
+            }
     }
 
     public function UserMuaKhoaHoc(BaiGiang $BaiGiang)
@@ -177,6 +185,7 @@ class CauHoiController extends Controller
             if($BaiGiang->khoa_hoc->GiangVien_id != $gv->id)
                 throw new KhoaHocKhongThuocGiangVien();
         }
+        // return $giangvien;
     }
     public function CauHoiThuocUser(CauHoi $CauHoi)
     {

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\KhoaHoc;
 use App\Http\Resources\DuyetKhoaHoc\DuyetKhoaHocResource;
 use App\Http\Resources\User\KhoaHocCuaToiCollection;
+use App\CodeKhoaHoc;
 
 class DuyetKhoaHoc extends Controller
 {
@@ -37,6 +38,15 @@ class DuyetKhoaHoc extends Controller
         $GiangVien = \App\GiangVien::find($khoahoc->GiangVien_id);
         $this->CapNhatSoLuongKhoaHoc($GiangVien);
 
+        //Tạo Code Khóa Học Tự động cho Khóa học vừa duyệt
+        for ($i=0; $i < 10 ; $i++) { 
+            CodeKhoaHoc::create([
+                'code' => $this->TaoCodeKhoaHocTuDong,
+                'KhoaHoc_id' => $khoahoc->id,
+                'TrangThai' => 1,
+            ]);
+        }
+
         return response()->json([
             'data' => "Duyệt thành công khóa học $khoahoc->TenKH",
         ]);
@@ -52,5 +62,10 @@ class DuyetKhoaHoc extends Controller
     {
         $khoahoc = KhoaHoc::where('TrangThai',-1)->get();
         return KhoaHocCuaToiCollection::collection($khoahoc);
+    }
+
+    public function TaoCodeKhoaHocTuDong()
+    {
+       return substr(str_shuffle(md5(microtime())),0,10);
     }
 }

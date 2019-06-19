@@ -96,6 +96,13 @@ class NganLuongController extends Controller
             $bool = $this->KiemTraKhoaHocCoConCodeKhong($KH_id);
             if(!$bool)
             {
+                for ($i=0; $i < 10; $i++) { 
+                    $codeMoi = CodeKhoaHoc::create([
+                        'code' => $this->TaoCodeKhoaHocTuDong(),
+                        'KhoaHoc_id' => $KH_id,
+                        'TrangThai' => 1,
+                    ]);
+                }
                 return \response()->json('Khóa học "'.$KhoaHoc->TenKH. '" tạm thời hết, vui lòng chọn khóa học khác. Xin cám ơn.');
             }
             else{
@@ -197,6 +204,22 @@ class NganLuongController extends Controller
             {
                 $code_object->TrangThai = -1;
                 $code_object->save();
+            }
+
+            // Kiểm tra nếu code ít hơn 2 code còn lại thì thực hiện tạo code mới
+            foreach($KH_id_array as $KH_id)
+            {
+                $codeConLai = $this->KiemTraCodeKhoaHocItHon2($KH_id);
+                if($codeConLai <= 2)
+                {
+                    for ($i=0; $i < 10; $i++) { 
+                        $codeMoi = CodeKhoaHoc::create([
+                            'code' => $this->TaoCodeKhoaHocTuDong(),
+                            'KhoaHoc_id' => $KH_id,
+                            'TrangThai' => 1,
+                        ]);
+                    }
+                }
             }
             
 
@@ -303,6 +326,32 @@ class NganLuongController extends Controller
             return false;
         else
             return true;
+    }
+
+    public function KiemTraCodeKhoaHocItHon2($KhoaHoc_id)
+    {
+        // $KhoaHoc_id = 25;
+        return $code = CodeKhoaHoc::where('KhoaHoc_id',$KhoaHoc_id)->where('TrangThai',1)->count();
+    }
+    public function TaoCodeKhoaHocTuDong()
+    {
+       return substr(str_shuffle(md5(microtime())),0,10);
+    }
+    public function testting()
+    {
+        $KH_id = 6;
+        $codeConLai = $this->KiemTraCodeKhoaHocItHon2($KH_id);
+                if($codeConLai <= 2)
+                {
+                    for ($i=0; $i < 10; $i++) { 
+                        CodeKhoaHoc::create([
+                            'code' => $this->TaoCodeKhoaHocTuDong(),
+                            'KhoaHoc_id' => $KH_id,
+                            'TrangThai' => 1,
+                        ]);
+                    }
+                }
+        echo $KH_id." Success!!!!!";
     }
 
 }
