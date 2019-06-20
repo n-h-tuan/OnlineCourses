@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\KhoaHoc;
 use App\Http\Resources\DuyetKhoaHoc\DuyetKhoaHocResource;
 use App\Http\Resources\User\KhoaHocCuaToiCollection;
+use App\Http\Resources\DuyetKhoaHoc\KhoaHocTuChoiResource;
 use App\CodeKhoaHoc;
 
 class DuyetKhoaHoc extends Controller
@@ -19,6 +20,11 @@ class DuyetKhoaHoc extends Controller
     {
         $khoahoc = KhoaHoc::where('TrangThai',0)->get();
         return DuyetKhoaHocResource::collection($khoahoc);
+    }
+    public function DanhSachKhoaHocTuChoi()
+    {
+        $khoahoc = KhoaHoc::where('TrangThai',-2)->get();
+        return KhoaHocTuChoiResource::collection($khoahoc);
     }
     public function store(Request $request)
     {
@@ -51,7 +57,24 @@ class DuyetKhoaHoc extends Controller
             'data' => "Duyệt thành công khóa học $khoahoc->TenKH",
         ]);
     }
-    
+    public function TuChoiKhoaHoc(Request $request)
+    {
+        $request->validate(
+            [
+                'KhoaHoc_id' => 'required',
+            ],
+            [
+                'KhoaHoc_id.required' => "KhoaHoc_id không được rỗng",
+            ]
+        );
+        $khoahoc = KhoaHoc::find($request->KhoaHoc_id);
+        $khoahoc->TrangThai = -2; // Khóa học bị từ chối.
+        $khoahoc->save();
+
+        return \response()->json([
+            'data' => "Từ chối khóa học $khoahoc->TenKH thành công",
+        ],200);
+    }
     public function CapNhatSoLuongKhoaHoc($GiangVien)
     {
         $soLuongKhoaHoc = 1 + $GiangVien->SoLuongKhoaHoc;

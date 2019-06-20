@@ -70,6 +70,7 @@ Route::post('/User/{User}/UserUpdateImage','UserController@UserUpdateImage')->na
 Route::get('GiangVien/{GiangVien}/KhoaHocDaDay','GiangVienController@KhoaHocDaDay');
 Route::get('GiangVien/{GiangVien}/LichSuBanKhoaHoc','GiangVienController@LichSuBanKhoaHoc');
 Route::get('GiangVien/{GiangVien}/KhoaHocChoDuyet','GiangVienController@KhoaHocChoDuyet');
+Route::get('GiangVien/{GiangVien}/KhoaHocTuChoi','GiangVienController@KhoaHocTuChoi');
 Route::get('GiangVien/Current','GiangVienController@getGiangVien');
 Route::get('GiangVien/{GiangVien}/DanhSachKhoaHocNgungKinhDoanh','GiangVienController@DanhSachKhoaHocNgungKinhDoanh');
 Route::apiResource('GiangVien','GiangVienController');
@@ -177,6 +178,8 @@ Route::group(['prefix' => 'KhoaHoc'], function () {
 Route::group(['prefix' => 'Admin'], function () {
     Route::get('/DanhSachGhiDanhKhoaHoc','HoaDonController@DanhSachGhiDanhKhoaHoc');
     Route::get('/DanhSachKhoaHocNgungKinhDoanh','DuyetKhoaHoc@DanhSachKhoaHocNgungKinhDoanh');
+    Route::get('/DanhSachKhoaHocTuChoi','DuyetKhoaHoc@DanhSachKhoaHocTuChoi');
     Route::apiResource('/DuyetKhoaHoc','DuyetKhoaHoc');
+    Route::post('/TuChoiKhoaHoc','DuyetKhoaHoc@TuChoiKhoaHoc');
     Route::post('CapQuyenGiangVien/User/{User}','UserController@AdminCapQuyenUserTroThanhGiangVien');
 });

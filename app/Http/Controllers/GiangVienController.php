@@ -186,6 +186,12 @@ class GiangVienController extends Controller
         $khoahoc = KhoaHoc::where('GiangVien_id',$GiangVien->id)->where('TrangThai',0)->get();
         return KhoaHocCollection::collection($khoahoc);
     }
+    public function KhoaHocTuChoi(GiangVien $GiangVien)
+    {
+        $this->KiemTraGiangVien($GiangVien);
+        $khoahoc = KhoaHoc::where('GiangVien_id',$GiangVien->id)->where('TrangThai',-2)->get();
+        return KhoaHocCollection::collection($khoahoc);
+    }
     public function NgungKinhDoanhKhoaHoc(Request $request, GiangVien $GiangVien)
     {
         $this->KiemTraGiangVien($GiangVien);
